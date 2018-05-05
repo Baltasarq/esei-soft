@@ -1,0 +1,65 @@
+{% extends "skeleton.html" %}
+
+{% block content %}
+<div>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <ul id="Message" class="flashes">
+        {% for category, message in messages %}
+        {% if category == 'success' %}
+        <div class="message_flash green center"><h4>{{ message }}</h4></div>
+        {% else %}
+        <div class="message_flash red center"><h4>{{ message }}</h4></div>
+        {% endif %}
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    <a href="/subjects" class="waves-effect waves-light btn-small blue">
+        <i class="material-icons left">arrow_back</i>
+        {{ _('Subjects')}}
+    </a>
+    <form class="col s12" action="/addSubject" method="post">
+        <h4>{{ _('Add Subject') }}</h4>
+        <div class="row">
+            <div class="input-field col s6">
+                <input
+                        {% if subject %}
+                        value='{{ subject.name }}'
+                        {% endif%}
+                        id="name" name="name" type="text" class="validate" placeholder={{ _('Name') }} >
+                <label for="name">{{ _('Name') }}</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input
+                        {% if subject %}
+                        value={{ subject.year }}
+                        {% endif%}
+                        id="year" name="year" type="number" min="1" max="4" class="validate" required placeholder={{ _('Year')
+                }} >
+                <label for="year">{{ _('Year') }}</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input
+                        {% if subject %}
+                        value={{ subject.quarter }}
+                        {% endif%}
+                        id="quarter" name="quarter" type="number" min="1" max="2" class="validate" required
+                        placeholder={{ _('Quarter') }}>
+                <label for="quarter">{{ _('Quarter') }}</label>
+            </div>
+        </div>
+        <div class="row">
+            <button class="btn waves-effect waves-light green" type="submit" name="action">
+                {{ _('Send')}}
+                <i class="material-icons right">send</i>
+            </button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

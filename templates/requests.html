@@ -1,0 +1,112 @@
+{% extends "skeleton.html" %}
+
+{% block content %}
+<div>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <ul id="Message" class="flashes">
+        {% for category, message in messages %}
+        {% if category == 'success' %}
+        <div class="message_flash green center"><h4>{{ message }}</h4></div>
+        {% else %}
+        <div class="message_flash red center"><h4>{{ message }}</h4></div>
+        {% endif %}
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    <h3 class="center">{{ _('Requests') }}</h3>
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large tooltipped green too modal-trigger" data-position="left"
+           href="/addRequest" data-tooltip='{{ _(' Add Request') }}'>
+        <i class="large material-icons">add</i>
+        </a>
+    </div>
+    {% if requests.count() > 0 %}
+    <table class="striped">
+        <thead>
+        <th> {{ _('Request') }}</th>
+        <th> {{ _('Software') }}</th>
+        <th> {{ _('Date') }}</th>
+        </thead>
+        {% for request in requests %}
+        <tr>
+            <td> {{ request.subject_key }}</td>
+            <td> {{ request.software_key }}</td>
+            <td> {{ request.date }}</td>
+            <td>
+                <a href="/editRequest?key={{request.key.id()}}" class="waves-effect waves-light btn-small yellow ">
+                    <i class="material-icons">edit</i>
+                </a>
+                <a href="/viewRequest?key={{request.key.id()}}" class="waves-effect waves-light btn-small blue">
+                    <i class="material-icons ">remove_red_eye</i>
+                </a>
+                <!-- Modal Trigger -->
+                <a class="waves-effect waves-light btn-small red modal-trigger" href="#delete">
+                    <i class="material-icons ">delete</i>
+                </a>
+
+                <!-- Modal Structure -->
+                <div id="delete" class="modal">
+                    <div class="modal-content">
+                        <h4 class="center">{{ _('Delete Request') }}</h4>
+                        <p class="big center">{{ _('Are you sure to delete this Request?') }}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!"
+                           class="modal-action modal-close waves-effect waves-green btn-flat">
+                            {{ _('No') }}
+                        </a>
+                        <a href="/deleteRequest?key={{request.key.id()}}"
+                           class="modal-action modal-close waves-effect waves-green btn-flat">
+                            {{ _('Yes') }}
+                        </a>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p> {{ _('Nothing to show') }}</p>
+    {% endif %}
+</div>
+
+{% endblock %}
+
+{% block notifications %}
+
+<script>
+    setTimeout(function () {
+        $('#Message').fadeOut('fast');
+    }, 5000);
+</script>
+<script>
+    $(document).ready(function () {
+        $('.modal').modal();
+    });
+    $('.modal').open
+
+</script>
+<script>
+    $('.dropdown-button').dropdown({
+            inDuration: 300,
+            outDuration: 225,
+            constrain_width: true,
+            hover: false,
+            gutter: 0,
+            belowOrigin: false
+        }
+    );
+
+    $('.dropdown-button').dropdown({constrainWidth: false});
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('.tooltipped').tooltip();
+    });
+</script>
+
+
+{% endblock%}

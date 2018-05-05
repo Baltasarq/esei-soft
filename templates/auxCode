@@ -1,0 +1,8 @@
+newSoft = Software.query(Software.name == name).get().key.id()
+                    software_key = ndb.Key(Software, newSoft)
+
+                    subjectKey = ndb.Key(Subject, int(request.args.get("key")))
+                    softwareToSubject = SubjectSoftware(software_key=software_key, subject_key=subjectKey)
+                    softwareToSubject.put()
+                    time.sleep(1)
+                    flash(_(_('Software added correctly ')), 'success')

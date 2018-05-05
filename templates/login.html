@@ -1,0 +1,47 @@
+{% extends "skeleton.html" %}
+
+{% block content %}
+<div>
+    <h1>{{ _('Welcome to ESEIForms') }}</h1>
+    <p>{{ _('A new software to manage software needs') }}</p>
+
+    {% if not user %}
+    <p style="color: #9f191f">
+        <br>
+        {{ _('To access the content, you need to Login') }}
+    </p>
+    <p>
+        <a href="{{user_login}}" class="waves-effect waves-light btn-large green">
+            <i class="material-icons right">input</i>
+            {{ _('Log In') }}
+        </a>
+    </p>
+    {% else %}
+
+    <p style="color: #9f191f">
+        <br>
+        {{ _('Welcome ') +" "+ user + '!!!' }}
+    </p>
+    <p>
+        <br>
+        {{ _('Choose an option ') }}
+    </p>
+    <div class="row">
+        {% if user %}
+        <a href="/subjects" class="waves-effect waves-light btn-small">
+            <i class="material-icons left">subject</i>
+            {{ _('Subjects')}}
+        </a>
+        <a class="waves-effect waves-light btn-small">
+            <i class="material-icons left">settings</i>
+            {{ _('Software')}}
+        </a>
+        <a href="/requests" class="waves-effect waves-light btn-small">
+            <i class="material-icons left">send</i>
+            {{ _('Requests')}}
+        </a>
+        {% endif%}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,138 @@
+{% extends "skeleton.html" %}
+
+{% block content %}
+<div>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <ul id="Message" class="flashes">
+        {% for category, message in messages %}
+        {% if category == 'success' %}
+        <div class="message_flash green center"><h4>{{ message }}</h4></div>
+        {% else %}
+        <div class="message_flash red center"><h4>{{ message }}</h4></div>
+        {% endif %}
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    {% if subjects.count() > 0 %}
+    <form class="col s12" action="/addRequest" method="post">
+        <h4 class="center">{{ _('Add Request') }}</h4>
+        <div class="row">
+            <div class="input-field col s12">
+                <select name="subject" required>
+                    {% for subject in subjects %}
+                    <option value="{{ subject.key.id()}}">{{ subject.name }}</option>
+                    {% endfor %}
+                </select>
+                <label>{{ _('Subject') }}</label>
+            </div>
+        </div>
+        {% if softwares.count() > 0 %}
+        <div class="row">
+            {% for software in softwares %}
+            <div class="col s4">
+                <label>
+                    <input type="checkbox"/>
+                    <span>{{ software.name }}</span>
+                </label>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <div class="fixed-action-btn">
+            <a class="btn-floating btn-large tooltipped green too modal-trigger" data-position="left"
+               href="#addSoftware" data-tooltip='{{ _(' Add Software') }}'>
+            <i class="large material-icons">add</i>
+            </a>
+        </div>
+        <div class="row">
+            <button class="btn waves-effect waves-light green" type="submit" name="action">
+                {{ _('Send')}}
+                <i class="material-icons right">send</i>
+            </button>
+        </div>
+    </form>
+
+    <!-- Modal Structure -->
+        <div id="addSoftware" class="modal">
+            <div class="modal-content">
+                <h4 class="center">{{ _('Add Software') }}</h4>
+                <form class="col s12" action="/addSoftware" method="POST">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="name" name="name" type="text" class="validate" required placeholder={{ _('Name')
+                            }} >
+                            <label for="name">{{ _('Name') }}</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <select name="root" required>
+                                <option value="1">{{ _('Yes') }}</option>
+                                <option value="0">{{ _('No') }}</option>
+                            </select>
+                            <label>{{ _('Needs root privileges?') }}</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="url" name="url" type="text" min="1" max="4" class="validate" required
+                                   placeholder={{ _('URL')
+                            }} >
+                            <label for="url">{{ _('URL') }}</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea id="notes" name="notes" class="materialize-textarea"></textarea>
+                            <label for="notes">{{ _('Instalation notes') }}</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">
+                            {{ _('Close') }}
+                        </a>
+                        <button class="btn waves-effect waves-light green" type="submit" name="action">
+                            {{ _('Send')}}
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    {% else %}
+    <h3 class="red">{{ _('Need Subjects to create a Request!') }}</h3>
+    {% endif %}
+</div>
+
+{% endblock %}
+
+{% block notifications %}
+<script>
+    setTimeout(function () {
+        $('#Message').fadeOut('fast');
+    }, 5000);
+</script>
+<script>
+    $(document).ready(function () {
+        $('select').formSelect();
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('.fixed-action-btn').floatingActionButton();
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('.tooltipped').tooltip();
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('.modal').modal();
+    });
+    $('.modal').open
+
+</script>
+{% endblock%}

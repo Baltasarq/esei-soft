@@ -1,0 +1,84 @@
+{% extends "skeleton.html" %}
+
+{% block content %}
+<div>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <ul id="Message" class="flashes">
+        {% for category, message in messages %}
+        {% if category == 'success' %}
+        <div class="message_flash green center"><h4>{{ message }}</h4></div>
+        {% else %}
+        <div class="message_flash red center"><h4>{{ message }}</h4></div>
+        {% endif %}
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    <div class="col s12">
+        <div class="col s4">
+            <a href="/viewSubject?key={{subject.key.id()}}" class="waves-effect waves-light btn-small blue">
+                <i class="material-icons left">arrow_back</i>
+                {{ _('View Subject') }}
+            </a>
+        </div>
+        <div class="col s8">
+            <h4>{{ _('Add Software') }}</h4>
+        </div>
+    </div>
+    <div class="col s12">
+        <form class="col s12" action="/addSoftwaretoSubject?key={{subject.key.id()}}" method="POST">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="name" name="name" type="text" class="validate" required placeholder={{ _('Name') }} >
+                    <label for="name">{{ _('Name') }}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="url" name="url" type="text" min="1" max="4" class="validate" required placeholder={{ _('URL')
+                    }} >
+                    <label for="url">{{ _('URL') }}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <select name="root" required>
+                        <option value="1">{{ _('Yes') }}</option>
+                        <option value="0">{{ _('No') }}</option>
+                    </select>
+                    <label>{{ _('Needs root privileges?') }}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="notes" name="notes" class="materialize-textarea"></textarea>
+                    <label for="notes">{{ _('Instalation notes') }}</label>
+                </div>
+            </div>
+            <div class="row">
+                <button class="btn waves-effect waves-light green" type="submit" name="action">
+                    {{ _('Send')}}
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block notifications %}
+
+<script>
+    setTimeout(function () {
+        $('#Message').fadeOut('fast');
+    }, 5000);
+</script>
+<script>
+    $(document).ready(function () {
+        $('select').formSelect();
+    });
+</script>
+
+{% endblock%}

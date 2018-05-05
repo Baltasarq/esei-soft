@@ -1,0 +1,145 @@
+{% extends "skeleton.html" %}
+
+{% block content %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <ul id="Message" class="flashes">
+        {% for category, message in messages %}
+        {% if category == 'success' %}
+        <div class="message_flash green center"><h4>{{ message }}</h4></div>
+        {% else %}
+        <div class="message_flash red center"><h4>{{ message }}</h4></div>
+        {% endif %}
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    <h3 class="center no-pad-top">{{ _('Subjects') }}</h3>
+    <div class="col s12" id="subjects">
+        {% if subjects.count() > 0 %}
+        <div class="col s4">
+            <input class="fuzzy-search" placeholder={{ _('Search') }} />
+        </div>
+        <div class="col s2">
+            <button class="sort btn-small" data-sort="year">{{ _('Sort by year')}}</button>
+        </div>
+        <div class="col s3">
+            <button class="sort btn-small" data-sort="quarter">{{ _('Sort by quarter')}}</button>
+        </div>
+        <table  class="highlight">
+            <thead>
+            <th> {{ _('Name') }}</th>
+            <th> {{ _('Year') }}</th>
+            <th> {{ _('Quarter') }}</th>
+            <th> {{ _('Options') }}</th>
+            </thead>
+            <tbody class="list">
+            {% for subject in subjects %}
+                <tr>
+                    <td class="name"> {{ subject.name }}</td>
+                    <td class="year"> {{ subject.year }}</td>
+                    <td class="quarter"> {{ subject.quarter }}</td>
+                    <td>
+                        <a href="/editSubject?key={{subject.key.id()}}" class="waves-effect waves-light btn-small yellow ">
+                            <i class="material-icons">edit</i>
+                        </a>
+                        <a href="/viewSubject?key={{subject.key.id()}}" class="waves-effect waves-light btn-small blue">
+                            <i class="material-icons ">remove_red_eye</i>
+                        </a>
+                        <!-- Modal Trigger -->
+                        <a class="waves-effect waves-light btn-small red modal-trigger" href="#delete">
+                            <i class="material-icons ">delete</i>
+                        </a>
+
+                        <!-- Modal Structure -->
+                        <div id="delete" class="modal">
+                            <div class="modal-content">
+                                <h4 class="center">{{ _('Delete Subject') }}</h4>
+                                <p class="big center">{{ _('Are you sure to delete') }} : <b>{{ subject.name }}</b> ? </p>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="#!"
+                                   class="modal-action modal-close waves-effect waves-green btn-flat">
+                                    {{ _('No') }}
+                                </a>
+                                <a href="/deleteSubject?key={{subject.key.id()}}"
+                                   class="modal-action modal-close waves-effect waves-green btn-flat">
+                                    {{ _('Yes') }}
+                                </a>
+                            </div>
+                        </div>
+                        <a class='dropdown-button btn-small' href='#' data-target='dropdown1'><i class="material-icons">file_download</i></i>
+                        </a>
+                        <!-- Dropdown Structure -->
+                        <ul id='dropdown1' class='dropdown-content '>
+                            <li><a href="/exportSubjectCSV?key={{subject.key.id()}}"><i
+                                    class="material-icons">insert_drive_file</i>CSV</a></li>
+                            <li><a href="/exportSubjectHTML?key={{subject.key.id()}}"><i class="material-icons">insert_drive_file</i>HTML</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <p class="pagination" ></p>
+        {% else %}
+        <p> {{ _('Nothing to show') }}</p>
+        {% endif %}
+    </div>
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large tooltipped green too modal-trigger" data-position="left"
+           href="/addSubject" data-tooltip='{{ _(' Add Subject') }}'>
+        <i class="large material-icons">add</i>
+        </a>
+    </div>
+
+
+{% endblock %}
+
+{% block notifications %}
+
+<script>
+    var options = {
+        valueNames: [ 'name', 'year', 'quarter' ],
+        page: 4,
+        pagination: true
+    };
+
+    var subjects = new List('subjects', options);
+</script>
+<script>
+    setTimeout(function () {
+        $('#Message').fadeOut('fast');
+    }, 5000);
+</script>
+<script>
+    $(document).ready(function () {
+        $('.modal').modal();
+    });
+    $('.modal').open
+
+</script>
+<script>
+    $('.dropdown-button').dropdown({
+            inDuration: 300,
+            outDuration: 225,
+            constrain_width: true,
+            hover: false,
+            gutter: 0,
+            belowOrigin: false
+        }
+    );
+
+    $('.dropdown-button').dropdown({constrainWidth: false});
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('.tooltipped').tooltip();
+    });
+</script>
+
+
+
+{% endblock%}
