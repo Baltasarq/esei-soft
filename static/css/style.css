@@ -21,3 +21,7 @@ body {
   main {
     flex: 1 0 auto;
   }
+
+  url {
+      text-overflow: ellipsis;
+  }

@@ -1,19 +1,6 @@
 {% extends "skeleton.html" %}
 
 {% block content %}
-    {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-    <ul id="Message" class="flashes">
-        {% for category, message in messages %}
-        {% if category == 'success' %}
-        <div class="message_flash green center"><h4>{{ message }}</h4></div>
-        {% else %}
-        <div class="message_flash red center"><h4>{{ message }}</h4></div>
-        {% endif %}
-        {% endfor %}
-    </ul>
-    {% endif %}
-    {% endwith %}
     <div class="col s12">
         <div class="col s4">
             <a href="/subjects" class="waves-effect waves-light btn-small blue">

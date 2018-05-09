@@ -1,0 +1,141 @@
+{% extends "skeleton.html" %}
+
+{% block content %}
+    <h3 class="center no-pad-top">{{ _('Softwares') }}</h3>
+    <div class="col s12" id="softwares">
+        {% if softwares.count() > 0 %}
+        <div class="col s4">
+            <input class="fuzzy-search" placeholder={{ _('Search') }} />
+        </div>
+        <div class="col s3 center">
+            <button class="sort btn-small" data-sort="name">{{ _('Sort by name')}}</button>
+        </div>
+        <div class="col s3">
+            <button class="sort btn-small" data-sort="root">{{ _('Sort by needs_root')}}</button>
+        </div>
+        <table  class="highlight">
+            <thead >
+            <th class="center"> {{ _('Name') }}</th>
+            <th class="center"> {{ _('Needs_Root') }}</th>
+            <th class="center"> {{ _('URL') }}</th>
+            <th class="center"> {{ _('Options') }}</th>
+            </thead>
+            <tbody class="list">
+            {% for software in softwares %}
+                <tr>
+                    <td class="name center"> {{ software.name }}</td>
+                    <td class="root center">
+                        {% if software.needs_root == 1 %}
+                            {{ _('Yes') }}
+                        {% else %}
+                            {{ _('No') }}
+                        {% endif%}
+                    </td>
+                    <td class="center">
+                        <a class="tooltipped too modal-trigger" data-position="bottom"
+                           data-tooltip='{{ software.url }}'>
+                        {{ software.name }}
+                        </a>
+                    </td>
+                    <td class="center">
+                        <a href="/editSoftware?key={{software.key.id()}}" class="waves-effect waves-light btn-small yellow ">
+                            <i class="material-icons">edit</i>
+                        </a>
+                        <a href="/viewSoftware?key={{software.key.id()}}" class="waves-effect waves-light btn-small blue">
+                            <i class="material-icons ">remove_red_eye</i>
+                        </a>
+                        <!-- Modal Trigger -->
+                        <a class="waves-effect waves-light btn-small red modal-trigger" href="#delete{{software.key.id()}}">
+                            <i class="material-icons ">delete</i>
+                        </a>
+
+                        <!-- Modal Structure -->
+                        <div id="delete{{software.key.id()}}" class="modal">
+                            <div class="modal-content">
+                                <h4 class="center">{{ _('Delete Software') }}</h4>
+                                <p class="big center">{{ _('Are you sure to delete') }} : <b>{{ software.name }}</b> ? </p>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="#!"
+                                   class="modal-action modal-close waves-effect waves-green btn-flat">
+                                    {{ _('No') }}
+                                </a>
+                                <a href="/deleteSoftware?key={{software.key.id()}}"
+                                   class="modal-action modal-close waves-effect waves-green btn-flat">
+                                    {{ _('Yes') }}
+                                </a>
+                            </div>
+                        </div>
+                        <a class='dropdown-button btn-small' href='#' data-target='dropdown1'><i class="material-icons">file_download</i></i>
+                        </a>
+                        <!-- Dropdown Structure -->
+                        <ul id='dropdown1' class='dropdown-content '>
+                            <li><a href="/exportSubjectCSV?key={{software.key.id()}}"><i
+                                    class="material-icons">insert_drive_file</i>CSV</a></li>
+                            <li><a href="/exportSubjectHTML?key={{software.key.id()}}"><i class="material-icons">insert_drive_file</i>HTML</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <p class="pagination" ></p>
+        {% else %}
+        <p> {{ _('Nothing to show') }}</p>
+        {% endif %}
+    </div>
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large tooltipped green too modal-trigger" data-position="left"
+           href="/addSoftware" data-tooltip='{{ _(' Add Subject') }}'>
+        <i class="large material-icons">add</i>
+        </a>
+    </div>
+
+
+{% endblock %}
+
+{% block notifications %}
+
+<script>
+    var options = {
+        valueNames: [ 'name', 'root' ],
+        page: 4,
+        pagination: true
+    };
+
+    var softwares = new List('softwares', options);
+</script>
+<script>
+    setTimeout(function () {
+        $('#Message').fadeOut('fast');
+    }, 5000);
+</script>
+<script>
+    $(document).ready(function () {
+        $('.modal').modal();
+    });
+    $('.modal').open
+
+</script>
+<script>
+    $('.dropdown-button').dropdown({
+            inDuration: 300,
+            outDuration: 225,
+            constrain_width: true,
+            hover: false,
+            gutter: 0,
+            belowOrigin: false
+        }
+    );
+
+    $('.dropdown-button').dropdown({constrainWidth: false});
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('.tooltipped').tooltip();
+    });
+</script>
+
+{% endblock%}

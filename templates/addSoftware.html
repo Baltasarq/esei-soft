@@ -1,0 +1,59 @@
+{% extends "skeleton.html" %}
+
+{% block content %}
+<div>
+    <a href="/softwares" class="waves-effect waves-light btn-small blue">
+        <i class="material-icons left">arrow_back</i>
+        {{ _('Softwares')}}
+    </a>
+    <form class="col s12" action="/addSoftware" method="POST">
+        <h4 class="center">{{ _('Add Software') }}</h4>
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="name" name="name" type="text" class="validate" required placeholder={{ _('Name')
+                }} >
+                <label for="name">{{ _('Name') }}</label>
+            </div>
+            <div class="input-field col s6">
+                <select name="root" required>
+                    <option value="1">{{ _('Yes') }}</option>
+                    <option value="0">{{ _('No') }}</option>
+                </select>
+                <label>{{ _('Needs root privileges?') }}</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="url" name="url" type="text" min="1" max="4" class="validate" required
+                       placeholder={{ _('URL')
+                }} >
+                <label for="url">{{ _('URL') }}</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <textarea id="notes" name="notes" class="materialize-textarea"></textarea>
+                <label for="notes">{{ _('Instalation notes') }}</label>
+            </div>
+        </div>
+        <div class="row">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">
+                {{ _('Close') }}
+            </a>
+            <button class="btn waves-effect waves-light green" type="submit" name="action">
+                {{ _('Send')}}
+                <i class="material-icons right">send</i>
+            </button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+
+{% block notifications %}
+<script>
+    $(document).ready(function () {
+        $('select').formSelect();
+    });
+</script>
+{% endblock%}

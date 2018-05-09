@@ -16,9 +16,9 @@ def login():
     user = users.get_current_user()
     if user:
         try:
+
             user_key = user.user_id()
             usersDb = User.query(User.user_key == user_key)
-
             if usersDb.count() == 0:
                 # Store new User
                 username = user.nickname()
@@ -80,44 +80,50 @@ def addSubject():
 
 @app.route('/editSubject', methods=['GET', 'POST'])
 def editSubject():
-    user = users.get_current_user()
-    if user:
-        if flask.request.method == 'POST':
-            try:
+    try:
+        user = users.get_current_user()
+        if user:
+            if flask.request.method == 'POST':
                 name = flask.request.form.get("name")
                 year = int(flask.request.form.get("year"))
                 quarter = int(flask.request.form.get("quarter"))
-                subject = Subject(name=name, year=year, quarter=quarter)
 
-                subjects = Subject.query(Subject.name == name, Subject.year == year, Subject.quarter == quarter)
-                if subjects.count() == 0:
-                    sKey = int(request.args.get("key"))
-                    subjectKey = ndb.Key(Subject, sKey)
-                    subject = Subject.query(Subject.key == subjectKey).get()
-                    subject.name=name
-                    subject.year=year
-                    subject.quarter=quarter
+                if name != "":
+                    subjects = Subject.query(Subject.name == name, Subject.year == year, Subject.quarter == quarter)
+                    if subjects.count() == 0:
+                        sKey = int(request.args.get("key"))
+                        subjectKey = ndb.Key(Subject, sKey)
+                        subject = Subject.query(Subject.key == subjectKey).get()
+                        subject.name=name
+                        subject.year=year
+                        subject.quarter=quarter
 
-                    subject.put()
-                    time.sleep(1)
-                    flash(_('Subject edited correctly'), 'success')
-                    return redirect("/subjects")
-            except Exception as e:
-                print(e.message)
-            else:
-                flash(_(_('Subject already exists ')), 'error')
-                return render_template("editSubject.html", user_logout=users.create_logout_url("/"),
-                                       subject=subject)
-        else:
-            try:
+                        subject.put()
+                        time.sleep(1)
+                        flash(_('Subject edited correctly'), 'success')
+                        return redirect("/subjects")
+
+                    else:
+                        flash(_(_('Subject already exists ')), 'error')
+                else:
+                    flash(_(_('Subject name cant be blank ')), 'error')
                 sKey = int(request.args.get("key"))
                 subjectKey = ndb.Key(Subject, sKey)
                 subject = Subject.query(Subject.key == subjectKey).get()
-                return render_template("editSubject.html", subject=subject, user_logout=users.create_logout_url("/"))
-            except Exception as e:
-                print(e.message)
-    else:
-        return redirect("/")
+                return render_template("editSubject.html", user_logout=users.create_logout_url("/"),
+                                       subject=subject)
+            else:
+                try:
+                    sKey = int(request.args.get("key"))
+                    subjectKey = ndb.Key(Subject, sKey)
+                    subject = Subject.query(Subject.key == subjectKey).get()
+                    return render_template("editSubject.html", subject=subject, user_logout=users.create_logout_url("/"))
+                except Exception as e:
+                    print(e.message)
+        else:
+            return redirect("/")
+    except Exception as e:
+        print(e.message)
 
 
 @app.route('/viewSubject')
@@ -160,6 +166,36 @@ def deleteSubject():
         return redirect("/")
 
 
+@app.route('/softwares')
+def showSoftwares():
+    user = users.get_current_user()
+    if user:
+        try:
+            softwares = Software.query().order(Software.name)
+            return render_template("softwares.html", user_logout=users.create_logout_url("/"),
+                                   softwares=softwares)
+        except Exception as e:
+            print(e.message)
+    else:
+        return redirect("/")
+
+
+@app.route('/viewSoftware')
+def viewSoftware():
+    try:
+        user = users.get_current_user()
+        if user:
+            sKey = int(request.args.get("key"))
+            softwareKey = ndb.Key(Software, sKey)
+            software = Software.query(Software.key == softwareKey).get()
+            print(software.instalation_notes)
+            return render_template("viewSoftware.html", software=software, user_logout=users.create_logout_url("/"))
+        else:
+            return redirect("/")
+    except Exception as e:
+        print(e.message)
+
+
 @app.route('/exportSubjectCSV')
 def exportCSV():
     user = users.get_current_user()
@@ -189,45 +225,40 @@ def exportCSV():
 
 @app.route('/addSoftware', methods=['GET', 'POST'])
 def addSoftware():
-    user = users.get_current_user()
-    if user:
-        if flask.request.method == 'POST':
+    try:
+        user = users.get_current_user()
+        if user:
+            if flask.request.method == 'POST':
+                name = flask.request.form.get("name")
+                url = flask.request.form.get("url")
+                root = int(flask.request.form.get("root"))
+                notes = flask.request.form.get("notes")
 
-            name = flask.request.form.get("name")
-            url = flask.request.form.get("url")
-            root = int(flask.request.form.get("root"))
-            notes = flask.request.form.get("notes")
-
-            softwares = Software.query(Software.name == name)
-            if softwares.count() == 0:
                 try:
-                    software = Software(name=name, url=url, instalation_notes=notes, needs_root=root)
-                    software.put()
-                    time.sleep(1)
-                    flash(_('Software add correctly'), 'success')
+                    softwares = Software.query(Software.name == name)
+                    if softwares.count() == 0:
+                        software = Software(name=name, url=url, instalation_notes=notes, needs_root=root)
+                        software.put()
+                        time.sleep(1)
+                        flash(_('Software add correctly'), 'success')
+                    else:
+                        flash(_('Software already exists'), 'error')
+
+                    if "addRequest" in request.referrer:
+                        return redirect('/addRequest')
+                    else:
+                        return redirect('/softwares')
                 except Exception as e:
                     print(e.message)
             else:
-                flash(_('Software already exists'), 'error')
-
-            print("redirect")
-            try:
-                return redirect('/addRequest')
-            except Exception as e:
-                print(e.message)
-
+                return render_template("addSoftware.html", user_logout=users.create_logout_url("/"))
         else:
-            print('get')
-            try:
-                sKey = int(request.args.get("key"))
-                subjectKey = ndb.Key(Subject, sKey)
-                subject = Subject.query(Subject.key == subjectKey).get()
-                return render_template("addSoftwaretoSubject.html", subject=subject,
-                                       user_logout=users.create_logout_url("/"))
-            except Exception as e:
-                print(e.message)
-    else:
-        return redirect("/")
+            return redirect("/")
+    except Exception as e:
+        print(e.message)
+
+
+
 
 
 @app.route('/requests', methods=["POST", "GET"])
@@ -250,6 +281,7 @@ def showRequests():
                 print(e.message)
     else:
         return redirect("/")
+
 
 @app.route('/addRequest', methods=['GET', 'POST'])
 def addRequest():

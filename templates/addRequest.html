@@ -2,19 +2,6 @@
 
 {% block content %}
 <div>
-    {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-    <ul id="Message" class="flashes">
-        {% for category, message in messages %}
-        {% if category == 'success' %}
-        <div class="message_flash green center"><h4>{{ message }}</h4></div>
-        {% else %}
-        <div class="message_flash red center"><h4>{{ message }}</h4></div>
-        {% endif %}
-        {% endfor %}
-    </ul>
-    {% endif %}
-    {% endwith %}
     {% if subjects.count() > 0 %}
     <form class="col s12" action="/addRequest" method="post">
         <h4 class="center">{{ _('Add Request') }}</h4>
@@ -39,7 +26,10 @@
             </div>
             {% endfor %}
         </div>
+        {% else %}
+        <p class="red">{{ _('You needs Software to make a Request') }}</p>
         {% endif %}
+
         <div class="fixed-action-btn">
             <a class="btn-floating btn-large tooltipped green too modal-trigger" data-position="left"
                href="#addSoftware" data-tooltip='{{ _(' Add Software') }}'>
@@ -47,7 +37,11 @@
             </a>
         </div>
         <div class="row">
-            <button class="btn waves-effect waves-light green" type="submit" name="action">
+            <button class="btn waves-effect waves-light green" type="submit" name="action"
+            {% if softwares.count() == 0 %}
+                disabled
+            {% endif %}
+            >
                 {{ _('Send')}}
                 <i class="material-icons right">send</i>
             </button>

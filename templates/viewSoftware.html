@@ -1,0 +1,44 @@
+{% extends "skeleton.html" %}
+
+{% block content %}
+    <div class="col s12">
+        <div class="col s4">
+            <a href="/softwares" class="waves-effect waves-light btn-small blue">
+                <i class="material-icons left">arrow_back</i>
+                {{ _('Softwares')}}
+            </a>
+        </div>
+        <div class="col s8">
+            <h2>{{ _('View Software') }}</h2>
+        </div>
+    </div>
+    <div class="col s12">
+        <table class="centered">
+            <tr class="centered">
+                <td><b>{{ _('Name') }}</b></td>
+                <td><b>{{ _('Needs Root Permisions') }}</b></td>
+                <td><b>{{ _('URL') }}</b></td>
+            </tr>
+            <tr class="centered">
+                <td>{{ software.name }}</td>
+                <td>
+                    {% if software.needs_root == 1 %}
+                            {{ _('Yes') }}
+                        {% else %}
+                            {{ _('No') }}
+                        {% endif%}
+                </td>
+                <td>{{ software.url }}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="col s12">
+        <h5 class="center"> {{ _('Instalation Notes') }}</h5>
+        {% if software.instalation_notes != "" %}
+            <p style="background-color: rgba(180,170,0,0.22)">{{ software.instalation_notes }}</p>
+        {% else%}
+        <p>{{ _('There arent intalation notes') }}</p>
+        {% endif %}
+    </div>
+
+{% endblock %}
