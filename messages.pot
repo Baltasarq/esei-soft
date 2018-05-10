@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-04-21 11:45+0200\n"
+"POT-Creation-Date: 2018-05-10 22:43+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,166 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.5.3\n"
+
+#: env/lib/python2.7/site-packages/kombu/transport/qpid.py:1298
+#, python-format
+msgid "Attempting to connect to qpid with SASL mechanism %s"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/kombu/transport/qpid.py:1303
+#, python-format
+msgid "Connected to qpid with SASL mechanism %s"
+msgstr ""
+
+#: env/lib/python2.7/site-packages/kombu/transport/qpid.py:1321
+#, python-format
+msgid "Unable to connect to qpid with SASL mechanism %s"
+msgstr ""
+
+#: handlers/handlers.py:66
+msgid "Subject added correctly"
+msgstr ""
+
+#: handlers/handlers.py:71 handlers/handlers.py:106
+msgid "Subject already exists "
+msgstr ""
+
+#: handlers/handlers.py:102
+msgid "Subject edited correctly"
+msgstr ""
+
+#: handlers/handlers.py:108
+msgid "Subject name cant be blank "
+msgstr ""
+
+#: handlers/handlers.py:156 handlers/handlers.py:267
+msgid "Subject deleted correctly"
+msgstr ""
+
+#: handlers/handlers.py:182
+msgid "Software added correctly"
+msgstr ""
+
+#: handlers/handlers.py:184
+msgid "Software already exists"
+msgstr ""
+
+#: handlers/handlers.py:240
+msgid "Software deleted correctly"
+msgstr ""
+
+#: handlers/handlers.py:329
+msgid "Request added correctly"
+msgstr ""
+
+#: templates/addRequest.html:7 templates/requests.html:8
+msgid "Add Request"
+msgstr ""
+
+#: templates/addRequest.html:15 templates/requests.html:15
+msgid "Subject"
+msgstr ""
+
+#: templates/addRequest.html:19 templates/addSoftware.html:7
+#: templates/softwares.html:4 templates/viewSoftware.html:8
+msgid "Softwares"
+msgstr ""
+
+#: templates/addRequest.html:32
+msgid "You needs Software created by you to make a Request"
+msgstr ""
+
+#: templates/addRequest.html:37 templates/addRequest.html:56
+#: templates/addSoftware.html:10 templates/softwares.html:78
+msgid "Add Software"
+msgstr ""
+
+#: templates/addRequest.html:47 templates/addRequest.html:91
+#: templates/addSoftware.html:41 templates/addSubject.html:33
+#: templates/editSubject.html:45
+msgid "Send"
+msgstr ""
+
+#: templates/addRequest.html:60 templates/addRequest.html:62
+#: templates/addSoftware.html:13 templates/addSoftware.html:15
+#: templates/addSubject.html:13 templates/addSubject.html:14
+#: templates/editSubject.html:17 templates/editSubject.html:18
+#: templates/softwares.html:18 templates/subjects.html:21
+#: templates/viewSoftware.html:18 templates/viewSubject.html:18
+#: templates/viewSubject.html:41
+msgid "Name"
+msgstr ""
+
+#: templates/addRequest.html:66 templates/addSoftware.html:19
+#: templates/requests.html:49 templates/softwares.html:29
+#: templates/softwares.html:62 templates/subjects.html:72
+#: templates/viewSoftware.html:26 templates/viewSubject.html:50
+msgid "Yes"
+msgstr ""
+
+#: templates/addRequest.html:67 templates/addSoftware.html:20
+#: templates/requests.html:45 templates/softwares.html:31
+#: templates/softwares.html:58 templates/subjects.html:68
+#: templates/viewSoftware.html:28 templates/viewSubject.html:52
+msgid "No"
+msgstr ""
+
+#: templates/addRequest.html:69 templates/addSoftware.html:22
+msgid "Needs root privileges?"
+msgstr ""
+
+#: templates/addRequest.html:75 templates/addRequest.html:77
+#: templates/addSoftware.html:28 templates/addSoftware.html:30
+#: templates/softwares.html:20 templates/viewSoftware.html:20
+#: templates/viewSubject.html:42
+msgid "URL"
+msgstr ""
+
+#: templates/addRequest.html:83
+msgid "Instalation notes"
+msgstr ""
+
+#: templates/addRequest.html:88
+msgid "Close"
+msgstr ""
+
+#: templates/addRequest.html:100
+msgid "Need Subjects to create a Request!"
+msgstr ""
+
+#: templates/addRequest.html:143
+msgid "Select one software at least"
+msgstr ""
+
+#: templates/addSoftware.html:36 templates/viewSoftware.html:36
+msgid "Instalation Notes"
+msgstr ""
+
+#: templates/addSubject.html:7 templates/editSubject.html:7
+#: templates/login.html:33 templates/subjects.html:4
+#: templates/viewSubject.html:8
+msgid "Subjects"
+msgstr ""
+
+#: templates/addSubject.html:10 templates/subjects.html:86
+msgid "Add Subject"
+msgstr ""
+
+#: templates/addSubject.html:19 templates/addSubject.html:21
+#: templates/editSubject.html:27 templates/editSubject.html:29
+#: templates/subjects.html:22 templates/viewSubject.html:19
+msgid "Year"
+msgstr ""
+
+#: templates/addSubject.html:27 templates/addSubject.html:28
+#: templates/editSubject.html:39 templates/editSubject.html:40
+#: templates/subjects.html:23 templates/viewSubject.html:20
+msgid "Quarter"
+msgstr ""
+
+#: templates/editSubject.html:10
+msgid "Edit Subject"
+msgstr ""
 
 #: templates/login.html:5
 msgid "Welcome to ESEIForms"
@@ -41,19 +201,100 @@ msgstr ""
 msgid "Choose an option "
 msgstr ""
 
-#: templates/login.html:33
-msgid "Subjects"
-msgstr ""
-
-#: templates/login.html:37
+#: templates/login.html:37 templates/viewSubject.html:35
 msgid "Software"
 msgstr ""
 
-#: templates/login.html:41
+#: templates/login.html:41 templates/requests.html:5
 msgid "Requests"
 msgstr ""
 
-#: templates/skeleton.html:35
+#: templates/requests.html:16
+msgid "User"
+msgstr ""
+
+#: templates/requests.html:17
+msgid "Date"
+msgstr ""
+
+#: templates/requests.html:39
+msgid "Delete Request"
+msgstr ""
+
+#: templates/requests.html:40
+msgid "Are you sure to delete this Request?"
+msgstr ""
+
+#: templates/requests.html:58 templates/softwares.html:73
+#: templates/subjects.html:81 templates/viewSubject.html:58
+msgid "Nothing to show"
+msgstr ""
+
+#: templates/skeleton.html:25
+msgid "Index"
+msgstr ""
+
+#: templates/skeleton.html:41
 msgid "Log Out"
+msgstr ""
+
+#: templates/softwares.html:8 templates/subjects.html:8
+msgid "Search"
+msgstr ""
+
+#: templates/softwares.html:11 templates/subjects.html:14
+msgid "Sort by name"
+msgstr ""
+
+#: templates/softwares.html:14
+msgid "Sort by needs_root"
+msgstr ""
+
+#: templates/softwares.html:19
+msgid "Needs_Root"
+msgstr ""
+
+#: templates/softwares.html:21 templates/subjects.html:24
+msgid "Options"
+msgstr ""
+
+#: templates/softwares.html:52
+msgid "Delete Software"
+msgstr ""
+
+#: templates/softwares.html:53 templates/subjects.html:63
+msgid "Are you sure to delete"
+msgstr ""
+
+#: templates/subjects.html:11
+msgid "Sort by year"
+msgstr ""
+
+#: templates/subjects.html:17
+msgid "Sort by quarter"
+msgstr ""
+
+#: templates/subjects.html:62
+msgid "Delete Subject"
+msgstr ""
+
+#: templates/viewSoftware.html:12
+msgid "View Software"
+msgstr ""
+
+#: templates/viewSoftware.html:19 templates/viewSubject.html:43
+msgid "Needs Root Permisions"
+msgstr ""
+
+#: templates/viewSoftware.html:40
+msgid "There arent intalation notes"
+msgstr ""
+
+#: templates/viewSubject.html:12
+msgid "View Subject"
+msgstr ""
+
+#: templates/viewSubject.html:21
+msgid "Created by"
 msgstr ""
 

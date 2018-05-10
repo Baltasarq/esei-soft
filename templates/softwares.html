@@ -31,16 +31,13 @@
                             {{ _('No') }}
                         {% endif%}
                     </td>
-                    <td class="center">
+                    <td class="center url">
                         <a class="tooltipped too modal-trigger" data-position="bottom"
                            data-tooltip='{{ software.url }}'>
                         {{ software.name }}
                         </a>
                     </td>
                     <td class="center">
-                        <a href="/editSoftware?key={{software.key.id()}}" class="waves-effect waves-light btn-small yellow ">
-                            <i class="material-icons">edit</i>
-                        </a>
                         <a href="/viewSoftware?key={{software.key.id()}}" class="waves-effect waves-light btn-small blue">
                             <i class="material-icons ">remove_red_eye</i>
                         </a>
@@ -66,15 +63,6 @@
                                 </a>
                             </div>
                         </div>
-                        <a class='dropdown-button btn-small' href='#' data-target='dropdown1'><i class="material-icons">file_download</i></i>
-                        </a>
-                        <!-- Dropdown Structure -->
-                        <ul id='dropdown1' class='dropdown-content '>
-                            <li><a href="/exportSubjectCSV?key={{software.key.id()}}"><i
-                                    class="material-icons">insert_drive_file</i>CSV</a></li>
-                            <li><a href="/exportSubjectHTML?key={{software.key.id()}}"><i class="material-icons">insert_drive_file</i>HTML</a>
-                            </li>
-                        </ul>
                     </td>
                 </tr>
             {% endfor %}
@@ -87,7 +75,7 @@
     </div>
     <div class="fixed-action-btn">
         <a class="btn-floating btn-large tooltipped green too modal-trigger" data-position="left"
-           href="/addSoftware" data-tooltip='{{ _(' Add Subject') }}'>
+           href="/addSoftware" data-tooltip='{{ _('Add Software') }}'>
         <i class="large material-icons">add</i>
         </a>
     </div>
@@ -99,12 +87,14 @@
 
 <script>
     var options = {
-        valueNames: [ 'name', 'root' ],
+        valueNames: [ 'name', 'root', 'url' ],
         page: 4,
         pagination: true
     };
 
     var softwares = new List('softwares', options);
+
+    $('.tooltipped').tooltip();
 </script>
 <script>
     setTimeout(function () {
@@ -118,19 +108,7 @@
     $('.modal').open
 
 </script>
-<script>
-    $('.dropdown-button').dropdown({
-            inDuration: 300,
-            outDuration: 225,
-            constrain_width: true,
-            hover: false,
-            gutter: 0,
-            belowOrigin: false
-        }
-    );
 
-    $('.dropdown-button').dropdown({constrainWidth: false});
-</script>
 
 <script>
     $(document).ready(function () {

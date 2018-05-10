@@ -27,6 +27,9 @@
                 <ul class="right hide-on-med-and-down">
                     {% if user_logout %}
                     <li>
+                        {{ current_user.nickname().partition("@")[0] }}
+                    </li>
+                    <li>
                         <a href="{{user_logout}}" class="btn-floating btn-small waves-effect waves-light red">
                             <i class="material-icons">power_settings_new</i>
                         </a>

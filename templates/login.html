@@ -5,7 +5,7 @@
     <h1>{{ _('Welcome to ESEIForms') }}</h1>
     <p>{{ _('A new software to manage software needs') }}</p>
 
-    {% if not user %}
+    {% if not current_user %}
     <p style="color: #9f191f">
         <br>
         {{ _('To access the content, you need to Login') }}
@@ -20,14 +20,13 @@
 
     <p style="color: #9f191f">
         <br>
-        {{ _('Welcome ') +" "+ user + '!!!' }}
+        {{ _('Welcome ') +" "+ current_user.nickname().partition("@")[0] + '!!!' }}
     </p>
     <p>
         <br>
         {{ _('Choose an option ') }}
     </p>
     <div class="row">
-        {% if user %}
         <a href="/subjects" class="waves-effect waves-light btn-small">
             <i class="material-icons left">subject</i>
             {{ _('Subjects')}}
@@ -40,7 +39,6 @@
             <i class="material-icons left">send</i>
             {{ _('Requests')}}
         </a>
-        {% endif%}
     </div>
     {% endif %}
 </div>

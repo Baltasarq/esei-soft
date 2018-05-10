@@ -3,7 +3,7 @@
 {% block content %}
 <div>
     {% if subjects.count() > 0 %}
-    <form class="col s12" action="/addRequest" method="post">
+    <form class="col s12" action="/addRequest"  onsubmit="return checkSelected()" method="post">
         <h4 class="center">{{ _('Add Request') }}</h4>
         <div class="row">
             <div class="input-field col s12">
@@ -16,28 +16,30 @@
             </div>
         </div>
         {% if softwares.count() > 0 %}
+        <label class="black-text">{{ _('Softwares') }}</label>
         <div class="row">
+
             {% for software in softwares %}
             <div class="col s4">
                 <label>
-                    <input type="checkbox"/>
+                    <input name="softwares" type="checkbox" value="{{ software.key.id() }}"/>
                     <span>{{ software.name }}</span>
                 </label>
             </div>
             {% endfor %}
         </div>
         {% else %}
-        <p class="red">{{ _('You needs Software to make a Request') }}</p>
+        <p class="red">{{ _('You needs Software created by you to make a Request') }}</p>
         {% endif %}
 
         <div class="fixed-action-btn">
             <a class="btn-floating btn-large tooltipped green too modal-trigger" data-position="left"
-               href="#addSoftware" data-tooltip='{{ _(' Add Software') }}'>
+               href="#addSoftware" data-tooltip='{{ _('Add Software') }}'>
             <i class="large material-icons">add</i>
             </a>
         </div>
         <div class="row">
-            <button class="btn waves-effect waves-light green" type="submit" name="action"
+            <button class="btn waves-effect waves-light green" type="submit" name="sendRequest"
             {% if softwares.count() == 0 %}
                 disabled
             {% endif %}
@@ -52,7 +54,7 @@
         <div id="addSoftware" class="modal">
             <div class="modal-content">
                 <h4 class="center">{{ _('Add Software') }}</h4>
-                <form class="col s12" action="/addSoftware" method="POST">
+                <form class="col s12" name="form" action="/addSoftware" method="POST">
                     <div class="row">
                         <div class="input-field col s6">
                             <input id="name" name="name" type="text" class="validate" required placeholder={{ _('Name')
@@ -127,6 +129,22 @@
         $('.modal').modal();
     });
     $('.modal').open
+
+</script>
+
+<script>
+    function checkSelected(){
+        var numSelecteds = 0;
+
+        $('input[type=checkbox]:checked').each(function() {
+            numSelecteds+=1;
+        });
+        if(numSelecteds == 0){
+            M.toast({html: "{{ _('Select one software at least') }}", classes: 'red' })
+            return false;
+        }
+    }
+
 
 </script>
 {% endblock%}

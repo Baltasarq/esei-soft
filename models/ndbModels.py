@@ -27,13 +27,12 @@ class Software(ndb.Model):
     needs_root = ndb.IntegerProperty(required=True)
 
 
-class SubjectSoftware(ndb.Model):
-    subject_key = ndb.KeyProperty(kind=Subject)
-    software_key = ndb.KeyProperty(kind=Software)
-
-
 class Request(ndb.Model):
     date = ndb.DateTimeProperty(required=True)
-    user = ndb.KeyProperty(kind=User)
-    subject = ndb.KeyProperty(kind=Subject)
-    Software = ndb.KeyProperty(kind=Software)
+    user_key = ndb.KeyProperty(kind=User)
+    subject_key = ndb.KeyProperty(kind=Subject)
+
+
+class Request_Software(ndb.Model):
+    request_key = ndb.KeyProperty(kind=Request)
+    software_key = ndb.KeyProperty(kind=Software)

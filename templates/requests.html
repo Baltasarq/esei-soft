@@ -2,47 +2,34 @@
 
 {% block content %}
 <div>
-    {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-    <ul id="Message" class="flashes">
-        {% for category, message in messages %}
-        {% if category == 'success' %}
-        <div class="message_flash green center"><h4>{{ message }}</h4></div>
-        {% else %}
-        <div class="message_flash red center"><h4>{{ message }}</h4></div>
-        {% endif %}
-        {% endfor %}
-    </ul>
-    {% endif %}
-    {% endwith %}
     <h3 class="center">{{ _('Requests') }}</h3>
     <div class="fixed-action-btn">
         <a class="btn-floating btn-large tooltipped green too modal-trigger" data-position="left"
-           href="/addRequest" data-tooltip='{{ _(' Add Request') }}'>
+           href="/addRequest" data-tooltip='{{ _('Add Request') }}'>
         <i class="large material-icons">add</i>
         </a>
     </div>
-    {% if requests.count() > 0 %}
+    {% if requests.__sizeof__() > 0 %}
     <table class="striped">
         <thead>
-        <th> {{ _('Request') }}</th>
-        <th> {{ _('Software') }}</th>
+        <th> {{ _('Subject') }}</th>
+        <th> {{ _('User') }}</th>
         <th> {{ _('Date') }}</th>
         </thead>
         {% for request in requests %}
         <tr>
-            <td> {{ request.subject_key }}</td>
-            <td> {{ request.software_key }}</td>
+            <td> {{ request.getSubject().name }}</td>
+            <td> {{ request.getUser().name}}</td>
             <td> {{ request.date }}</td>
             <td>
-                <a href="/editRequest?key={{request.key.id()}}" class="waves-effect waves-light btn-small yellow ">
-                    <i class="material-icons">edit</i>
-                </a>
                 <a href="/viewRequest?key={{request.key.id()}}" class="waves-effect waves-light btn-small blue">
                     <i class="material-icons ">remove_red_eye</i>
                 </a>
                 <!-- Modal Trigger -->
-                <a class="waves-effect waves-light btn-small red modal-trigger" href="#delete">
+                <a class="waves-effect waves-light btn-small red modal-trigger" href="#delete"
+                {% if current_user.user_id() != request.getUser().user_key %}
+                disabled
+                {% endif %}>
                     <i class="material-icons ">delete</i>
                 </a>
 
