@@ -86,9 +86,17 @@
 {% block notifications %}
 
 <script>
+    var height = screen.height;
+    var pages;
+    if(height > 768 ){
+        pages = 8;
+    }
+    else{
+        pages = 4;
+    }
     var options = {
         valueNames: [ 'name', 'root', 'url' ],
-        page: 4,
+        page: pages,
         pagination: true
     };
 

@@ -10,6 +10,7 @@ from main import app
 from models.ndbModels import Request, Software, Subject, User, Teacher, Request_Software
 from models.requestComplete import RequestComplete
 
+
 @app.route('/')
 @app.route('/index')
 def login():
@@ -21,7 +22,7 @@ def login():
             if usersDb.count() == 0:
                 # Store new User
                 username = user.nickname()
-                new_user = User(user_key=user.user_id(), current_user=user, is_admin=0)
+                new_user = User(user_key=user.user_id(), name=user.nickname(), is_admin=0)
                 new_user.put()
                 time.sleep(1)
             return render_template("login.html", current_user=user,
@@ -38,8 +39,11 @@ def showSubjects():
     user = users.get_current_user()
     if user:
         try:
+            u = User.query(User.user_key == user.user_id()).get()
+            print(user.user_id())
+            print(u.user_key)
             subjects = Subject.query().order(Subject.name)
-            return render_template("subjects.html", current_user=user, user_logout=users.create_logout_url("/"),
+            return render_template("subjects.html", current_user=user, user=u, user_logout=users.create_logout_url("/"),
                                    subjects=subjects)
         except Exception as e:
             print(e.message)
@@ -136,7 +140,18 @@ def viewSubject():
             u = User.query(User.user_key == subject.user_key.id()).get()
             sofwares = list()
 
-            return render_template("viewSubject.html", current_user=user, user=u, softwares=sofwares, subject=subject, user_logout=users.create_logout_url("/"))
+            requests = Request.query(Request.subject_key == subjectKey)
+
+            for r in requests:
+                softwareRequests = Request_Software.query(Request_Software.request_key == r.key)
+                for softwareRequest in softwareRequests:
+                    softToAdd = Software.query(Software.key == softwareRequest.software_key).get()
+                    if softToAdd not in sofwares:
+                        sofwares.append(softToAdd)
+
+            print(sofwares)
+            return render_template("viewSubject.html", current_user=user, user=u, softwares=sofwares, subject=subject,
+                                   user_logout=users.create_logout_url("/"))
         except Exception as e:
             print(e.message)
     else:
@@ -235,6 +250,35 @@ def deleteSoftware():
             sKey = int(request.args.get("key"))
             softwareKey = ndb.Key(Software, sKey)
             software = Software.query(Software.key == softwareKey).get()
+
+            requests = []
+            requestSoftware = Request_Software.query(Request_Software.software_key == softwareKey)
+            for rs in requestSoftware:
+                print(rs)
+                requests.append(rs)
+                rs.key.delete()
+                time.sleep(1)
+
+            requestDb = Request_Software.query()
+            for r in requestDb:
+                print(r.request_key)
+            print("Fin for 1")
+            for r in requests:
+                print(r.request_key)
+            print("Fin for 2")
+
+            for req in requests:
+                print(req)
+                if req.key in requestDb:
+                    print("Non Borrar" + req)
+                else:
+                    print("Borrandoo..... ")
+                    requestToDelete = Request.query(Request.key == req.request_key).get()
+                    print(requestToDelete)
+                    requestToDelete.key.delete()
+                    time.sleep(1)
+
+
             software.key.delete()
             time.sleep(1)
             flash(_('Software deleted correctly'), 'success')
@@ -277,10 +321,9 @@ def showRequests():
     user = users.get_current_user()
     if user:
         try:
-            aux = []
+            requestToShow = []
             requests = Request.query()
             for request in requests:
-                print(request.user_key.id())
                 u = User.query(User.user_key == request.user_key.id()).get()
 
                 s = Subject.query(Subject.key == request.subject_key).get()
@@ -288,10 +331,13 @@ def showRequests():
                 softwares = list()
 
                 for soft in requestSofts:
-                    softwares.append(Software.query(Software.key == soft.key).get())
-                aux.append(RequestComplete(request.key, u, s, softwares, request.date))
+                    softwares.append(Software.query(Software.key == soft.software_key).get())
 
-            return render_template("requests.html", current_user=user, requests=aux, user_logout=users.create_logout_url("/"))
+                requestToShow.append(RequestComplete(request.key, u, s, softwares, request.date))
+
+            print(requestToShow.__len__())
+
+            return render_template("requests.html", current_user=user, requests=requestToShow, user_logout=users.create_logout_url("/"))
         except Exception as e:
             print(e.message)
     else:
@@ -334,7 +380,6 @@ def addRequest():
         else:
             try:
                 userKey = ndb.Key(User, user.user_id())
-                print(userKey)
                 subjects = Subject.query(Subject.user_key == userKey).order(Subject.name)
                 softwares = Software.query().order(Software.name)
 
@@ -344,3 +389,46 @@ def addRequest():
                 print(e.message)
     else:
         return redirect("/")
+
+
+@app.route('/viewRequest', methods=["POST", "GET"])
+def viewRequest():
+    user = users.get_current_user()
+    if user:
+        try:
+            rKey = int(request.args.get("key"))
+            req = Request.query(Request.key == ndb.Key(Request, rKey)).get()
+
+            u = User.query(User.user_key == req.user_key.id()).get()
+            s = Subject.query(Subject.key == req.subject_key).get()
+
+            requestSofts = Request_Software.query(Request_Software.request_key == req.key)
+            softwares = list()
+
+            for soft in requestSofts:
+                softwares.append(Software.query(Software.key == soft.software_key).get())
+
+            requestToShow = RequestComplete(req.key, u, s, softwares, req.date)
+
+            return render_template("viewRequest.html", current_user=user, request=requestToShow, user_logout=users.create_logout_url("/"))
+        except Exception as e:
+            print(e.message)
+    else:
+        return redirect("/")
+
+@app.route('/deleteRequest')
+def deleteRequest():
+    user = users.get_current_user()
+    if user:
+        try:
+            rKey = int(request.args.get("key"))
+            req = Request.query(Request.key == ndb.Key(Request, rKey)).get()
+            req.key.delete()
+            time.sleep(1)
+            flash(_('Software deleted correctly'), 'success')
+            return redirect('/requests')
+        except Exception as e:
+            print(e.message)
+    else:
+        return redirect("/")
+

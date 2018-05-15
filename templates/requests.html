@@ -3,13 +3,25 @@
 {% block content %}
 <div>
     <h3 class="center">{{ _('Requests') }}</h3>
-    <div class="fixed-action-btn">
+    <div class="fixed-action-btn requests" >
         <a class="btn-floating btn-large tooltipped green too modal-trigger" data-position="left"
            href="/addRequest" data-tooltip='{{ _('Add Request') }}'>
         <i class="large material-icons">add</i>
         </a>
     </div>
-    {% if requests.__sizeof__() > 0 %}
+    {% if requests.__len__() > 0 %}
+    <div class="col s4">
+        <input class="fuzzy-search" placeholder={{ _('Search') }} />
+    </div>
+    <div class="col s2">
+        <button class="sort btn-small" data-sort="subject">{{ _('Sort by subject')}}</button>
+    </div>
+    <div class="col s3 center">
+        <button class="sort btn-small" data-sort="user">{{ _('Sort by user')}}</button>
+    </div>
+    <div class="col s3">
+        <button class="sort btn-small" data-sort="date">{{ _('Sort by date')}}</button>
+    </div>
     <table class="striped">
         <thead>
         <th> {{ _('Subject') }}</th>
@@ -18,18 +30,15 @@
         </thead>
         {% for request in requests %}
         <tr>
-            <td> {{ request.getSubject().name }}</td>
-            <td> {{ request.getUser().name}}</td>
-            <td> {{ request.date }}</td>
+            <td class="subject"> {{ request.getSubject().name }}</td>
+            <td class="user"> {{ request.getUser().name}}</td>
+            <td class="date"> {{ request.date }}</td>
             <td>
                 <a href="/viewRequest?key={{request.key.id()}}" class="waves-effect waves-light btn-small blue">
                     <i class="material-icons ">remove_red_eye</i>
                 </a>
                 <!-- Modal Trigger -->
-                <a class="waves-effect waves-light btn-small red modal-trigger" href="#delete"
-                {% if current_user.user_id() != request.getUser().user_key %}
-                disabled
-                {% endif %}>
+                <a class="waves-effect waves-light btn-small red modal-trigger" href="#delete">
                     <i class="material-icons ">delete</i>
                 </a>
 
@@ -63,6 +72,25 @@
 
 {% block notifications %}
 
+<script>
+    var height = screen.height;
+    var pages;
+    if(height > 768 ){
+        pages = 8;
+    }
+    else{
+        pages = 4;
+    }
+    var options = {
+        valueNames: [ 'subject', 'user', 'date' ],
+        page: pages,
+        pagination: true
+    };
+
+    var requests = new List('requests', options);
+
+    $('.tooltipped').tooltip();
+</script>
 <script>
     setTimeout(function () {
         $('#Message').fadeOut('fast');

@@ -2,25 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="65f2b376-1b26-4725-9461-81d91f4597c3" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/models/requestComplete.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/viewRequest.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eseiforms.datastore" beforeDir="false" afterPath="$PROJECT_DIR$/eseiforms.datastore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handlers/handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/handlers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messages.pot" beforeDir="false" afterPath="$PROJECT_DIR$/messages.pot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ndbModels.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/ndbModels.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/addRequest.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/addRequest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/addSoftware.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/addSoftware.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/requests.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/requests.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/skeleton.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/skeleton.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/softwares.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/softwares.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/subjects.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/subjects.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/viewSoftware.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/viewSoftware.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/viewSubject.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/viewSubject.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/translations/en/LC_MESSAGES/messages.mo" beforeDir="false" afterPath="$PROJECT_DIR$/translations/en/LC_MESSAGES/messages.mo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/translations/en/LC_MESSAGES/messages.po" beforeDir="false" afterPath="$PROJECT_DIR$/translations/en/LC_MESSAGES/messages.po" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.mo" beforeDir="false" afterPath="$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.mo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.po" beforeDir="false" afterPath="$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.po" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.mo" beforeDir="false" afterPath="$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.mo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.po" beforeDir="false" afterPath="$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.po" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,18 +20,27 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/TFG$TFG.coverage" NAME="TFG Coverage Results" MODIFIED="1525976234003" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/TFG$TFG.coverage" NAME="TFG Coverage Results" MODIFIED="1526409427233" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="handlers.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="handlers.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/handlers/handlers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="249">
-              <caret line="26" column="67" selection-start-line="26" selection-start-column="67" selection-end-line="26" selection-end-column="67" />
+            <state relative-caret-position="455">
+              <caret line="381" column="55" selection-start-line="381" selection-start-column="55" selection-end-line="381" selection-end-column="55" />
               <folding>
                 <element signature="e#1#39#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="viewRequest.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/viewRequest.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="432">
+              <caret line="48" column="53" selection-start-line="48" selection-start-column="53" selection-end-line="48" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -50,7 +49,7 @@
         <entry file="file://$PROJECT_DIR$/models/requestComplete.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="396">
-              <caret line="22" column="28" lean-forward="true" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
+              <caret line="22" column="28" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -58,44 +57,17 @@
       <file leaf-file-name="requests.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/requests.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="522">
-              <caret line="29" column="46" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
+            <state relative-caret-position="144">
+              <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="addRequest.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/addRequest.html">
+      <file leaf-file-name="viewSubject.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/viewSubject.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="27" column="18" lean-forward="true" selection-start-line="27" selection-start-column="18" selection-end-line="29" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="messages.po" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.po">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3664">
-              <caret line="88" column="60" lean-forward="true" selection-start-line="88" selection-start-column="60" selection-end-line="88" selection-end-column="60" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="skeleton.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/skeleton.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="32" column="39" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/login.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
-              <caret line="22" column="81" selection-start-line="22" selection-start-column="81" selection-end-line="22" selection-end-column="81" />
+            <state relative-caret-position="757">
+              <caret line="64" column="10" selection-start-line="36" selection-start-column="4" selection-end-line="64" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -103,8 +75,26 @@
       <file leaf-file-name="subjects.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/subjects.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="85" column="50" selection-start-line="85" selection-start-column="50" selection-end-line="85" selection-end-column="50" />
+            <state relative-caret-position="306">
+              <caret line="17" column="14" lean-forward="true" selection-start-line="6" selection-start-column="8" selection-end-line="17" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="softwares.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/softwares.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1890">
+              <caret line="105" column="9" lean-forward="true" selection-start-line="87" selection-start-column="1" selection-end-line="105" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="skeleton.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/skeleton.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="576">
+              <caret line="32" column="39" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -112,7 +102,7 @@
       <file leaf-file-name="ndbModels.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/ndbModels.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-95">
+            <state relative-caret-position="72">
               <caret line="4" column="47" selection-start-line="4" selection-start-column="47" selection-end-line="4" selection-end-column="47" />
             </state>
           </provider>
@@ -123,8 +113,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -155,6 +145,9 @@
       <find>You needs Software created by you to make a Request</find>
       <find>addRequest.html:32</find>
       <find>user</find>
+      <find>software</find>
+      <find>Software</find>
+      <find>aux</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -185,20 +178,21 @@
         <option value="$PROJECT_DIR$/templates/softwares" />
         <option value="$PROJECT_DIR$/static/css/style.css" />
         <option value="$PROJECT_DIR$/templates/addSubject.html" />
-        <option value="$PROJECT_DIR$/templates/viewSoftware.html" />
         <option value="$PROJECT_DIR$/templates/editSoftware.html" />
-        <option value="$PROJECT_DIR$/templates/subjects.html" />
         <option value="$PROJECT_DIR$/templates/addSoftware.html" />
-        <option value="$PROJECT_DIR$/templates/viewSubject.html" />
-        <option value="$PROJECT_DIR$/templates/softwares.html" />
         <option value="$PROJECT_DIR$/models/requestComplete.py" />
         <option value="$PROJECT_DIR$/models/ndbModels.py" />
-        <option value="$PROJECT_DIR$/templates/requests.html" />
         <option value="$PROJECT_DIR$/templates/addRequest.html" />
         <option value="$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.po" />
-        <option value="$PROJECT_DIR$/handlers/handlers.py" />
         <option value="$PROJECT_DIR$/templates/skeleton.html" />
         <option value="$PROJECT_DIR$/templates/login.html" />
+        <option value="$PROJECT_DIR$/templates/viewSoftware.html" />
+        <option value="$PROJECT_DIR$/templates/viewSubject.html" />
+        <option value="$PROJECT_DIR$/templates/viewRequest.html" />
+        <option value="$PROJECT_DIR$/templates/subjects.html" />
+        <option value="$PROJECT_DIR$/templates/softwares.html" />
+        <option value="$PROJECT_DIR$/templates/requests.html" />
+        <option value="$PROJECT_DIR$/handlers/handlers.py" />
       </list>
     </option>
   </component>
@@ -219,77 +213,7 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="TFG" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TFG" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TFG" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TFG" type="462c0819:PsiDirectoryNode" />
-              <item name="handlers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TFG" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TFG" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TFG" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TFG" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TFG" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TFG" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TFG" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TFG" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TFG" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TFG" type="462c0819:PsiDirectoryNode" />
-              <item name="translations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TFG" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TFG" type="462c0819:PsiDirectoryNode" />
-              <item name="translations" type="462c0819:PsiDirectoryNode" />
-              <item name="es" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TFG" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TFG" type="462c0819:PsiDirectoryNode" />
-              <item name="translations" type="462c0819:PsiDirectoryNode" />
-              <item name="es" type="462c0819:PsiDirectoryNode" />
-              <item name="LC_MESSAGES" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TFG" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TFG" type="462c0819:PsiDirectoryNode" />
-              <item name="translations" type="462c0819:PsiDirectoryNode" />
-              <item name="gl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TFG" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TFG" type="462c0819:PsiDirectoryNode" />
-              <item name="translations" type="462c0819:PsiDirectoryNode" />
-              <item name="gl" type="462c0819:PsiDirectoryNode" />
-              <item name="LC_MESSAGES" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
@@ -297,7 +221,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -325,7 +249,7 @@
       <module name="TFG" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="$PROJECT_DIR$/env/bin/python" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -334,7 +258,7 @@
       <option name="launchJavascriptDebuger" value="false" />
       <option name="host" value="127.0.0.1" />
       <option name="browserUrl" value="" />
-      <option name="additionalOptions" value="" />
+      <option name="additionalOptions" value="--datastore_path=$PROJECT_DIR$/eseiforms.datastore" />
     </configuration>
   </component>
   <component name="SvnConfiguration">
@@ -359,12 +283,11 @@
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32984293" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49808428" visible="true" weight="0.3084995" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49808428" visible="true" weight="0.31479537" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32984293" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21620142" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.21839081" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32528856" />
       <window_info anchor="right" id="SciView" order="3" weight="0.3299293" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -375,6 +298,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32528856" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -385,7 +309,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="17" />
+      <option name="time" value="18" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -592,44 +516,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/viewSoftware.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="18" column="50" selection-start-line="18" selection-start-column="50" selection-end-line="18" selection-end-column="50" />
-          <folding>
-            <element signature="n#style#0;n#p#0;n#div#2;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/editSoftware.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.mo">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/editSoftware.html" />
     <entry file="file://$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.po">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4030">
           <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/viewSubject.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="42" column="50" selection-start-line="42" selection-start-column="50" selection-end-line="42" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/softwares.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="80" column="10" lean-forward="true" selection-start-line="80" selection-start-column="10" selection-end-line="80" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -640,69 +531,97 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/subjects.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="85" column="50" selection-start-line="85" selection-start-column="50" selection-end-line="85" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/ndbModels.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-95">
-          <caret line="4" column="47" selection-start-line="4" selection-start-column="47" selection-end-line="4" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/requestComplete.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="22" column="28" lean-forward="true" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/requests.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="29" column="46" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/addRequest.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="27" column="18" lean-forward="true" selection-start-line="27" selection-start-column="18" selection-end-line="29" selection-end-column="14" />
+        <state relative-caret-position="486">
+          <caret line="27" column="18" selection-start-line="27" selection-start-column="18" selection-end-line="29" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.po">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3664">
-          <caret line="88" column="60" lean-forward="true" selection-start-line="88" selection-start-column="60" selection-end-line="88" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/handlers/handlers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="26" column="67" selection-start-line="26" selection-start-column="67" selection-end-line="26" selection-end-column="67" />
-          <folding>
-            <element signature="e#1#39#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="1584">
+          <caret line="88" column="60" selection-start-line="88" selection-start-column="60" selection-end-line="88" selection-end-column="60" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/skeleton.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
+        <state relative-caret-position="576">
           <caret line="32" column="39" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="22" column="81" selection-start-line="22" selection-start-column="81" selection-end-line="22" selection-end-column="81" />
+        <state relative-caret-position="288">
+          <caret line="16" column="12" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/viewSoftware.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="22" column="50" selection-end-line="43" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/requestComplete.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="22" column="28" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/ndbModels.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="47" selection-start-line="4" selection-start-column="47" selection-end-line="4" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/softwares.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1890">
+          <caret line="105" column="9" lean-forward="true" selection-start-line="87" selection-start-column="1" selection-end-line="105" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/subjects.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="17" column="14" lean-forward="true" selection-start-line="6" selection-start-column="8" selection-end-line="17" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/viewSubject.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="757">
+          <caret line="64" column="10" selection-start-line="36" selection-start-column="4" selection-end-line="64" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/viewRequest.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="48" column="53" selection-start-line="48" selection-start-column="53" selection-end-line="48" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/requests.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handlers/handlers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="455">
+          <caret line="381" column="55" selection-start-line="381" selection-start-column="55" selection-end-line="381" selection-end-column="55" />
+          <folding>
+            <element signature="e#1#39#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

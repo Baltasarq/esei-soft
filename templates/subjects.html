@@ -30,14 +30,21 @@
                     <td class="year center"> {{ subject.year }}</td>
                     <td class="quarter center"> {{ subject.quarter }}</td>
                     <td class="name center">
-                        <a href="/editSubject?key={{subject.key.id()}}" class="waves-effect waves-light btn-small yellow ">
+                        <a href="/editSubject?key={{subject.key.id()}}" class="waves-effect waves-light btn-small yellow "
+                        {% if current_user.user_id() != subject.user_key.id() and user.is_admin == 0 %}
+                            disabled
+                        {% endif %}>
                             <i class="material-icons">edit</i>
                         </a>
                         <a href="/viewSubject?key={{subject.key.id()}}" class="waves-effect waves-light btn-small blue">
                             <i class="material-icons ">remove_red_eye</i>
                         </a>
                         <!-- Modal Trigger -->
-                        <a class="waves-effect waves-light btn-small red modal-trigger" href="#delete{{subject.key.id()}}">
+
+                        <a class="waves-effect waves-light btn-small red modal-trigger" href="#delete{{subject.key.id()}}"
+                        {% if current_user.user_id() != subject.user_key.id() and user.is_admin == 0 %}
+                            disabled
+                        {% endif %}>
                             <i class="material-icons ">delete</i>
                         </a>
 
@@ -94,9 +101,17 @@
 {% block notifications %}
 
 <script>
+    var height = screen.height;
+    var pages;
+    if(height > 768 ){
+        pages = 8;
+    }
+    else{
+        pages = 4;
+    }
     var options = {
         valueNames: [ 'name', 'year', 'quarter' ],
-        page: 4,
+        page: pages,
         pagination: true
     };
 
