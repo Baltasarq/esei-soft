@@ -2,14 +2,16 @@
 from google.appengine.api import users
 
 import time
-from flask import render_template, flash, redirect, request
+from flask import render_template, flash, redirect, request, Response
 from flask_babel import _
-import flask, datetime
-from google.appengine.ext import ndb
+import flask
+import datetime
+from google.appengine.ext import ndb, cloudstorage
 from main import app
 from models.ndbModels import Request, Software, Subject, User, Teacher, Request_Software
 from models.requestComplete import RequestComplete
 
+from google.appengine.api import app_identity
 
 @app.route('/')
 @app.route('/index')
@@ -22,12 +24,16 @@ def login():
             if usersDb.count() == 0:
                 # Store new User
                 username = user.nickname()
-                new_user = User(user_key=user.user_id(), name=user.nickname(), is_admin=0)
+                new_user = User(user_key=user.user_id(), name=user.nickname())
+                if users.is_current_user_admin():
+                    new_user.is_admin = 1
+                else:
+                    new_user.is_admin = 0
+
                 new_user.put()
                 time.sleep(1)
-            return render_template("login.html", current_user=user,
-                                  # is_admin=user.__getattribute__("is_admin"),
-                                   user_logout=users.create_logout_url("/"))
+            return render_template("login.html", current_user=user, user_logout=users.create_logout_url("/"),
+                                   is_admin=users.is_current_user_admin())
         except Exception as e:
             print(e.message)
     else:
@@ -40,11 +46,9 @@ def showSubjects():
     if user:
         try:
             u = User.query(User.user_key == user.user_id()).get()
-            print(user.user_id())
-            print(u.user_key)
             subjects = Subject.query().order(Subject.name)
             return render_template("subjects.html", current_user=user, user=u, user_logout=users.create_logout_url("/"),
-                                   subjects=subjects)
+                                   subjects=subjects, is_admin=users.is_current_user_admin())
         except Exception as e:
             print(e.message)
     else:
@@ -64,7 +68,6 @@ def addSubject():
             if subject.count() == 0:
                 try:
                     subject = Subject(name=name, year=year, quarter=quarter, user_key=ndb.Key(User, user.user_id()))
-                    print(subject)
                     subject.put()
                     time.sleep(1)
                     flash(_('Subject added correctly'), 'success')
@@ -149,7 +152,6 @@ def viewSubject():
                     if softToAdd not in sofwares:
                         sofwares.append(softToAdd)
 
-            print(sofwares)
             return render_template("viewSubject.html", current_user=user, user=u, softwares=sofwares, subject=subject,
                                    user_logout=users.create_logout_url("/"))
         except Exception as e:
@@ -166,6 +168,10 @@ def deleteSubject():
             sKey = int(request.args.get("key"))
             subjectKey = ndb.Key(Subject, sKey)
             subject = Subject.query(Subject.key == subjectKey).get()
+            requests = Request.query(Request.subject_key == subjectKey)
+            for r in requests:
+                r.key.delete()
+                time.sleep(0.5)
             subject.key.delete()
             time.sleep(1)
             flash(_('Subject deleted correctly'), 'success')
@@ -174,7 +180,6 @@ def deleteSubject():
             print(e.message)
     else:
         return redirect("/")
-
 
 
 @app.route('/addSoftware', methods=['GET', 'POST'])
@@ -187,6 +192,8 @@ def addSoftware():
                 url = flask.request.form.get("url")
                 root = int(flask.request.form.get("root"))
                 notes = flask.request.form.get("notes")
+
+                print(len(notes))
 
                 try:
                     softwares = Software.query(Software.name == name)
@@ -234,7 +241,6 @@ def viewSoftware():
             sKey = int(request.args.get("key"))
             softwareKey = ndb.Key(Software, sKey)
             software = Software.query(Software.key == softwareKey).get()
-            print(software.instalation_notes)
             return render_template("viewSoftware.html", current_user=user, software=software, user_logout=users.create_logout_url("/"))
         else:
             return redirect("/")
@@ -251,33 +257,25 @@ def deleteSoftware():
             softwareKey = ndb.Key(Software, sKey)
             software = Software.query(Software.key == softwareKey).get()
 
-            requests = []
+            requestsDeleted = list()
+            requestsInDB = list()
+
             requestSoftware = Request_Software.query(Request_Software.software_key == softwareKey)
             for rs in requestSoftware:
-                print(rs)
-                requests.append(rs)
+                requestsDeleted.append(rs)
                 rs.key.delete()
                 time.sleep(1)
 
-            requestDb = Request_Software.query()
-            for r in requestDb:
-                print(r.request_key)
-            print("Fin for 1")
-            for r in requests:
-                print(r.request_key)
-            print("Fin for 2")
+            aux = Request_Software.query()
 
-            for req in requests:
-                print(req)
-                if req.key in requestDb:
-                    print("Non Borrar" + req)
-                else:
-                    print("Borrandoo..... ")
+            for r in aux:
+                requestsInDB.append(r.request_key)
+
+            for req in requestsDeleted:
+                if req.request_key not in requestsInDB:
                     requestToDelete = Request.query(Request.key == req.request_key).get()
-                    print(requestToDelete)
                     requestToDelete.key.delete()
                     time.sleep(1)
-
 
             software.key.delete()
             time.sleep(1)
@@ -289,38 +287,16 @@ def deleteSoftware():
         return redirect("/")
 
 
-@app.route('/exportSubjectCSV')
+@app.route('/exportCSV')
 def exportCSV():
     user = users.get_current_user()
     if user:
         try:
-            sKey = int(request.args.get("key"))
-            subjectKey = ndb.Key(Subject, sKey)
-            subject = Subject.query(Subject.key == subjectKey).get()
+            dateTime = datetime.datetime.today()
+            date = str(dateTime).split(' ')[0]
 
-            import csv
-            filename = subject.name + ".csv"
-            print({'Name: ' + subject.name + ', Year: ' + str(subject.year) + ', Quarter: ' + str(subject.quarter)})
+            fileName = date.split('-')[2] + date.split('-')[1] + date.split('-')[0]
 
-            with open(filename, 'wb') as csvfile:
-                fieldnames = ['Name', 'Year', 'Quarter']
-                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-                writer.writeheader()
-                writer.writerow({'Name': subject.name, 'Year': subject.year, 'Quarter': subject.quarter})
-
-            flash(_('Subject deleted correctly'), 'success')
-            return redirect('/subjects')
-        except Exception as e:
-            print(e.message)
-    else:
-        return redirect("/")
-
-
-@app.route('/requests', methods=["POST", "GET"])
-def showRequests():
-    user = users.get_current_user()
-    if user:
-        try:
             requestToShow = []
             requests = Request.query()
             for request in requests:
@@ -335,9 +311,120 @@ def showRequests():
 
                 requestToShow.append(RequestComplete(request.key, u, s, softwares, request.date))
 
-            print(requestToShow.__len__())
+            csv_content = "Request_key, Request_date, " \
+                          "User_key, User_name, " \
+                          "Subject_key, Subject_name, Subject_course, Subject_quarter, " \
+                          "Software_key, Software_name\n"
 
-            return render_template("requests.html", current_user=user, requests=requestToShow, user_logout=users.create_logout_url("/"))
+            for rc in requestToShow:
+                u = rc.getUser()
+                sub = rc.getSubject()
+                softs = rc.getSoftware()
+                for s in softs:
+                    contentToAppend = str(rc.getKey().id()) + "," + str.split(str(rc.getDate()), ".")[0] + ","\
+                        + str(u.user_key + "," + str(u.name)) + ","\
+                        + str(sub.key.id()) + "," + str(sub.name) + "," + str(sub.year) + "," + str(sub.quarter) + ","\
+                        + str(s.key.id()) + "," + str(s.name) + "\n"
+                csv_content += contentToAppend
+
+            generator = (cell for row in csv_content
+                         for cell in row)
+
+            return Response(generator,
+                            mimetype="text/csv",
+                            headers={"Content-Disposition": "attachment;filename=" + fileName + ".csv"})
+
+        except Exception as e:
+            print(e)
+    else:
+        return redirect("/")
+
+@app.route('/exportXML')
+def exportXML():
+    user = users.get_current_user()
+    if user:
+        try:
+            dateTime = datetime.datetime.today()
+            date = str(dateTime).split(' ')[0]
+
+            fileName = date.split('-')[2] + date.split('-')[1] + date.split('-')[0]
+
+            requestToShow = []
+            requests = Request.query()
+            for request in requests:
+                u = User.query(User.user_key == request.user_key.id()).get()
+
+                s = Subject.query(Subject.key == request.subject_key).get()
+                requestSofts = Request_Software.query(Request_Software.request_key == request.key)
+                softwares = list()
+
+                for soft in requestSofts:
+                    softwares.append(Software.query(Software.key == soft.software_key).get())
+
+                requestToShow.append(RequestComplete(request.key, u, s, softwares, request.date))
+
+            xml_content = "<requests>"
+
+            for rc in requestToShow:
+                u = rc.getUser()
+                sub = rc.getSubject()
+                softs = rc.getSoftware()
+
+                contentToAppend = \
+                    "<request> <key>"+ str(rc.getKey().id()) + "</key>" \
+                    "<date>" + str.split(str(rc.getDate()), ".")[0] + "</date>"\
+                    "<user><key>" + str(u.user_key + "</key><name>" + str(u.name)) + "</name></user>"\
+                    "<subject>" \
+                        "<key>" + str(sub.key.id()) + "</key>" \
+                        "<name>" + str(sub.name) + "</name>" \
+                        "<course>" + str(sub.year) + "</course>" \
+                        "<quarter>" + str(sub.quarter) + "</quarter></subject>"\
+                        "<softwares>"
+                for s in softs:
+                    contentToAppend += "<software><key>" + str(s.key.id()) + "</key><name>" + str(s.name) + "</name></software>"
+
+                contentToAppend += "</softwares></request>"
+
+                print(xml_content)
+                xml_content += contentToAppend
+
+            xml_content += "</requests>"
+            generator = (cell for row in xml_content
+                         for cell in row)
+
+            return Response(generator,
+                            mimetype="text/xml",
+                            headers={"Content-Disposition": "attachment;filename=" + fileName + ".xml"})
+
+        except Exception as e:
+            print(e)
+    else:
+        return redirect("/")
+
+
+@app.route('/requests', methods=["POST", "GET"])
+def showRequests():
+    user = users.get_current_user()
+    if user:
+        try:
+            requestToShow = []
+            requests = Request.query()
+
+            for request in requests:
+                u = User.query(User.user_key == request.user_key.id()).get()
+
+                s = Subject.query(Subject.key == request.subject_key).get()
+                requestSofts = Request_Software.query(Request_Software.request_key == request.key)
+                softwares = list()
+
+                for soft in requestSofts:
+                    softwares.append(Software.query(Software.key == soft.software_key).get())
+
+                requestToShow.append(RequestComplete(request.key, u, s, softwares, request.date))
+
+            u = User.query(User.user_key == user.user_id()).get()
+            return render_template("requests.html", current_user=user, user=u, requests=requestToShow,
+                                   user_logout=users.create_logout_url("/"))
         except Exception as e:
             print(e.message)
     else:
@@ -361,7 +448,8 @@ def addRequest():
                 request.put()
                 time.sleep(1)
 
-                currentRequest = Request.query(Request.user_key == user_key, Request.date == date, Request.subject_key == subject_key).get()
+                currentRequest = Request.query(Request.user_key == user_key, Request.date == date,
+                                               Request.subject_key == subject_key).get()
 
                 softwares = flask.request.form.getlist("softwares")
                 #Add all software to the Request
@@ -376,15 +464,14 @@ def addRequest():
                 return redirect("/requests")
             except Exception as e:
                 print(e.message)
-
         else:
             try:
-                userKey = ndb.Key(User, user.user_id())
-                subjects = Subject.query(Subject.user_key == userKey).order(Subject.name)
+                u = User.query(User.user_key == user.user_id()).get()
+                subjects = Subject.query().order(Subject.name)
                 softwares = Software.query().order(Software.name)
-
-                return render_template("addRequest.html", current_user=user, softwares=softwares, subjects=subjects,
-                                       user_logout=users.create_logout_url("/"))
+                subjects.count
+                return render_template("addRequest.html", user=u, current_user=user, softwares=softwares,
+                                       subjects=subjects, user_logout=users.create_logout_url("/"))
             except Exception as e:
                 print(e.message)
     else:
@@ -410,7 +497,8 @@ def viewRequest():
 
             requestToShow = RequestComplete(req.key, u, s, softwares, req.date)
 
-            return render_template("viewRequest.html", current_user=user, request=requestToShow, user_logout=users.create_logout_url("/"))
+            return render_template("viewRequest.html", current_user=user, request=requestToShow,
+                                   user_logout=users.create_logout_url("/"))
         except Exception as e:
             print(e.message)
     else:
@@ -431,4 +519,3 @@ def deleteRequest():
             print(e.message)
     else:
         return redirect("/")
-

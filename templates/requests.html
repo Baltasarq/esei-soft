@@ -5,7 +5,10 @@
     <h3 class="center">{{ _('Requests') }}</h3>
     <div class="fixed-action-btn requests" >
         <a class="btn-floating btn-large tooltipped green too modal-trigger" data-position="left"
-           href="/addRequest" data-tooltip='{{ _('Add Request') }}'>
+           href="/addRequest" data-tooltip='{{ _('Add Request') }}'
+        {% if is_admin %}
+            disabled
+        {% endif %} >
         <i class="large material-icons">add</i>
         </a>
     </div>
@@ -13,15 +16,33 @@
     <div class="col s4">
         <input class="fuzzy-search" placeholder={{ _('Search') }} />
     </div>
-    <div class="col s2">
-        <button class="sort btn-small" data-sort="subject">{{ _('Sort by subject')}}</button>
+    <div class="col s2 right-align " style="padding-top: 1%">
+        {{ _('Sort by') }}
     </div>
-    <div class="col s3 center">
-        <button class="sort btn-small" data-sort="user">{{ _('Sort by user')}}</button>
+
+    <div class="col s1 center">
+        <button class="sort btn-small" data-sort="date">{{ _('date')}}</button>
     </div>
-    <div class="col s3">
-        <button class="sort btn-small" data-sort="date">{{ _('Sort by date')}}</button>
+    <div class="col s2 center ">
+        <button class="sort btn-small" data-sort="user">{{ _('user')}}</button>
     </div>
+     <div class="col s2">
+        <button class="sort btn-small" data-sort="subject">{{ _('subject')}}</button>
+    </div>
+    {% if is_admin %}
+        <div class="col s1">
+            <a class='dropdown-button btn-small' href='#' data-target='dropdown1'>
+                <i class="material-icons">file_download</i>
+            </a>
+            <!-- Dropdown Structure -->
+            <ul id='dropdown1' class='dropdown-content '>
+                <li><a href="/exportCSV">
+                    <i class="material-icons">insert_drive_file</i>CSV</a></li>
+                <li><a href="/exportHTML"><i class="material-icons">insert_drive_file</i>HTML</a>
+                </li>
+            </ul>
+        </div>
+        {% endif %}
     <table class="striped">
         <thead>
         <th> {{ _('Subject') }}</th>
@@ -38,31 +59,36 @@
                     <i class="material-icons ">remove_red_eye</i>
                 </a>
                 <!-- Modal Trigger -->
-                <a class="waves-effect waves-light btn-small red modal-trigger" href="#delete">
+                <a class="waves-effect waves-light btn-small red modal-trigger" href="#delete{{request.key.id()}}"
+                {% if current_user.user_id() != request.getUser().user_key and not is_admin  %}
+                    disabled
+                {% endif %}>
                     <i class="material-icons ">delete</i>
                 </a>
-
-                <!-- Modal Structure -->
-                <div id="delete" class="modal">
-                    <div class="modal-content">
-                        <h4 class="center">{{ _('Delete Request') }}</h4>
-                        <p class="big center">{{ _('Are you sure to delete this Request?') }}</p>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#!"
-                           class="modal-action modal-close waves-effect waves-green btn-flat">
-                            {{ _('No') }}
-                        </a>
-                        <a href="/deleteRequest?key={{request.key.id()}}"
-                           class="modal-action modal-close waves-effect waves-green btn-flat">
-                            {{ _('Yes') }}
-                        </a>
-                    </div>
-                </div>
             </td>
         </tr>
         {% endfor %}
     </table>
+    {% for request in requests %}
+    <!-- Modal Structure -->
+        <div id="delete{{request.key.id()}}" class="modal">
+            <div class="modal-content">
+                <h4 class="center">{{ _('Delete Request') }}</h4>
+                <p class="big center">{{ _('Are you sure to delete this Request?') }}</p>
+            </div>
+            <div class="modal-content"></div>
+            <div class="modal-footer">
+                <a href="#!"
+                   class="modal-action modal-close waves-effect waves-green btn-flat">
+                    {{ _('No') }}
+                </a>
+                <a href="/deleteRequest?key={{request.key.id()}}"
+                   class="modal-action modal-close waves-effect waves-green btn-flat">
+                    {{ _('Yes') }}
+                </a>
+            </div>
+        </div>
+    {% endfor %}
     {% else %}
     <p> {{ _('Nothing to show') }}</p>
     {% endif %}
@@ -88,8 +114,6 @@
     };
 
     var requests = new List('requests', options);
-
-    $('.tooltipped').tooltip();
 </script>
 <script>
     setTimeout(function () {

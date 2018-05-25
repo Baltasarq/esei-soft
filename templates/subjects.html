@@ -7,19 +7,38 @@
         <div class="col s4">
             <input class="fuzzy-search" placeholder={{ _('Search') }} />
         </div>
+        <div class="col s2 right-align" style="padding-top: 1%">
+            {{ _('Sort by') }}
+        </div>
+
+        <div class="col s1 ">
+            <button class="sort btn-small" data-sort="name">{{ _('Name')}}</button>
+        </div>
+        <div class="col s2 center">
+            <button class="sort btn-small" data-sort="year">{{ _('Course')}}</button>
+        </div>
         <div class="col s2">
-            <button class="sort btn-small" data-sort="year">{{ _('Sort by year')}}</button>
+            <button class="sort btn-small" data-sort="quarter">{{ _('Quarter')}}</button>
         </div>
-        <div class="col s3 center">
-            <button class="sort btn-small" data-sort="name">{{ _('Sort by name')}}</button>
+        {% if not is_admin %}
+        <div class="col s1">
+            <a class='dropdown-button btn-small' href='#' data-target='dropdown1'>
+                <i class="material-icons">file_download</i>
+            </a>
+            <!-- Dropdown Structure -->
+            <ul id='dropdown1' class='dropdown-content '
+            data-tooltip='{{ _('Export to') }}'>
+                <li><a href="/exportCSV">
+                    <i class="material-icons">insert_drive_file</i>CSV</a></li>
+                <li><a href="/exportXML"><i class="material-icons">insert_drive_file</i>XML</a>
+                </li>
+            </ul>
         </div>
-        <div class="col s3">
-            <button class="sort btn-small" data-sort="quarter">{{ _('Sort by quarter')}}</button>
-        </div>
+        {% endif %}
         <table  class="highlight">
             <thead>
             <th class="name center"> {{ _('Name') }}</th>
-            <th class="name center"> {{ _('Year') }}</th>
+            <th class="name center"> {{ _('Course') }}</th>
             <th class="name center"> {{ _('Quarter') }}</th>
             <th class="name center"> {{ _('Options') }}</th>
             </thead>
@@ -30,33 +49,24 @@
                     <td class="year center"> {{ subject.year }}</td>
                     <td class="quarter center"> {{ subject.quarter }}</td>
                     <td class="name center">
-                        <a href="/editSubject?key={{subject.key.id()}}" class="waves-effect waves-light btn-small yellow "
-                        {% if current_user.user_id() != subject.user_key.id() and user.is_admin == 0 %}
+                        <a href="/editSubject?key={{subject.key.id()}}" data-position="top" class="waves-effect tooltipped waves-light btn-small yellow "
+                        {% if not is_admin and current_user.user_id() != subject.user_key.id() %}
                             disabled
-                        {% endif %}>
+                        {% endif %} data-tooltip='{{ _('Edit') }}'>
                             <i class="material-icons">edit</i>
                         </a>
-                        <a href="/viewSubject?key={{subject.key.id()}}" class="waves-effect waves-light btn-small blue">
+                        <a href="/viewSubject?key={{subject.key.id()}}" data-position="top" class="waves-effect tooltipped waves-light btn-small blue"
+                        data-tooltip='{{ _('View') }}'>
                             <i class="material-icons ">remove_red_eye</i>
                         </a>
                         <!-- Modal Trigger -->
 
-                        <a class="waves-effect waves-light btn-small red modal-trigger" href="#delete{{subject.key.id()}}"
-                        {% if current_user.user_id() != subject.user_key.id() and user.is_admin == 0 %}
+                        <a class="waves-effect waves-light btn-small tooltipped red modal-trigger" data-position="top" href="#delete{{subject.key.id()}}"
+                        {% if current_user.user_id() != subject.user_key.id() and not is_admin %}
                             disabled
-                        {% endif %}>
+                        {% endif %} data-tooltip='{{ _('Delete') }}' >
                             <i class="material-icons ">delete</i>
                         </a>
-
-                        <a class='dropdown-button btn-small' href='#' data-target='dropdown1'><i class="material-icons">file_download</i></i>
-                        </a>
-                        <!-- Dropdown Structure -->
-                        <ul id='dropdown1' class='dropdown-content '>
-                            <li><a href="/exportSubjectCSV?key={{subject.key.id()}}"><i
-                                    class="material-icons">insert_drive_file</i>CSV</a></li>
-                            <li><a href="/exportSubjectHTML?key={{subject.key.id()}}"><i class="material-icons">insert_drive_file</i>HTML</a>
-                            </li>
-                        </ul>
                     </td>
                 </tr>
             {% endfor %}
@@ -68,6 +78,7 @@
                 <div class="modal-content">
                     <h4 class="center">{{ _('Delete Subject') }}</h4>
                     <p class="big center">{{ _('Are you sure to delete') }} : <b>{{ subject.name }}</b> ? </p>
+                    <p class="big center red-text">{{ _('All Requests of this Subject will be deleted!!') }}</p>
                 </div>
                 <div class="modal-footer">
                     <a href="#!"
@@ -116,6 +127,8 @@
     };
 
     var subjects = new List('subjects', options);
+
+    subjects.on("updated", function (){ $('.tooltipped').tooltip(); })
 </script>
 <script>
     setTimeout(function () {

@@ -2,21 +2,22 @@
 
 {% block content %}
 <div>
-    {% if subjects.count() > 0 %}
+    {% if subjects.count > 0 %}
     <form class="col s12" action="/addRequest"  onsubmit="return checkSelected()" method="post">
         <h4 class="center">{{ _('Add Request') }}</h4>
         <div class="row">
             <div class="input-field col s12">
-                <select name="subject" required>
+                <select name="subject" required class="orderer">
                     {% for subject in subjects %}
-                    <option value="{{ subject.key.id()}}">{{ subject.name }}</option>
+                        <option value="{{ subject.key.id()}}">{{ subject.name }}</option>
+
                     {% endfor %}
                 </select>
-                <label>{{ _('Subject') }}</label>
+                <label>* {{ _('Subject') }}</label>
             </div>
         </div>
         {% if softwares.count() > 0 %}
-        <label class="black-text">{{ _('Softwares') }}</label>
+        <label class="black-text">* {{ _('Softwares') }}</label>
         <div class="row">
 
             {% for software in softwares %}
@@ -57,16 +58,16 @@
                 <form class="col s12" name="form" action="/addSoftware" method="POST">
                     <div class="row">
                         <div class="input-field col s6">
-                            <input id="name" name="name" type="text" class="validate" required placeholder={{ _('Name')
+                            <input id="name" name="name" type="text" maxlength="50" class="validate" required placeholder={{ _('Name')
                             }} >
-                            <label for="name">{{ _('Name') }}</label>
+                            <label for="name">* {{ _('Name') }}</label>
                         </div>
                         <div class="input-field col s6">
                             <select name="root" required>
                                 <option value="1">{{ _('Yes') }}</option>
-                                <option value="0">{{ _('No') }}</option>
+                                <option value="0" selected>{{ _('No') }}</option>
                             </select>
-                            <label>{{ _('Needs root privileges?') }}</label>
+                            <label>* {{ _('Needs root privileges?') }}</label>
                         </div>
                     </div>
                     <div class="row">
@@ -74,7 +75,7 @@
                             <input id="url" name="url" type="text" min="1" max="4" class="validate" required
                                    placeholder={{ _('URL')
                             }} >
-                            <label for="url">{{ _('URL') }}</label>
+                            <label for="url">* {{ _('URL') }}</label>
                         </div>
                     </div>
                     <div class="row">
@@ -95,9 +96,6 @@
                 </form>
             </div>
         </div>
-
-    {% else %}
-    <h3 class="red">{{ _('Need Subjects to create a Request!') }}</h3>
     {% endif %}
 </div>
 
@@ -144,7 +142,5 @@
             return false;
         }
     }
-
-
 </script>
 {% endblock%}

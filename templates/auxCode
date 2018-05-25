@@ -1,8 +1,118 @@
-newSoft = Software.query(Software.name == name).get().key.id()
-                    software_key = ndb.Key(Software, newSoft)
+{% extends "skeleton.html" %}
 
-                    subjectKey = ndb.Key(Subject, int(request.args.get("key")))
-                    softwareToSubject = SubjectSoftware(software_key=software_key, subject_key=subjectKey)
-                    softwareToSubject.put()
-                    time.sleep(1)
-                    flash(_(_('Software added correctly ')), 'success')
+{% block content %}
+<div>
+    {% if subjects.count() > 0 %}
+    <form class="col s12" action="/addRequest"  onsubmit="return checkSelected()" method="post">
+        <h4 class="center">{{ _('Add Request') }}</h4>
+        <div class="row">
+            <div class="input-field col s12">
+                <select name="subject" required>
+                    {% for subject in subjects %}
+                    <option value="{{ subject.key.id()}}">{{ subject.name }}</option>
+                    {% endfor %}
+                </select>
+                <label>{{ _('Subject') }}</label>
+            </div>
+        </div>
+
+    </form>
+
+    <!-- Modal Structure -->
+        <div id="addSoftware" class="modal">
+            <div class="modal-content">
+                <h4 class="center">{{ _('Add Software') }}</h4>
+                <form class="col s12" name="form" action="/addSoftware" method="POST">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="name" name="name" type="text" class="validate" required placeholder={{ _('Name')
+                            }} >
+                            <label for="name">{{ _('Name') }}</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <select name="root" required>
+                                <option value="1">{{ _('Yes') }}</option>
+                                <option value="0">{{ _('No') }}</option>
+                            </select>
+                            <label>{{ _('Needs root privileges?') }}</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="url" name="url" type="text" min="1" max="4" class="validate" required
+                                   placeholder={{ _('URL')
+                            }} >
+                            <label for="url">{{ _('URL') }}</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea id="notes" name="notes" class="materialize-textarea"></textarea>
+                            <label for="notes">{{ _('Instalation notes') }}</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">
+                            {{ _('Close') }}
+                        </a>
+                        <button class="btn waves-effect waves-light green" type="submit" name="action">
+                            {{ _('Send')}}
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    {% else %}
+    <h3 class="red">{{ _('Need Subjects to create a Request!') }}</h3>
+    {% endif %}
+</div>
+
+{% endblock %}
+
+{% block notifications %}
+<script>
+    setTimeout(function () {
+        $('#Message').fadeOut('fast');
+    }, 5000);
+</script>
+<script>
+    $(document).ready(function () {
+        $('select').formSelect();
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('.fixed-action-btn').floatingActionButton();
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('.tooltipped').tooltip();
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('.modal').modal();
+    });
+    $('.modal').open
+
+</script>
+
+<script>
+    function checkSelected(){
+        var numSelecteds = 0;
+
+        $('input[type=checkbox]:checked').each(function() {
+            numSelecteds+=1;
+        });
+        if(numSelecteds == 0){
+            M.toast({html: "{{ _('Select one software at least') }}", classes: 'red' })
+            return false;
+        }
+    }
+
+
+</script>
+{% endblock%}

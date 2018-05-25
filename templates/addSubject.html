@@ -6,26 +6,26 @@
         <i class="material-icons left">arrow_back</i>
         {{ _('Subjects')}}
     </a>
-    <form class="col s12" action="/addSubject" method="post">
+    <form class="col s12" action="/addSubject" onsubmit="return checkAll()" method="post">
         <h4>{{ _('Add Subject') }}</h4>
         <div class="row">
             <div class="input-field col s6">
-                <input id="name" name="name" type="text" class="validate" placeholder={{ _('Name') }} >
-                <label for="name">{{ _('Name') }}</label>
+                <input id="name" name="name" type="text" maxlength="50" class="validate" onblur="return checkName()" placeholder={{ _('Name') }} >
+                <label for="name">* {{ _('Name') }}</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s6">
                 <input id="year" name="year" type="number" min="1" max="4" class="validate" required placeholder={{ _('Year')
                 }} >
-                <label for="year">{{ _('Year') }}</label>
+                <label for="year">* {{ _('Course') }}</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s6">
                 <input id="quarter" name="quarter" type="number" min="1" max="2" class="validate" required
-                        placeholder={{ _('Quarter') }}>
-                <label for="quarter">{{ _('Quarter') }}</label>
+                       placeholder={{ _('Quarter') }}>
+                <label for="quarter">* {{ _('Quarter') }}</label>
             </div>
         </div>
         <div class="row">
@@ -38,3 +38,27 @@
 </div>
 
 {% endblock %}
+
+{% block notifications %}
+<script>
+    setTimeout(function () {
+        $('#Message').fadeOut('fast');
+    }, 5000);
+</script>
+
+<script>
+    function checkName() {
+
+        var name = document.getElementById('name').value;
+
+        if (name.length < 4) {
+            M.toast({html: "{{ _('Name is too sort') }}", classes: 'red' })
+            return false;
+        }
+    }
+
+    function checkAll() {
+        return checkName()
+    }
+</script>
+{% endblock%}

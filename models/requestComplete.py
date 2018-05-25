@@ -21,3 +21,8 @@ class RequestComplete:
 
     def getSoftware(self):
         return self.software
+
+    def __str__(self):
+        return "Request: " + str(self.getKey()) + ", date: " + str(self.getDate()) + "\n" \
+        + "Subject: " + str(self.getSubject()) + "\n" \
+        + "Software: " + str(self.getSoftware())

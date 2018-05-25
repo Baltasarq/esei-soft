@@ -6,20 +6,20 @@
         <i class="material-icons left">arrow_back</i>
         {{ _('Softwares')}}
     </a>
-    <form class="col s12" action="/addSoftware" method="POST">
+    <form class="col s12" action="/addSoftware" onsubmit="return checkNotes() " method="POST">
         <h4 class="center">{{ _('Add Software') }}</h4>
         <div class="row">
             <div class="input-field col s6">
-                <input id="name" name="name" type="text" class="validate" required placeholder={{ _('Name')
+                <input id="name" name="name" type="text" maxlength="50" class="validate" required placeholder={{ _('Name')
                 }} >
-                <label for="name">{{ _('Name') }}</label>
+                <label for="name">* {{ _('Name') }}</label>
             </div>
             <div class="input-field col s6">
                 <select name="root" required>
                     <option value="1">{{ _('Yes') }}</option>
-                    <option value="0">{{ _('No') }}</option>
+                    <option value="0" selected>{{ _('No') }}</option>
                 </select>
-                <label>{{ _('Needs root privileges?') }}</label>
+                <label>* {{ _('Needs root privileges?') }}</label>
             </div>
         </div>
         <div class="row">
@@ -27,12 +27,12 @@
                 <input id="url" name="url" type="text" min="1" max="4" class="validate" required
                        placeholder={{ _('URL')
                 }} >
-                <label for="url">{{ _('URL') }}</label>
+                <label for="url">* {{ _('URL') }}</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <textarea id="notes" name="notes" class="materialize-textarea"></textarea>
+                <textarea id="notes" name="notes" class="materialize-textarea" oninput="checkNote() "></textarea>
                 <label for="notes">{{ _('Instalation Notes') }}</label>
             </div>
         </div>
@@ -53,4 +53,38 @@
         $('select').formSelect();
     });
 </script>
+<script>
+    function getByteCount(s) {
+        var count = 0, stringLength = s.length, i;
+        s = String(s || "");
+        for (i = 0; i < stringLength; i++) {
+            var partCount = encodeURI(s[i]).split("%").length;
+            count += partCount == 1 ? 1 : partCount - 1;
+        }
+        return count;
+    }
+</script>
+<script>
+     function checkNotes(){
+        if(getByteCount(document.getElementById("notes").value) > 1500){
+            return false;
+        }
+    }
+    var flag = 1;
+    function checkNote(){
+        if(getByteCount(document.getElementById("notes").value) > 1500) {
+            document.getElementById("notes").style.color = "#ff0000"
+            if (flag) {
+                flag = 0;
+                M.toast({html: "{{ _('Instalation Notes are too long') }}", classes: 'red'})
+            }
+        }
+        else{
+            document.getElementById("notes").style.color = "#000000";
+            flag = 1;
+        }
+    }
+</script>
+
+
 {% endblock%}

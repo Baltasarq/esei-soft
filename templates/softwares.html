@@ -7,11 +7,14 @@
         <div class="col s4">
             <input class="fuzzy-search" placeholder={{ _('Search') }} />
         </div>
-        <div class="col s3 center">
-            <button class="sort btn-small" data-sort="name">{{ _('Sort by name')}}</button>
+        <div class="col s2 right-align" style="padding-top: 1%">
+            {{ _('Sort by') }}
+        </div>
+        <div class="col s1">
+            <button class="sort btn-small" data-sort="name">{{ _('Name')}}</button>
         </div>
         <div class="col s3">
-            <button class="sort btn-small" data-sort="root">{{ _('Sort by needs_root')}}</button>
+            <button class="sort btn-small" data-sort="root">{{ _('needs_root')}}</button>
         </div>
         <table  class="highlight">
             <thead >
@@ -46,28 +49,31 @@
                             <i class="material-icons ">delete</i>
                         </a>
 
-                        <!-- Modal Structure -->
-                        <div id="delete{{software.key.id()}}" class="modal">
-                            <div class="modal-content">
-                                <h4 class="center">{{ _('Delete Software') }}</h4>
-                                <p class="big center">{{ _('Are you sure to delete') }} : <b>{{ software.name }}</b> ? </p>
-                            </div>
-                            <div class="modal-footer">
-                                <a href="#!"
-                                   class="modal-action modal-close waves-effect waves-green btn-flat">
-                                    {{ _('No') }}
-                                </a>
-                                <a href="/deleteSoftware?key={{software.key.id()}}"
-                                   class="modal-action modal-close waves-effect waves-green btn-flat">
-                                    {{ _('Yes') }}
-                                </a>
-                            </div>
-                        </div>
                     </td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
+        {% for software in softwares %}
+        <!-- Modal Structure -->
+            <div id="delete{{software.key.id()}}" class="modal">
+                <div class="modal-content">
+                    <h4 class="center">{{ _('Delete Software') }}</h4>
+                    <p class="big center">{{ _('Are you sure to delete') }} : <b>{{ software.name }}</b> ? </p>
+                    <p class="big center red-text">{{ _('All Request with this Software will be deleted!!') }}</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!"
+                       class="modal-action modal-close waves-effect waves-green btn-flat">
+                        {{ _('No') }}
+                    </a>
+                    <a href="/deleteSoftware?key={{software.key.id()}}"
+                       class="modal-action modal-close waves-effect waves-green btn-flat">
+                        {{ _('Yes') }}
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
         <p class="pagination" ></p>
         {% else %}
         <p> {{ _('Nothing to show') }}</p>
@@ -101,6 +107,8 @@
     };
 
     var softwares = new List('softwares', options);
+
+    softwares.on("updated", function (){ $('.tooltipped').tooltip(); })
 
     $('.tooltipped').tooltip();
 </script>
