@@ -6,7 +6,7 @@
     <div class="fixed-action-btn requests" >
         <a class="btn-floating btn-large tooltipped green too modal-trigger" data-position="left"
            href="/addRequest" data-tooltip='{{ _('Add Request') }}'
-        {% if is_admin %}
+        {% if not is_admin %}
             disabled
         {% endif %} >
         <i class="large material-icons">add</i>
@@ -35,14 +35,15 @@
                 <i class="material-icons">file_download</i>
             </a>
             <!-- Dropdown Structure -->
-            <ul id='dropdown1' class='dropdown-content '>
+            <ul id='dropdown1' class='dropdown-content '
+            data-tooltip='{{ _('Export to') }}'>
                 <li><a href="/exportCSV">
                     <i class="material-icons">insert_drive_file</i>CSV</a></li>
-                <li><a href="/exportHTML"><i class="material-icons">insert_drive_file</i>HTML</a>
+                <li><a href="/exportXML"><i class="material-icons">insert_drive_file</i>XML</a>
                 </li>
             </ul>
         </div>
-        {% endif %}
+    {% endif %}
     <table class="striped">
         <thead>
         <th> {{ _('Subject') }}</th>
@@ -55,14 +56,15 @@
             <td class="user"> {{ request.getUser().name}}</td>
             <td class="date"> {{ request.date }}</td>
             <td>
-                <a href="/viewRequest?key={{request.key.id()}}" class="waves-effect waves-light btn-small blue">
+                <a href="/viewRequest?key={{request.key.id()}}" class="waves-effect tooltipped waves-light btn-small
+                 blue" data-position="left" data-tooltip='{{ _('View') }}'>
                     <i class="material-icons ">remove_red_eye</i>
                 </a>
                 <!-- Modal Trigger -->
-                <a class="waves-effect waves-light btn-small red modal-trigger" href="#delete{{request.key.id()}}"
+                <a class="waves-effect waves-light tooltipped btn-small red modal-trigger" href="#delete{{request.key.id()}}"
                 {% if current_user.user_id() != request.getUser().user_key and not is_admin  %}
                     disabled
-                {% endif %}>
+                {% endif %} data-position="right" data-tooltip='{{ _('Delete') }}'>
                     <i class="material-icons ">delete</i>
                 </a>
             </td>

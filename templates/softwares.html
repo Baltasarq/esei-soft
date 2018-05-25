@@ -41,11 +41,13 @@
                         </a>
                     </td>
                     <td class="center">
-                        <a href="/viewSoftware?key={{software.key.id()}}" class="waves-effect waves-light btn-small blue">
+                        <a href="/viewSoftware?key={{software.key.id()}}" class="waves-effect tooltipped waves-light
+                        btn-small blue" data-position="left" data-tooltip='{{ _('View') }}'>
                             <i class="material-icons ">remove_red_eye</i>
                         </a>
                         <!-- Modal Trigger -->
-                        <a class="waves-effect waves-light btn-small red modal-trigger" href="#delete{{software.key.id()}}">
+                        <a class="waves-effect waves-light tooltipped btn-small red modal-trigger"
+                           href="#delete{{software.key.id()}}" data-position="right" data-tooltip='{{ _('Delete') }}'>
                             <i class="material-icons ">delete</i>
                         </a>
 

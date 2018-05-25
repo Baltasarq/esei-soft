@@ -7,12 +7,6 @@ class User(ndb.Model):
     is_admin = ndb.IntegerProperty(required=True)
 
 
-class Teacher(ndb.Model):
-    name = ndb.StringProperty(required=True)
-    surname = ndb.StringProperty(required=True)
-    user_key = ndb.KeyProperty(kind=User)
-
-
 class Subject(ndb.Model):
     name = ndb.StringProperty(required=True)
     year = ndb.IntegerProperty(required=True)

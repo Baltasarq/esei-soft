@@ -20,21 +20,6 @@
         <div class="col s2">
             <button class="sort btn-small" data-sort="quarter">{{ _('Quarter')}}</button>
         </div>
-        {% if not is_admin %}
-        <div class="col s1">
-            <a class='dropdown-button btn-small' href='#' data-target='dropdown1'>
-                <i class="material-icons">file_download</i>
-            </a>
-            <!-- Dropdown Structure -->
-            <ul id='dropdown1' class='dropdown-content '
-            data-tooltip='{{ _('Export to') }}'>
-                <li><a href="/exportCSV">
-                    <i class="material-icons">insert_drive_file</i>CSV</a></li>
-                <li><a href="/exportXML"><i class="material-icons">insert_drive_file</i>XML</a>
-                </li>
-            </ul>
-        </div>
-        {% endif %}
         <table  class="highlight">
             <thead>
             <th class="name center"> {{ _('Name') }}</th>

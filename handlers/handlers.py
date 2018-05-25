@@ -6,12 +6,10 @@ from flask import render_template, flash, redirect, request, Response
 from flask_babel import _
 import flask
 import datetime
-from google.appengine.ext import ndb, cloudstorage
+from google.appengine.ext import ndb
 from main import app
-from models.ndbModels import Request, Software, Subject, User, Teacher, Request_Software
+from models.ndbModels import Request, Software, Subject, User, Request_Software
 from models.requestComplete import RequestComplete
-
-from google.appengine.api import app_identity
 
 @app.route('/')
 @app.route('/index')
@@ -19,7 +17,6 @@ def login():
     user = users.get_current_user()
     if user:
         try:
-
             usersDb = User.query(User.user_key == user.user_id())
             if usersDb.count() == 0:
                 # Store new User
@@ -60,24 +57,25 @@ def addSubject():
     user = users.get_current_user()
     if user:
         if flask.request.method == 'POST':
-            name = flask.request.form.get("name")
-            year = int(flask.request.form.get("year"))
-            quarter = int(flask.request.form.get("quarter"))
+            try:
+                name = flask.request.form.get("name").encode("utf8")
+                year = int(flask.request.form.get("year"))
+                quarter = int(flask.request.form.get("quarter"))
 
-            subject = Subject.query(Subject.name == name, Subject.year == year, Subject.quarter == quarter)
-            if subject.count() == 0:
-                try:
-                    subject = Subject(name=name, year=year, quarter=quarter, user_key=ndb.Key(User, user.user_id()))
-                    subject.put()
-                    time.sleep(1)
-                    flash(_('Subject added correctly'), 'success')
-                    return redirect("/subjects")
-                except Exception as e:
-                    print(e.message)
-            else:
-                flash(_(_('Subject already exists ')), 'error')
-                return render_template("addSubject.html", current_user=user, user_logout=users.create_logout_url("/"),
-                                       name=name, year=year, quarter=quarter)
+                subject = Subject.query(Subject.name == name, Subject.year == year, Subject.quarter == quarter)
+                if subject.count() == 0:
+
+                        subject = Subject(name=name, year=year, quarter=quarter, user_key=ndb.Key(User, user.user_id()))
+                        subject.put()
+                        time.sleep(1)
+                        flash(_('Subject added correctly'), 'success')
+                        return redirect("/subjects")
+                else:
+                    flash(_(_('Subject already exists ')), 'error')
+                    return render_template("addSubject.html", current_user=user, user_logout=users.create_logout_url("/"),
+                                           name=name, year=year, quarter=quarter)
+            except Exception as e:
+                print(e.message)
         else:
             return render_template("addSubject.html", current_user=user, user_logout=users.create_logout_url("/"))
     else:
@@ -90,7 +88,7 @@ def editSubject():
         user = users.get_current_user()
         if user:
             if flask.request.method == 'POST':
-                name = flask.request.form.get("name")
+                name = flask.request.form.get("name").encode("utf-8")
                 year = int(flask.request.form.get("year"))
                 quarter = int(flask.request.form.get("quarter"))
 
@@ -188,12 +186,10 @@ def addSoftware():
         user = users.get_current_user()
         if user:
             if flask.request.method == 'POST':
-                name = flask.request.form.get("name")
-                url = flask.request.form.get("url")
+                name = flask.request.form.get("name").encode("utf-8")
+                url = flask.request.form.get("url").encode("utf-8")
                 root = int(flask.request.form.get("root"))
-                notes = flask.request.form.get("notes")
-
-                print(len(notes))
+                notes = flask.request.form.get("notes").encode("utf-8")
 
                 try:
                     softwares = Software.query(Software.name == name)
@@ -294,7 +290,6 @@ def exportCSV():
         try:
             dateTime = datetime.datetime.today()
             date = str(dateTime).split(' ')[0]
-
             fileName = date.split('-')[2] + date.split('-')[1] + date.split('-')[0]
 
             requestToShow = []
@@ -322,9 +317,9 @@ def exportCSV():
                 softs = rc.getSoftware()
                 for s in softs:
                     contentToAppend = str(rc.getKey().id()) + "," + str.split(str(rc.getDate()), ".")[0] + ","\
-                        + str(u.user_key + "," + str(u.name)) + ","\
-                        + str(sub.key.id()) + "," + str(sub.name) + "," + str(sub.year) + "," + str(sub.quarter) + ","\
-                        + str(s.key.id()) + "," + str(s.name) + "\n"
+                        + str(u.user_key) + "," + u.name.encode("utf-8") + ","\
+                        + str(sub.key.id()) + "," + sub.name.encode("utf-8") + "," + str(sub.year) + "," + str(sub.quarter) + ","\
+                        + str(s.key.id()) + "," + s.name.encode("utf-8") + "\n"
                 csv_content += contentToAppend
 
             generator = (cell for row in csv_content
@@ -346,7 +341,6 @@ def exportXML():
         try:
             dateTime = datetime.datetime.today()
             date = str(dateTime).split(' ')[0]
-
             fileName = date.split('-')[2] + date.split('-')[1] + date.split('-')[0]
 
             requestToShow = []
@@ -371,21 +365,28 @@ def exportXML():
                 softs = rc.getSoftware()
 
                 contentToAppend = \
-                    "<request> <key>"+ str(rc.getKey().id()) + "</key>" \
+                    "<request><key>" + str(rc.getKey().id()) + "</key>" \
                     "<date>" + str.split(str(rc.getDate()), ".")[0] + "</date>"\
-                    "<user><key>" + str(u.user_key + "</key><name>" + str(u.name)) + "</name></user>"\
+                    "<user><key>" + str(u.user_key) + "</key><name>" + u.name.encode("utf-8") + "</name></user>"\
                     "<subject>" \
                         "<key>" + str(sub.key.id()) + "</key>" \
-                        "<name>" + str(sub.name) + "</name>" \
+                        "<name>" + sub.name.encode("utf-8") + "</name>" \
                         "<course>" + str(sub.year) + "</course>" \
                         "<quarter>" + str(sub.quarter) + "</quarter></subject>"\
                         "<softwares>"
                 for s in softs:
-                    contentToAppend += "<software><key>" + str(s.key.id()) + "</key><name>" + str(s.name) + "</name></software>"
+                    contentToAppend += "<software>" \
+                                       "<key>" + str(s.key.id()) + "</key>" \
+                                       "<name>" + s.name.encode("utf-8") + "</name>" \
+                                       "<needs_root>"
+                    if s.needs_root == 0:
+                        contentToAppend += "No"
+                    else:
+                        contentToAppend += "Yes"
+                    contentToAppend += "</needs_root></software>"
 
                 contentToAppend += "</softwares></request>"
 
-                print(xml_content)
                 xml_content += contentToAppend
 
             xml_content += "</requests>"
@@ -424,7 +425,7 @@ def showRequests():
 
             u = User.query(User.user_key == user.user_id()).get()
             return render_template("requests.html", current_user=user, user=u, requests=requestToShow,
-                                   user_logout=users.create_logout_url("/"))
+                                   user_logout=users.create_logout_url("/"), is_admin=users.is_current_user_admin())
         except Exception as e:
             print(e.message)
     else:
@@ -469,9 +470,10 @@ def addRequest():
                 u = User.query(User.user_key == user.user_id()).get()
                 subjects = Subject.query().order(Subject.name)
                 softwares = Software.query().order(Software.name)
-                subjects.count
+                print(subjects.count())
                 return render_template("addRequest.html", user=u, current_user=user, softwares=softwares,
                                        subjects=subjects, user_logout=users.create_logout_url("/"))
+
             except Exception as e:
                 print(e.message)
     else:

@@ -22,7 +22,6 @@
         <br>
         {{ _('Welcome ') +" "+ current_user.nickname().partition("@")[0] + '!!!' }}
     </p>
-    <p> {{ is_admin }}</p>
     <p>
         <br>
         {{ _('Choose an option ') }}
@@ -44,3 +43,13 @@
     {% endif %}
 </div>
 {% endblock %}
+
+{% block notifications %}
+
+<script>
+    $(document).ready(function () {
+        $('.tooltipped').tooltip();
+    });
+</script>
+
+{% endblock%}
