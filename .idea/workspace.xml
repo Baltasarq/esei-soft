@@ -5,12 +5,17 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eseiforms.datastore" beforeDir="false" afterPath="$PROJECT_DIR$/eseiforms.datastore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handlers/handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/handlers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ndbModels.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/ndbModels.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messages.pot" beforeDir="false" afterPath="$PROJECT_DIR$/messages.pot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/addSubject.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/addSubject.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/editSubject.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/editSubject.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/requests.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/requests.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/skeleton.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/skeleton.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/softwares.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/softwares.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/subjects.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/subjects.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/translations/en/LC_MESSAGES/messages.mo" beforeDir="false" afterPath="$PROJECT_DIR$/translations/en/LC_MESSAGES/messages.mo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/translations/en/LC_MESSAGES/messages.po" beforeDir="false" afterPath="$PROJECT_DIR$/translations/en/LC_MESSAGES/messages.po" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.mo" beforeDir="false" afterPath="$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.mo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.po" beforeDir="false" afterPath="$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.po" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.mo" beforeDir="false" afterPath="$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.mo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.po" beforeDir="false" afterPath="$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.po" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -24,50 +29,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="handlers.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/handlers/handlers.py">
+      <file leaf-file-name="messages.po" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.po">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="321" column="50" selection-start-line="321" selection-start-column="50" selection-end-line="321" selection-end-column="50" />
-              <folding>
-                <element signature="e#1#39#0" expanded="true" />
-                <element signature="e#9714#10914#0" />
-                <element signature="e#13171#15963#0" />
-                <element signature="e#15629#16664#0" />
-                <element signature="e#16740#18651#0" />
-                <element signature="e#18729#19656#0" />
-                <element signature="e#19712#20151#0" />
-              </folding>
+            <state relative-caret-position="140">
+              <caret line="300" column="17" selection-start-line="300" selection-start-column="17" selection-end-line="300" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="addRequest.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/addRequest.html">
+      <file leaf-file-name="editSubject.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/editSubject.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="553">
-              <caret line="42" column="43" lean-forward="true" selection-start-line="42" selection-start-column="43" selection-end-line="42" selection-end-column="43" />
+            <state relative-caret-position="288">
+              <caret line="28" column="46" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="requests.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/requests.html">
+      <file leaf-file-name="addSubject.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/addSubject.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="66" column="48" selection-start-line="66" selection-start-column="48" selection-end-line="66" selection-end-column="48" />
-              <folding>
-                <element signature="n#style#0;n#div#2;n#div#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="324">
+              <caret line="18" column="125" selection-start-line="18" selection-start-column="125" selection-end-line="18" selection-end-column="125" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="softwares.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="softwares.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/softwares.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="93" selection-start-line="93" selection-end-line="136" selection-end-column="13" />
+            <state relative-caret-position="216">
+              <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -75,11 +68,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="skeleton.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/skeleton.html">
+      <file leaf-file-name="messages.po" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.po">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="33" column="52" selection-start-line="33" selection-start-column="52" selection-end-line="33" selection-end-column="52" />
+            <state relative-caret-position="158">
+              <caret line="296" column="8" selection-start-line="296" selection-start-column="8" selection-end-line="296" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -87,7 +80,7 @@
       <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/login.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
+            <state relative-caret-position="632">
               <caret line="46" column="25" selection-start-line="46" selection-start-column="25" selection-end-line="46" selection-end-column="25" />
             </state>
           </provider>
@@ -105,14 +98,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Subject</find>
-      <find>Instalation</find>
-      <find>User.que</find>
-      <find>User.query</find>
-      <find>User.use</find>
-      <find>User.q</find>
-      <find>User.key</find>
-      <find>User.user</find>
       <find>You needs Software created by you to make a Request</find>
       <find>addRequest.html:32</find>
       <find>user</find>
@@ -135,6 +120,14 @@
       <find>!is_admin</find>
       <find>subject</find>
       <find>add</find>
+      <find>print(</find>
+      <find>D</find>
+      <find>Log</find>
+      <find>You do</find>
+      <find>Sel</find>
+      <find>Choo</find>
+      <find>need</find>
+      <find>Necesita</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -159,11 +152,9 @@
         <option value="$PROJECT_DIR$/handlers/handlerMain.py" />
         <option value="$PROJECT_DIR$/translations/en/LC_MESSAGES/messages.po" />
         <option value="$PROJECT_DIR$/babel.cfg" />
-        <option value="$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.po" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/templates/addSoftwaretoSubject.html" />
         <option value="$PROJECT_DIR$/static/css/materialize.min.css" />
-        <option value="$PROJECT_DIR$/templates/editSubject.html" />
         <option value="$PROJECT_DIR$/templates/softwares" />
         <option value="$PROJECT_DIR$/static/css/style.css" />
         <option value="$PROJECT_DIR$/templates/editSoftware.html" />
@@ -174,17 +165,19 @@
         <option value="$PROJECT_DIR$/templates/viewSubject.html" />
         <option value="$PROJECT_DIR$/static/css/materialize.css" />
         <option value="$PROJECT_DIR$/templates/addSoftware.html" />
-        <option value="$PROJECT_DIR$/templates/addSubject.html" />
-        <option value="$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.po" />
         <option value="$PROJECT_DIR$/models/requestComplete.py" />
         <option value="$PROJECT_DIR$/models/ndbModels.py" />
         <option value="$PROJECT_DIR$/templates/subjects.html" />
         <option value="$PROJECT_DIR$/templates/addRequest.html" />
         <option value="$PROJECT_DIR$/templates/skeleton.html" />
-        <option value="$PROJECT_DIR$/templates/softwares.html" />
-        <option value="$PROJECT_DIR$/templates/requests.html" />
         <option value="$PROJECT_DIR$/templates/login.html" />
+        <option value="$PROJECT_DIR$/templates/requests.html" />
         <option value="$PROJECT_DIR$/handlers/handlers.py" />
+        <option value="$PROJECT_DIR$/templates/addSubject.html" />
+        <option value="$PROJECT_DIR$/templates/editSubject.html" />
+        <option value="$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.po" />
+        <option value="$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.po" />
+        <option value="$PROJECT_DIR$/templates/softwares.html" />
       </list>
     </option>
   </component>
@@ -222,6 +215,37 @@
               <item name="Root" type="cbb8eebc:String" user="Root" />
               <item name="TFG" type="cbb8eebc:String" user="TFG" />
               <item name="templates" type="cbb8eebc:String" user="templates" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="TFG" type="cbb8eebc:String" user="TFG" />
+              <item name="translations" type="cbb8eebc:String" user="translations" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="TFG" type="cbb8eebc:String" user="TFG" />
+              <item name="translations" type="cbb8eebc:String" user="translations" />
+              <item name="es" type="cbb8eebc:String" user="es" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="TFG" type="cbb8eebc:String" user="TFG" />
+              <item name="translations" type="cbb8eebc:String" user="translations" />
+              <item name="es" type="cbb8eebc:String" user="es" />
+              <item name="LC_MESSAGES" type="cbb8eebc:String" user="LC_MESSAGES" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="TFG" type="cbb8eebc:String" user="TFG" />
+              <item name="translations" type="cbb8eebc:String" user="translations" />
+              <item name="gl" type="cbb8eebc:String" user="gl" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="TFG" type="cbb8eebc:String" user="TFG" />
+              <item name="translations" type="cbb8eebc:String" user="translations" />
+              <item name="gl" type="cbb8eebc:String" user="gl" />
+              <item name="LC_MESSAGES" type="cbb8eebc:String" user="LC_MESSAGES" />
             </path>
           </expand>
           <select />
@@ -345,6 +369,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="46" y="-11" width="1321" height="780" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5019157" side_tool="true" weight="0.41361257" />
@@ -353,7 +378,7 @@
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32984293" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49808428" weight="0.55299056" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32984293" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17360565" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1759623" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="right" id="SciView" order="3" weight="0.3299293" />
@@ -372,24 +397,24 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.10919089" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49808428" weight="0.55299056" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32528856" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32984293" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3993994" />
       <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32984293" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5019157" side_tool="true" weight="0.41361257" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" weight="0.3299293" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32528856" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32984293" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info id="Favorites" order="2" side_tool="true" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -400,17 +425,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="26" />
+      <option name="time" value="30" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/index.html" />
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -556,13 +574,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/editSubject.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/addSoftwaretoSubject.html" />
     <entry file="file://$PROJECT_DIR$/templates/index.html" />
     <entry file="file://$PROJECT_DIR$/static/css/style.css">
@@ -573,13 +584,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/editSoftware.html" />
-    <entry file="file://$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.po">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4030">
-          <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/viewSoftware.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
@@ -630,20 +634,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/addSubject.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="972">
-          <caret line="54" column="45" selection-start-line="54" selection-start-column="45" selection-end-line="54" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.po">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5418">
-          <caret line="301" column="44" selection-start-line="301" selection-start-column="44" selection-end-line="301" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/ndbModels.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -662,65 +652,99 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="36" column="122" selection-start-line="36" selection-start-column="112" selection-end-line="36" selection-end-column="122" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/skeleton.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="33" column="52" selection-start-line="33" selection-start-column="52" selection-end-line="33" selection-end-column="52" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/addRequest.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="553">
-          <caret line="42" column="43" lean-forward="true" selection-start-line="42" selection-start-column="43" selection-end-line="42" selection-end-column="43" />
+        <state relative-caret-position="-144">
+          <caret line="42" column="43" selection-start-line="42" selection-start-column="43" selection-end-line="42" selection-end-column="43" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/requests.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="66" column="48" selection-start-line="66" selection-start-column="48" selection-end-line="66" selection-end-column="48" />
+        <state relative-caret-position="198">
+          <caret line="64" column="22" selection-start-line="64" selection-start-column="22" selection-end-line="64" selection-end-column="22" />
           <folding>
             <element signature="n#style#0;n#div#2;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/skeleton.html">
+    <entry file="file://$PROJECT_DIR$/handlers/handlers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="33" column="52" selection-start-line="33" selection-start-column="52" selection-end-line="33" selection-end-column="52" />
+        <state relative-caret-position="359">
+          <caret line="483" column="32" selection-start-line="483" selection-start-column="32" selection-end-line="483" selection-end-column="32" />
+          <folding>
+            <element signature="e#1#39#0" expanded="true" />
+            <element signature="e#422#1295#0" />
+            <element signature="e#1346#1842#0" />
+            <element signature="e#1918#3222#0" />
+            <element signature="e#3300#5422#0" />
+            <element signature="e#5475#6555#0" />
+            <element signature="e#8763#9151#0" />
+            <element signature="e#9206#9673#0" />
+            <element signature="e#9732#10932#0" />
+            <element signature="e#10981#13124#0" />
+            <element signature="e#13172#15964#0" />
+            <element signature="e#16040#17115#0" />
+            <element signature="e#19190#20117#0" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/softwares.html">
+    <entry file="file://$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.mo">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/addSubject.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="93" selection-start-line="93" selection-end-line="136" selection-end-column="13" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="324">
+          <caret line="18" column="125" selection-start-line="18" selection-start-column="125" selection-end-line="18" selection-end-column="125" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/editSubject.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="28" column="46" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
+        <state relative-caret-position="632">
           <caret line="46" column="25" selection-start-line="46" selection-start-column="25" selection-end-line="46" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/handlers/handlers.py">
+    <entry file="file://$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.po">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="321" column="50" selection-start-line="321" selection-start-column="50" selection-end-line="321" selection-end-column="50" />
+        <state relative-caret-position="158">
+          <caret line="296" column="8" selection-start-line="296" selection-start-column="8" selection-end-line="296" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.po">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="300" column="17" selection-start-line="300" selection-start-column="17" selection-end-line="300" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/softwares.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
           <folding>
-            <element signature="e#1#39#0" expanded="true" />
-            <element signature="e#9714#10914#0" />
-            <element signature="e#13171#15963#0" />
-            <element signature="e#15629#16664#0" />
-            <element signature="e#16740#18651#0" />
-            <element signature="e#18729#19656#0" />
-            <element signature="e#19712#20151#0" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

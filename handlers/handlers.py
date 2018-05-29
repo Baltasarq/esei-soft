@@ -168,6 +168,9 @@ def deleteSubject():
             subject = Subject.query(Subject.key == subjectKey).get()
             requests = Request.query(Request.subject_key == subjectKey)
             for r in requests:
+                sofsRequests = Request_Software.query(Request_Software.request_key == r.key)
+                for s in sofsRequests:
+                    s.key.delete()
                 r.key.delete()
                 time.sleep(0.5)
             subject.key.delete()
@@ -271,7 +274,7 @@ def deleteSoftware():
                 if req.request_key not in requestsInDB:
                     requestToDelete = Request.query(Request.key == req.request_key).get()
                     requestToDelete.key.delete()
-                    time.sleep(1)
+                    time.sleep(0.5)
 
             software.key.delete()
             time.sleep(1)
@@ -436,46 +439,49 @@ def showRequests():
 def addRequest():
     user = users.get_current_user()
     if user:
-        if flask.request.method == 'POST':
-            subject_key = ndb.Key(Subject, int(flask.request.form.get("subject")))
+        if users.is_current_user_admin():
+            if flask.request.method == 'POST':
+                subject_key = ndb.Key(Subject, int(flask.request.form.get("subject")))
 
-            try:
-                request = Request()
-                user_key = ndb.Key(User, user.user_id())
-                request.user_key = user_key
-                request.subject_key = subject_key
-                date = datetime.datetime.today()
-                request.date = date
-                request.put()
-                time.sleep(1)
-
-                currentRequest = Request.query(Request.user_key == user_key, Request.date == date,
-                                               Request.subject_key == subject_key).get()
-
-                softwares = flask.request.form.getlist("softwares")
-                #Add all software to the Request
-                for software in softwares:
-                    requestSoftwares = Request_Software()
-                    requestSoftwares.request_key = currentRequest.key
-                    requestSoftwares.software_key = ndb.Key(Software, int(software))
-                    requestSoftwares.put()
+                try:
+                    request = Request()
+                    user_key = ndb.Key(User, user.user_id())
+                    request.user_key = user_key
+                    request.subject_key = subject_key
+                    date = datetime.datetime.today()
+                    request.date = date
+                    request.put()
                     time.sleep(1)
 
-                flash(_('Request added correctly'), 'success')
-                return redirect("/requests")
-            except Exception as e:
-                print(e.message)
-        else:
-            try:
-                u = User.query(User.user_key == user.user_id()).get()
-                subjects = Subject.query().order(Subject.name)
-                softwares = Software.query().order(Software.name)
-                print(subjects.count())
-                return render_template("addRequest.html", user=u, current_user=user, softwares=softwares,
-                                       subjects=subjects, user_logout=users.create_logout_url("/"))
+                    currentRequest = Request.query(Request.user_key == user_key, Request.date == date,
+                                                   Request.subject_key == subject_key).get()
 
-            except Exception as e:
-                print(e.message)
+                    softwares = flask.request.form.getlist("softwares")
+                    #Add all software to the Request
+                    for software in softwares:
+                        requestSoftwares = Request_Software()
+                        requestSoftwares.request_key = currentRequest.key
+                        requestSoftwares.software_key = ndb.Key(Software, int(software))
+                        requestSoftwares.put()
+                        time.sleep(1)
+
+                    flash(_('Request added correctly'), 'success')
+                    return redirect("/requests")
+                except Exception as e:
+                    print(e.message)
+            else:
+                try:
+                    u = User.query(User.user_key == user.user_id()).get()
+                    subjects = Subject.query().order(Subject.name)
+                    softwares = Software.query().order(Software.name)
+                    return render_template("addRequest.html", user=u, current_user=user, softwares=softwares,
+                                           subjects=subjects, user_logout=users.create_logout_url("/"))
+
+                except Exception as e:
+                    print(e.message)
+        else:
+            flash(_('You dont have permission for this action'), 'error')
+            return redirect("/")
     else:
         return redirect("/")
 
@@ -515,6 +521,11 @@ def deleteRequest():
             req = Request.query(Request.key == ndb.Key(Request, rKey)).get()
             req.key.delete()
             time.sleep(1)
+            sofsRequests = Request_Software.query(Request_Software.request_key == ndb.Key(Request,rKey))
+            for s in sofsRequests:
+                print(s.key)
+                s.key.delete()
+                time.sleep(0.5)
             flash(_('Software deleted correctly'), 'success')
             return redirect('/requests')
         except Exception as e:

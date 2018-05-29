@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-05-22 18:31+0200\n"
+"POT-Creation-Date: 2018-05-29 16:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,47 +32,51 @@ msgstr ""
 msgid "Unable to connect to qpid with SASL mechanism %s"
 msgstr ""
 
-#: handlers/handlers.py:72
+#: handlers/handlers.py:71
 msgid "Subject added correctly"
 msgstr ""
 
-#: handlers/handlers.py:77 handlers/handlers.py:112
+#: handlers/handlers.py:74 handlers/handlers.py:111
 msgid "Subject already exists "
 msgstr ""
 
-#: handlers/handlers.py:108
+#: handlers/handlers.py:107
 msgid "Subject edited correctly"
 msgstr ""
 
-#: handlers/handlers.py:114
+#: handlers/handlers.py:113
 msgid "Subject name cant be blank "
 msgstr ""
 
-#: handlers/handlers.py:172 handlers/handlers.py:304
+#: handlers/handlers.py:178
 msgid "Subject deleted correctly"
 msgstr ""
 
-#: handlers/handlers.py:199
+#: handlers/handlers.py:203
 msgid "Software added correctly"
 msgstr ""
 
-#: handlers/handlers.py:201
+#: handlers/handlers.py:205
 msgid "Software already exists"
 msgstr ""
 
-#: handlers/handlers.py:277 handlers/handlers.py:423
+#: handlers/handlers.py:281 handlers/handlers.py:529
 msgid "Software deleted correctly"
 msgstr ""
 
-#: handlers/handlers.py:370
+#: handlers/handlers.py:468
 msgid "Request added correctly"
+msgstr ""
+
+#: handlers/handlers.py:483
+msgid "You dont have permission for this action"
 msgstr ""
 
 #: templates/addRequest.html:7 templates/requests.html:8
 msgid "Add Request"
 msgstr ""
 
-#: templates/addRequest.html:16 templates/requests.html:34
+#: templates/addRequest.html:16 templates/requests.html:49
 #: templates/viewRequest.html:18
 msgid "Subject"
 msgstr ""
@@ -88,7 +92,7 @@ msgid "You needs Software created by you to make a Request"
 msgstr ""
 
 #: templates/addRequest.html:38 templates/addRequest.html:57
-#: templates/addSoftware.html:10 templates/softwares.html:84
+#: templates/addSoftware.html:10 templates/softwares.html:86
 msgid "Add Software"
 msgstr ""
 
@@ -110,16 +114,16 @@ msgid "Name"
 msgstr ""
 
 #: templates/addRequest.html:67 templates/addSoftware.html:19
-#: templates/requests.html:73 templates/softwares.html:32
-#: templates/softwares.html:72 templates/subjects.html:84
+#: templates/requests.html:89 templates/softwares.html:32
+#: templates/softwares.html:74 templates/subjects.html:75
 #: templates/viewRequest.html:44 templates/viewSoftware.html:26
 #: templates/viewSubject.html:50
 msgid "Yes"
 msgstr ""
 
 #: templates/addRequest.html:68 templates/addSoftware.html:20
-#: templates/requests.html:69 templates/softwares.html:34
-#: templates/softwares.html:68 templates/subjects.html:80
+#: templates/requests.html:85 templates/softwares.html:34
+#: templates/softwares.html:70 templates/subjects.html:71
 #: templates/viewRequest.html:46 templates/viewSoftware.html:28
 #: templates/viewSubject.html:52
 msgid "No"
@@ -162,17 +166,14 @@ msgstr ""
 msgid "Subjects"
 msgstr ""
 
-#: templates/addSubject.html:10 templates/subjects.html:98
+#: templates/addSubject.html:10 templates/subjects.html:89
 msgid "Add Subject"
 msgstr ""
 
-#: templates/addSubject.html:19 templates/editSubject.html:27
-#: templates/editSubject.html:29
-msgid "Year"
-msgstr ""
-
-#: templates/addSubject.html:21 templates/subjects.html:18
-#: templates/subjects.html:26 templates/viewSubject.html:19
+#: templates/addSubject.html:19 templates/addSubject.html:21
+#: templates/editSubject.html:27 templates/editSubject.html:29
+#: templates/subjects.html:18 templates/subjects.html:26
+#: templates/viewSubject.html:19
 msgid "Course"
 msgstr ""
 
@@ -246,24 +247,38 @@ msgstr ""
 msgid "subject"
 msgstr ""
 
-#: templates/requests.html:35
+#: templates/requests.html:39
+msgid "Export to"
+msgstr ""
+
+#: templates/requests.html:50
 msgid "User"
 msgstr ""
 
-#: templates/requests.html:36 templates/viewRequest.html:19
+#: templates/requests.html:51 templates/viewRequest.html:19
 msgid "Date"
 msgstr ""
 
-#: templates/requests.html:62
+#: templates/requests.html:60 templates/softwares.html:45
+#: templates/subjects.html:44
+msgid "View"
+msgstr ""
+
+#: templates/requests.html:67 templates/softwares.html:50
+#: templates/subjects.html:52
+msgid "Delete"
+msgstr ""
+
+#: templates/requests.html:78
 msgid "Delete Request"
 msgstr ""
 
-#: templates/requests.html:63
+#: templates/requests.html:79
 msgid "Are you sure to delete this Request?"
 msgstr ""
 
-#: templates/requests.html:79 templates/softwares.html:79
-#: templates/subjects.html:93 templates/viewRequest.html:57
+#: templates/requests.html:95 templates/softwares.html:81
+#: templates/subjects.html:84 templates/viewRequest.html:57
 #: templates/viewSubject.html:63
 msgid "Nothing to show"
 msgstr ""
@@ -272,7 +287,7 @@ msgstr ""
 msgid "Index"
 msgstr ""
 
-#: templates/skeleton.html:44
+#: templates/skeleton.html:34 templates/skeleton.html:45
 msgid "Log Out"
 msgstr ""
 
@@ -288,23 +303,27 @@ msgstr ""
 msgid "Options"
 msgstr ""
 
-#: templates/softwares.html:61
+#: templates/softwares.html:63
 msgid "Delete Software"
 msgstr ""
 
-#: templates/softwares.html:62 templates/subjects.html:74
+#: templates/softwares.html:64 templates/subjects.html:65
 msgid "Are you sure to delete"
 msgstr ""
 
-#: templates/softwares.html:63
+#: templates/softwares.html:65
 msgid "All Request with this Software will be deleted!!"
 msgstr ""
 
-#: templates/subjects.html:73
+#: templates/subjects.html:40
+msgid "Edit"
+msgstr ""
+
+#: templates/subjects.html:64
 msgid "Delete Subject"
 msgstr ""
 
-#: templates/subjects.html:75
+#: templates/subjects.html:66
 msgid "All Requests of this Subject will be deleted!!"
 msgstr ""
 

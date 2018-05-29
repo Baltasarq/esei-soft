@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-05-22 18:31+0200\n"
+"POT-Creation-Date: 2018-05-29 16:20+0200\n"
 "PO-Revision-Date: 2018-04-20 20:02+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
@@ -33,50 +33,54 @@ msgstr ""
 msgid "Unable to connect to qpid with SASL mechanism %s"
 msgstr ""
 
-#: handlers/handlers.py:72
+#: handlers/handlers.py:71
 msgid "Subject added correctly"
-msgstr ""
+msgstr "Asignatura añadida correctamente"
 
-#: handlers/handlers.py:77 handlers/handlers.py:112
+#: handlers/handlers.py:74 handlers/handlers.py:111
 msgid "Subject already exists "
-msgstr ""
+msgstr "Asignatura ya existente"
 
-#: handlers/handlers.py:108
+#: handlers/handlers.py:107
 msgid "Subject edited correctly"
-msgstr ""
+msgstr "Asignatura editada correctamente"
 
-#: handlers/handlers.py:114
+#: handlers/handlers.py:113
 msgid "Subject name cant be blank "
-msgstr ""
+msgstr "El nombre de la Asignatura no ser vacío"
 
-#: handlers/handlers.py:172 handlers/handlers.py:304
+#: handlers/handlers.py:178
 msgid "Subject deleted correctly"
-msgstr ""
+msgstr "Asignatura borrada correctamente"
 
-#: handlers/handlers.py:199
+#: handlers/handlers.py:203
 msgid "Software added correctly"
-msgstr ""
+msgstr "Software añadido correctamente"
 
-#: handlers/handlers.py:201
+#: handlers/handlers.py:205
 msgid "Software already exists"
-msgstr ""
+msgstr "Software ya existente"
 
-#: handlers/handlers.py:277 handlers/handlers.py:423
+#: handlers/handlers.py:281 handlers/handlers.py:529
 msgid "Software deleted correctly"
-msgstr ""
+msgstr "Software borrada correctamente"
 
-#: handlers/handlers.py:370
+#: handlers/handlers.py:468
 msgid "Request added correctly"
-msgstr ""
+msgstr "Petición añadida correctamente"
+
+#: handlers/handlers.py:483
+msgid "You dont have permission for this action"
+msgstr "No tienes permisos para esta acción"
 
 #: templates/addRequest.html:7 templates/requests.html:8
 msgid "Add Request"
-msgstr ""
+msgstr "Añadir Peticion"
 
-#: templates/addRequest.html:16 templates/requests.html:34
+#: templates/addRequest.html:16 templates/requests.html:49
 #: templates/viewRequest.html:18
 msgid "Subject"
-msgstr ""
+msgstr "Asignatura"
 
 #: templates/addRequest.html:20 templates/addSoftware.html:7
 #: templates/softwares.html:4 templates/viewRequest.html:30
@@ -86,18 +90,18 @@ msgstr ""
 
 #: templates/addRequest.html:33
 msgid "You needs Software created by you to make a Request"
-msgstr ""
+msgstr "Necesitas Software para realizar una Petición"
 
 #: templates/addRequest.html:38 templates/addRequest.html:57
-#: templates/addSoftware.html:10 templates/softwares.html:84
+#: templates/addSoftware.html:10 templates/softwares.html:86
 msgid "Add Software"
-msgstr ""
+msgstr "Añadir Software"
 
 #: templates/addRequest.html:48 templates/addRequest.html:92
 #: templates/addSoftware.html:41 templates/addSubject.html:33
 #: templates/editSubject.html:45
 msgid "Send"
-msgstr ""
+msgstr "Enviar"
 
 #: templates/addRequest.html:61 templates/addRequest.html:63
 #: templates/addSoftware.html:13 templates/addSoftware.html:15
@@ -108,19 +112,19 @@ msgstr ""
 #: templates/viewRequest.html:35 templates/viewSoftware.html:18
 #: templates/viewSubject.html:18 templates/viewSubject.html:41
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #: templates/addRequest.html:67 templates/addSoftware.html:19
-#: templates/requests.html:73 templates/softwares.html:32
-#: templates/softwares.html:72 templates/subjects.html:84
+#: templates/requests.html:89 templates/softwares.html:32
+#: templates/softwares.html:74 templates/subjects.html:75
 #: templates/viewRequest.html:44 templates/viewSoftware.html:26
 #: templates/viewSubject.html:50
 msgid "Yes"
-msgstr ""
+msgstr "Si"
 
 #: templates/addRequest.html:68 templates/addSoftware.html:20
-#: templates/requests.html:69 templates/softwares.html:34
-#: templates/softwares.html:68 templates/subjects.html:80
+#: templates/requests.html:85 templates/softwares.html:34
+#: templates/softwares.html:70 templates/subjects.html:71
 #: templates/viewRequest.html:46 templates/viewSoftware.html:28
 #: templates/viewSubject.html:52
 msgid "No"
@@ -128,7 +132,7 @@ msgstr ""
 
 #: templates/addRequest.html:70 templates/addSoftware.html:22
 msgid "Needs root privileges?"
-msgstr ""
+msgstr "¿Necesita  Superusuario?"
 
 #: templates/addRequest.html:76 templates/addRequest.html:78
 #: templates/addSoftware.html:28 templates/addSoftware.html:30
@@ -139,23 +143,23 @@ msgstr ""
 
 #: templates/addRequest.html:84
 msgid "Instalation notes"
-msgstr ""
+msgstr "Notas de Instalación"
 
 #: templates/addRequest.html:89
 msgid "Close"
-msgstr ""
+msgstr "Cerrar"
 
 #: templates/addRequest.html:141
 msgid "Select one software at least"
-msgstr ""
+msgstr "Seleccione un software por lo menos"
 
 #: templates/addSoftware.html:36 templates/viewSoftware.html:36
 msgid "Instalation Notes"
-msgstr ""
+msgstr "Notas de Instalación"
 
 #: templates/addSoftware.html:79
 msgid "Instalation Notes are too long"
-msgstr ""
+msgstr "Las Notas de Instalación son muy largas"
 
 #: templates/addSubject.html:7 templates/editSubject.html:7
 #: templates/login.html:32 templates/subjects.html:4
@@ -163,38 +167,35 @@ msgstr ""
 msgid "Subjects"
 msgstr "Asignaturas"
 
-#: templates/addSubject.html:10 templates/subjects.html:98
+#: templates/addSubject.html:10 templates/subjects.html:89
 msgid "Add Subject"
-msgstr ""
+msgstr "Añadir Asignatura"
 
-#: templates/addSubject.html:19 templates/editSubject.html:27
-#: templates/editSubject.html:29
-msgid "Year"
-msgstr ""
-
-#: templates/addSubject.html:21 templates/subjects.html:18
-#: templates/subjects.html:26 templates/viewSubject.html:19
+#: templates/addSubject.html:19 templates/addSubject.html:21
+#: templates/editSubject.html:27 templates/editSubject.html:29
+#: templates/subjects.html:18 templates/subjects.html:26
+#: templates/viewSubject.html:19
 msgid "Course"
-msgstr ""
+msgstr "Curso"
 
 #: templates/addSubject.html:27 templates/addSubject.html:28
 #: templates/editSubject.html:39 templates/editSubject.html:40
 #: templates/subjects.html:21 templates/subjects.html:27
 #: templates/viewSubject.html:20
 msgid "Quarter"
-msgstr ""
+msgstr "Cuatrimestre"
 
 #: templates/addSubject.html:55
 msgid "Name is too sort"
-msgstr ""
+msgstr "El nombre es muy corto"
 
 #: templates/editSubject.html:10
 msgid "Edit Subject"
-msgstr ""
+msgstr "Editar Asignatura"
 
 #: templates/login.html:5
 msgid "Welcome to ESEIForms"
-msgstr ""
+msgstr "Bienvenido a ESEIForms"
 
 #: templates/login.html:6
 msgid "A new software to manage software needs"
@@ -206,7 +207,7 @@ msgstr "Para acceder al contenido necesitas logearte"
 
 #: templates/login.html:16
 msgid "Log In"
-msgstr ""
+msgstr "Iniciar Sesión"
 
 #: templates/login.html:23
 msgid "Welcome "
@@ -214,7 +215,7 @@ msgstr "Benvenido"
 
 #: templates/login.html:27
 msgid "Choose an option "
-msgstr "Escoje unha opcion"
+msgstr "Escoje una opcion"
 
 #: templates/login.html:36
 msgid "Software"
@@ -228,111 +229,129 @@ msgstr "Peticiones"
 #: templates/requests.html:17 templates/softwares.html:8
 #: templates/subjects.html:8
 msgid "Search"
-msgstr ""
+msgstr "Buscar"
 
 #: templates/requests.html:20 templates/softwares.html:11
 #: templates/subjects.html:11
 msgid "Sort by"
-msgstr ""
+msgstr "Ordenar por"
 
 #: templates/requests.html:24
 msgid "date"
-msgstr ""
+msgstr "Fecha"
 
 #: templates/requests.html:27
 msgid "user"
-msgstr ""
+msgstr "Usuario"
 
 #: templates/requests.html:30
 msgid "subject"
-msgstr ""
+msgstr "Asignatura"
 
-#: templates/requests.html:35
+#: templates/requests.html:39
+msgid "Export to"
+msgstr "Exportar a"
+
+#: templates/requests.html:50
 msgid "User"
-msgstr ""
+msgstr "Usuario"
 
-#: templates/requests.html:36 templates/viewRequest.html:19
+#: templates/requests.html:51 templates/viewRequest.html:19
 msgid "Date"
-msgstr ""
+msgstr "Fecha"
 
-#: templates/requests.html:62
+#: templates/requests.html:60 templates/softwares.html:45
+#: templates/subjects.html:44
+msgid "View"
+msgstr "Ver"
+
+#: templates/requests.html:67 templates/softwares.html:50
+#: templates/subjects.html:52
+msgid "Delete"
+msgstr "Borrar"
+
+#: templates/requests.html:78
 msgid "Delete Request"
-msgstr ""
+msgstr "Borrar Petición"
 
-#: templates/requests.html:63
+#: templates/requests.html:79
 msgid "Are you sure to delete this Request?"
-msgstr ""
+msgstr "¿Estás seguro de borrar esta Petición?"
 
-#: templates/requests.html:79 templates/softwares.html:79
-#: templates/subjects.html:93 templates/viewRequest.html:57
+#: templates/requests.html:95 templates/softwares.html:81
+#: templates/subjects.html:84 templates/viewRequest.html:57
 #: templates/viewSubject.html:63
 msgid "Nothing to show"
-msgstr ""
+msgstr "Nada que mostrar"
 
 #: templates/skeleton.html:25
 msgid "Index"
-msgstr ""
+msgstr "Inicio"
 
-#: templates/skeleton.html:44
+#: templates/skeleton.html:34 templates/skeleton.html:45
 msgid "Log Out"
 msgstr "Desconectarse "
 
 #: templates/softwares.html:17
 msgid "needs_root"
-msgstr ""
+msgstr "Necesita SuperUsuario"
 
 #: templates/softwares.html:22
 msgid "Needs_Root"
-msgstr ""
+msgstr "Necesita SuperUsuario"
 
 #: templates/softwares.html:24 templates/subjects.html:28
 msgid "Options"
-msgstr ""
+msgstr "Opciones"
 
-#: templates/softwares.html:61
+#: templates/softwares.html:63
 msgid "Delete Software"
 msgstr ""
 
-#: templates/softwares.html:62 templates/subjects.html:74
+#: templates/softwares.html:64 templates/subjects.html:65
 msgid "Are you sure to delete"
-msgstr ""
+msgstr "¿Esta seguro de borrar"
 
-#: templates/softwares.html:63
+#: templates/softwares.html:65
 msgid "All Request with this Software will be deleted!!"
-msgstr ""
+msgstr "¡¡Todas las Peticiones con este Software serán borradas!!"
 
-#: templates/subjects.html:73
+#: templates/subjects.html:40
+msgid "Edit"
+msgstr "Editar"
+
+#: templates/subjects.html:64
 msgid "Delete Subject"
-msgstr ""
+msgstr "Borrar Asignatura"
 
-#: templates/subjects.html:75
+#: templates/subjects.html:66
 msgid "All Requests of this Subject will be deleted!!"
-msgstr ""
+msgstr "¡¡Todas las Peticiones de esta Asignatura serán borradas"
 
 #: templates/viewRequest.html:12
 msgid "View Request"
-msgstr ""
+msgstr "Ver Petición"
 
 #: templates/viewRequest.html:20 templates/viewSubject.html:21
 msgid "Created by"
-msgstr ""
+msgstr "Creada por"
 
 #: templates/viewRequest.html:37 templates/viewSoftware.html:19
 #: templates/viewSubject.html:43
 msgid "Needs Root Permisions"
-msgstr ""
+msgstr "Necesita SuperUsuario"
 
 #: templates/viewSoftware.html:12
 msgid "View Software"
-msgstr ""
+msgstr "Ver Software"
 
 #: templates/viewSoftware.html:40
 msgid "There arent intalation notes"
-msgstr ""
+msgstr "No hay Notas de Instalación"
 
 #: templates/viewSubject.html:12
 msgid "View Subject"
-msgstr ""
+msgstr "Ver Asigantura"
 
 #~ msgid " Add Software"
 #~ msgstr ""
@@ -372,4 +391,7 @@ msgstr ""
 
 #~ msgid "Need Subjects to create a Request!"
 #~ msgstr ""
+
+#~ msgid "Year"
+#~ msgstr "Año"
 
