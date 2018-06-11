@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-    <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
         <title>
@@ -16,14 +15,18 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="../static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link href="../static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link rel="shortcut icon" href="../static/fonts/favicon.ico" sizes="32x32">
     </head>
     <body>
         <nav class="light-blue lighten-1" role="navigation">
             <div class="nav-wrapper container">
-                <a href="/" class="brand-logo hoverable ">
-
-                    {{ _('Index')}}
-                </a>
+                <ul class="hide-on-med-and-down">
+                    <li><img style="padding-top: 5%;" src="../static/fonts/eseiforms.png" width="60px" height="60px"></li>
+                    <li><a href="/">{{ _('Index') }}</a></li>
+                    <li><a href="/subjects">{{ _('Subjects') }}</a></li>
+                    <li><a href="/softwares">{{ _('Softwares') }}</a></li>
+                    <li><a href="/requests">{{ _('Requests') }}</a></li>
+                </ul>
                 <ul class="right hide-on-med-and-down">
                     {% if user_logout %}
                     <li>
@@ -39,11 +42,12 @@
                 </ul>
 
                 <ul id="nav-mobile" class="sidenav">
+                    <li><a href="/">{{ _('Index') }}</a></li>
+                    <li><a href="/subjects">{{ _('Subjects') }}</a></li>
+                    <li><a href="/softwares">{{ _('Softwares') }}</a></li>
+                    <li><a href="/requests">{{ _('Requests') }}</a></li>
                     {% if user_logout %}
-                    <li>
-                        <a href="{{user_logout}}" class="red">
-                            {{ _('Log Out') }}
-                        </a>
+                    <li><a href="{{user_logout}}" class="red">{{ _('Log Out') }}</a>
                     </li>
                     {% endif %}
                 </ul>

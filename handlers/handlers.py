@@ -58,7 +58,7 @@ def addSubject():
     if user:
         if flask.request.method == 'POST':
             try:
-                name = flask.request.form.get("name").encode("utf8")
+                name = flask.request.form.get("name")
                 year = int(flask.request.form.get("year"))
                 quarter = int(flask.request.form.get("quarter"))
 
