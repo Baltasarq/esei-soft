@@ -1,4 +1,12 @@
 from google.appengine.ext import ndb
+from google.appengine.ext.ndb import msgprop
+from protorpc import messages
+
+
+class System(messages.Enum):
+    LINUX = 1
+    WINDOWS = 2
+    BOTH = 3
 
 
 class User(ndb.Model):
@@ -25,6 +33,7 @@ class Request(ndb.Model):
     date = ndb.DateTimeProperty(required=True)
     user_key = ndb.KeyProperty(kind=User)
     subject_key = ndb.KeyProperty(kind=Subject)
+    system = msgprop.EnumProperty(System, required=True)
 
 
 class Request_Software(ndb.Model):

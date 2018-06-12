@@ -8,7 +8,7 @@ import flask
 import datetime
 from google.appengine.ext import ndb
 from main import app
-from models.ndbModels import Request, Software, Subject, User, Request_Software
+from models.ndbModels import Request, Software, Subject, User, Request_Software, System
 from models.requestComplete import RequestComplete
 
 @app.route('/')
@@ -424,7 +424,7 @@ def showRequests():
                 for soft in requestSofts:
                     softwares.append(Software.query(Software.key == soft.software_key).get())
 
-                requestToShow.append(RequestComplete(request.key, u, s, softwares, request.date))
+                requestToShow.append(RequestComplete(request.key, u, s, softwares, request.system, request.date, ))
 
             u = User.query(User.user_key == user.user_id()).get()
             return render_template("requests.html", current_user=user, user=u, requests=requestToShow,
@@ -439,7 +439,7 @@ def showRequests():
 def addRequest():
     user = users.get_current_user()
     if user:
-        if users.is_current_user_admin():
+         if users.is_current_user_admin():
             if flask.request.method == 'POST':
                 subject_key = ndb.Key(Subject, int(flask.request.form.get("subject")))
 
@@ -450,6 +450,19 @@ def addRequest():
                     request.subject_key = subject_key
                     date = datetime.datetime.today()
                     request.date = date
+
+                    systems = flask.request.form.getlist("systems")
+
+                    print(systems[0])
+                    if len(systems) > 1:
+                        request.system = System.BOTH
+                    elif int(systems[0]) == 1:
+                        request.system = System.LINUX
+                        print(System.LINUX)
+                    else:
+                        print(System.WINDOWS)
+                        request.system = System.WINDOWS
+
                     request.put()
                     time.sleep(1)
 
@@ -479,7 +492,7 @@ def addRequest():
 
                 except Exception as e:
                     print(e.message)
-        else:
+         else:
             flash(_('You dont have permission for this action'), 'error')
             return redirect("/")
     else:
@@ -503,7 +516,7 @@ def viewRequest():
             for soft in requestSofts:
                 softwares.append(Software.query(Software.key == soft.software_key).get())
 
-            requestToShow = RequestComplete(req.key, u, s, softwares, req.date)
+            requestToShow = RequestComplete(req.key, u, s, softwares, req.system, req.date, )
 
             return render_template("viewRequest.html", current_user=user, request=requestToShow,
                                    user_logout=users.create_logout_url("/"))

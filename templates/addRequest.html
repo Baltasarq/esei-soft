@@ -32,7 +32,21 @@
         {% else %}
         <p class="red">{{ _('You needs Software created by you to make a Request') }}</p>
         {% endif %}
-
+        <label class="black-text">* {{ _('Operative System') }}</label>
+        <div class="row">
+            <div class="col s4">
+                <label>
+                    <input name="systems" type="checkbox" value="1"/>
+                    <span>LINUX</span>
+                </label>
+            </div>
+            <div class="col s4">
+                <label>
+                    <input name="systems" type="checkbox" value="2"/>
+                    <span>WINDOWS</span>
+                </label>
+            </div>
+        </div>
         <div class="fixed-action-btn">
             <a class="btn-floating btn-large tooltipped green too modal-trigger" data-position="left"
                href="#addSoftware" data-tooltip='{{ _('Add Software') }}'>
@@ -134,11 +148,19 @@
     function checkSelected(){
         var numSelecteds = 0;
 
-        $('input[type=checkbox]:checked').each(function() {
+        $('input[name=softwares]:checked').each(function() {
             numSelecteds+=1;
         });
         if(numSelecteds == 0){
             M.toast({html: "{{ _('Select one software at least') }}", classes: 'red' })
+            return false;
+        }
+        var numSelecteds = 0;
+        $('input[name=systems]:checked').each(function() {
+            numSelecteds+=1;
+        });
+        if(numSelecteds == 0){
+            M.toast({html: "{{ _('Select one system at least') }}", classes: 'red' })
             return false;
         }
     }
