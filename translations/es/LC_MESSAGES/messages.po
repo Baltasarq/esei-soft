@@ -91,6 +91,10 @@ msgstr ""
 msgid "You needs Software created by you to make a Request"
 msgstr "Necesitas Software para realizar una Petición"
 
+#: templates/addRequest.html:144
+msgid "You needs Subjects created to make a Request"
+msgstr "Necesitas tener alguna Asignatura creada para hacer una Peticion"
+
 #: templates/addRequest.html:38 templates/addRequest.html:57
 #: templates/addSoftware.html:10 templates/softwares.html:86
 msgid "Add Software"
@@ -307,6 +311,10 @@ msgstr "Necesita SuperUsuario"
 #: templates/softwares.html:24 templates/subjects.html:28
 msgid "Options"
 msgstr "Opciones"
+
+#: templates/addRequest.html:163
+msgid "Select one operative system at least"
+msgstr "Selecione un Sistema Operativo por lo menos"
 
 #: templates/softwares.html:63
 msgid "Delete Software"

@@ -2,9 +2,10 @@
 
 {% block content %}
 <div>
-    {% if subjects.count > 0 %}
+
     <form class="col s12" action="/addRequest"  onsubmit="return checkSelected()" method="post">
         <h4 class="center">{{ _('Add Request') }}</h4>
+        {% if subjects.count() > 0 %}
         <div class="row">
             <div class="input-field col s12">
                 <select name="subject" required class="orderer">
@@ -30,7 +31,7 @@
             {% endfor %}
         </div>
         {% else %}
-        <p class="red">{{ _('You needs Software created by you to make a Request') }}</p>
+        <p class="red">{{ _('You needs Software created to make a Request') }}</p>
         {% endif %}
         <label class="black-text">* {{ _('Operative System') }}</label>
         <div class="row">
@@ -64,6 +65,7 @@
             </button>
         </div>
     </form>
+
 
     <!-- Modal Structure -->
         <div id="addSoftware" class="modal">
@@ -110,7 +112,10 @@
                 </form>
             </div>
         </div>
+    {% else %}
+    <p class="red">{{ _('You needs Subjects created to make a Request') }}</p>
     {% endif %}
+
 </div>
 
 {% endblock %}
@@ -160,7 +165,7 @@
             numSelecteds+=1;
         });
         if(numSelecteds == 0){
-            M.toast({html: "{{ _('Select one system at least') }}", classes: 'red' })
+            M.toast({html: "{{ _('Select one operative system at least') }}", classes: 'red' })
             return false;
         }
     }

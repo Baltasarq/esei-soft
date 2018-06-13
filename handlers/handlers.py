@@ -307,22 +307,29 @@ def exportCSV():
                 for soft in requestSofts:
                     softwares.append(Software.query(Software.key == soft.software_key).get())
 
-                requestToShow.append(RequestComplete(request.key, u, s, softwares, request.date))
+                requestToShow.append(RequestComplete(request.key, u, s, softwares, request.system, request.date))
 
-            csv_content = "Request_key, Request_date, " \
-                          "User_key, User_name, " \
-                          "Subject_key, Subject_name, Subject_course, Subject_quarter, " \
-                          "Software_key, Software_name\n"
+            csv_content = "Request_date, Operative System, " \
+                          "User_name, " \
+                          "Subject_name, Subject_course, Subject_quarter, " \
+                          "Software_name\n"
 
             for rc in requestToShow:
                 u = rc.getUser()
                 sub = rc.getSubject()
                 softs = rc.getSoftware()
+                if rc.getSystem() == System.LINUX:
+                    system = 'Linux'
+                elif rc.getSystem() == System.WINDOWS:
+                    system = 'Windows'
+                else:
+                    system = 'Linux and Windows'
+
                 for s in softs:
-                    contentToAppend = str(rc.getKey().id()) + "," + str.split(str(rc.getDate()), ".")[0] + ","\
-                        + str(u.user_key) + "," + u.name.encode("utf-8") + ","\
-                        + str(sub.key.id()) + "," + sub.name.encode("utf-8") + "," + str(sub.year) + "," + str(sub.quarter) + ","\
-                        + str(s.key.id()) + "," + s.name.encode("utf-8") + "\n"
+                    contentToAppend = str.split(str(rc.getDate()), ".")[0] + "," + system + "," \
+                        + u.name.encode("utf-8") + ","\
+                        + sub.name.encode("utf-8") + "," + str(sub.year) + "," + str(sub.quarter) + ","\
+                        + s.name.encode("utf-8") + "\n"
                 csv_content += contentToAppend
 
             generator = (cell for row in csv_content
@@ -358,7 +365,7 @@ def exportXML():
                 for soft in requestSofts:
                     softwares.append(Software.query(Software.key == soft.software_key).get())
 
-                requestToShow.append(RequestComplete(request.key, u, s, softwares, request.date))
+                requestToShow.append(RequestComplete(request.key, u, s, softwares, request.system, request.date))
 
             xml_content = "<requests>"
 
@@ -366,10 +373,17 @@ def exportXML():
                 u = rc.getUser()
                 sub = rc.getSubject()
                 softs = rc.getSoftware()
+                if rc.getSystem() == System.LINUX:
+                    system = 'Linux'
+                elif rc.getSystem() == System.WINDOWS:
+                    system = 'Windows'
+                else:
+                    system = 'Linux and Windows'
 
                 contentToAppend = \
-                    "<request><key>" + str(rc.getKey().id()) + "</key>" \
+                    "<request>" \
                     "<date>" + str.split(str(rc.getDate()), ".")[0] + "</date>"\
+                    "<system>" + system + "</system>"\
                     "<user><key>" + str(u.user_key) + "</key><name>" + u.name.encode("utf-8") + "</name></user>"\
                     "<subject>" \
                         "<key>" + str(sub.key.id()) + "</key>" \

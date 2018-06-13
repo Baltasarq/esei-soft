@@ -89,8 +89,12 @@ msgid "Softwares"
 msgstr "Software"
 
 #: templates/addRequest.html:33
-msgid "You needs Software created by you to make a Request"
-msgstr "Precisas ter algunha Asignatura creada por ti para facer unha Peticion"
+msgid "You needs Software created to make a Request"
+msgstr "Precisas ter algun Software creado para facer unha Peticion"
+
+#: templates/addRequest.html:144
+msgid "You needs Subjects created to make a Request"
+msgstr "Precisas ter algunha Asignatura creada para facer unha Peticion"
 
 #: templates/addRequest.html:38 templates/addRequest.html:57
 #: templates/addSoftware.html:10 templates/softwares.html:86
@@ -317,9 +321,13 @@ msgstr "Borrar Software"
 msgid "Are you sure to delete"
 msgstr "Esta seguro de borrar"
 
+#: templates/addRequest.html:163
+msgid "Select one operative system at least"
+msgstr "Selecione un Sistema Operativo polo menos"
+
 #: templates/softwares.html:65
 msgid "All Request with this Software will be deleted!!"
-msgstr "Todas as Peticións con este Software serán borrados!!"
+msgstr "Todas as Peticións con este Software serán borradas!!"
 
 #: templates/subjects.html:40
 msgid "Edit"
@@ -331,7 +339,7 @@ msgstr "Borrar Asignatura"
 
 #: templates/subjects.html:66
 msgid "All Requests of this Subject will be deleted!!"
-msgstr "Todas as Peticións desta Asignatura serán borrados!!"
+msgstr "Todas as Peticións desta Asignatura serán borradas!!"
 
 #: templates/viewRequest.html:12
 msgid "View Request"
