@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="65f2b376-1b26-4725-9461-81d91f4597c3" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eseiforms.datastore" beforeDir="false" afterPath="$PROJECT_DIR$/eseiforms.datastore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/handlers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/addRequest.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/addRequest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/softwares.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/softwares.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.mo" beforeDir="false" afterPath="$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.mo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.po" beforeDir="false" afterPath="$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.po" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.mo" beforeDir="false" afterPath="$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.mo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.po" beforeDir="false" afterPath="$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.po" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/skeleton.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/skeleton.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -37,7 +29,7 @@
       <file leaf-file-name="softwares.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/softwares.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
+            <state relative-caret-position="945">
               <caret line="63" column="111" selection-start-line="63" selection-start-column="111" selection-end-line="63" selection-end-column="111" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
@@ -46,11 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="skeleton.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="skeleton.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/skeleton.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="26" column="59" selection-start-line="26" selection-start-column="59" selection-end-line="26" selection-end-column="59" />
+            <state relative-caret-position="105">
+              <caret line="25" column="2" lean-forward="true" selection-start-line="25" selection-start-column="2" selection-end-line="25" selection-end-column="2" />
               <folding>
                 <element signature="n#style#0;n#img#0;n#li#0;n#ul#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -67,10 +59,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="handlers.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="handlers.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/handlers/handlers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
+            <state relative-caret-position="285">
               <caret line="325" column="48" selection-start-line="325" selection-start-column="48" selection-end-line="325" selection-end-column="48" />
               <folding>
                 <element signature="e#1#39#0" expanded="true" />
@@ -83,7 +75,7 @@
         <entry file="file://$PROJECT_DIR$/models/requestComplete.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="390">
-              <caret line="26" column="26" lean-forward="true" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
+              <caret line="26" column="26" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -91,7 +83,7 @@
       <file leaf-file-name="ndbModels.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/ndbModels.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
+            <state relative-caret-position="60">
               <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
@@ -103,7 +95,7 @@
       <file leaf-file-name="messages.po" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.po">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
+            <state relative-caret-position="1410">
               <caret line="94" selection-start-line="94" selection-end-line="96" selection-end-column="72" />
             </state>
           </provider>
@@ -112,7 +104,7 @@
       <file leaf-file-name="messages.po" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.po">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
+            <state relative-caret-position="1410">
               <caret line="94" column="7" selection-start-line="94" selection-start-column="7" selection-end-line="94" selection-end-column="51" />
             </state>
           </provider>
@@ -121,7 +113,7 @@
       <file leaf-file-name="addRequest.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/addRequest.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="720">
+            <state relative-caret-position="990">
               <caret line="66" column="11" selection-start-line="66" selection-start-column="11" selection-end-line="66" selection-end-column="11" />
             </state>
           </provider>
@@ -212,13 +204,13 @@
         <option value="$PROJECT_DIR$/models/ndbModels.py" />
         <option value="$PROJECT_DIR$/models/requestComplete.py" />
         <option value="$PROJECT_DIR$/templates/viewRequest.html" />
-        <option value="$PROJECT_DIR$/templates/skeleton.html" />
         <option value="$PROJECT_DIR$/templates/addSoftware.html" />
         <option value="$PROJECT_DIR$/templates/softwares.html" />
         <option value="$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.po" />
         <option value="$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.po" />
         <option value="$PROJECT_DIR$/templates/addRequest.html" />
         <option value="$PROJECT_DIR$/handlers/handlers.py" />
+        <option value="$PROJECT_DIR$/templates/skeleton.html" />
       </list>
     </option>
   </component>
@@ -304,7 +296,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="47" y="-4" width="1873" height="1084" extended-state="6" />
+    <frame x="46" y="-11" width="1321" height="780" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -330,27 +322,27 @@
       <window_info anchor="bottom" id="Find" order="1" weight="0.32528856" />
     </layout>
     <layout-to-restore>
-      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49808428" weight="0.5522541" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17512013" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49808428" weight="0.5522541" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32528856" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32984293" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3993994" />
       <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32984293" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5019157" side_tool="true" weight="0.41361257" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" weight="0.3299293" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32528856" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32984293" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info id="Favorites" order="2" side_tool="true" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -608,16 +600,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/skeleton.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="59" selection-start-line="26" selection-start-column="59" selection-end-line="26" selection-end-column="59" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#li#0;n#ul#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/addSoftware.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -627,7 +609,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/softwares.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
+        <state relative-caret-position="945">
           <caret line="63" column="111" selection-start-line="63" selection-start-column="111" selection-end-line="63" selection-end-column="111" />
           <folding>
             <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
@@ -637,28 +619,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.po">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
+        <state relative-caret-position="1410">
           <caret line="94" selection-start-line="94" selection-end-line="96" selection-end-column="72" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.po">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
+        <state relative-caret-position="1410">
           <caret line="94" column="7" selection-start-line="94" selection-start-column="7" selection-end-line="94" selection-end-column="51" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/addRequest.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
+        <state relative-caret-position="990">
           <caret line="66" column="11" selection-start-line="66" selection-start-column="11" selection-end-line="66" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/ndbModels.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
+        <state relative-caret-position="60">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
@@ -669,16 +651,26 @@
     <entry file="file://$PROJECT_DIR$/models/requestComplete.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
-          <caret line="26" column="26" lean-forward="true" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
+          <caret line="26" column="26" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/handlers/handlers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
+        <state relative-caret-position="285">
           <caret line="325" column="48" selection-start-line="325" selection-start-column="48" selection-end-line="325" selection-end-column="48" />
           <folding>
             <element signature="e#1#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/skeleton.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="25" column="2" lean-forward="true" selection-start-line="25" selection-start-column="2" selection-end-line="25" selection-end-column="2" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#li#0;n#ul#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
