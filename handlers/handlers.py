@@ -58,7 +58,7 @@ def addSubject():
     if user:
         if flask.request.method == 'POST':
             try:
-                name = flask.request.form.get("name")
+                name = flask.request.form.get("name").strip()
                 year = int(flask.request.form.get("year"))
                 quarter = int(flask.request.form.get("quarter"))
 
@@ -88,7 +88,7 @@ def editSubject():
         user = users.get_current_user()
         if user:
             if flask.request.method == 'POST':
-                name = flask.request.form.get("name").encode("utf-8")
+                name = flask.request.form.get("name").strip()
                 year = int(flask.request.form.get("year"))
                 quarter = int(flask.request.form.get("quarter"))
 
@@ -189,8 +189,8 @@ def addSoftware():
         user = users.get_current_user()
         if user:
             if flask.request.method == 'POST':
-                name = flask.request.form.get("name").encode("utf-8")
-                url = flask.request.form.get("url").encode("utf-8")
+                name = flask.request.form.get("name").strip()
+                url = flask.request.form.get("url").strip()
                 root = int(flask.request.form.get("root"))
                 notes = flask.request.form.get("notes").encode("utf-8")
 
