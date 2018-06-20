@@ -289,7 +289,7 @@ msgstr "Nada que mostrar"
 
 #: templates/addRequest.html:35
 #: templates/viewRequest.html:21
-msgid "Operative System"
+msgid "Operating System"
 msgstr "Sistema Operativo"
 
 #: templates/skeleton.html:25

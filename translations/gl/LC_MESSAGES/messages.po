@@ -159,7 +159,7 @@ msgstr "Escolla un software polo menos"
 
 #: templates/addRequest.html:35
 #: templates/viewRequest.html:21
-msgid "Operative System"
+msgid "Operating System"
 msgstr "Sistema Operativo"
 
 #: templates/addSoftware.html:36 templates/viewSoftware.html:36
