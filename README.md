@@ -8,4 +8,5 @@ This is a Google App Engine project. The most comfortable way to modify it is to
 Go visit [EseiForms](http://eseiforms2018.appspot.com/)
 
 *Copyright (c) 2018 Iván Guardado Porto*
+
 *Copyright (c) 2019 Baltasar García Perez-Schofield*
