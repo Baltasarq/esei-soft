@@ -453,62 +453,58 @@ def showRequests():
 def addRequest():
     user = users.get_current_user()
     if user:
-         if users.is_current_user_admin():
-            if flask.request.method == 'POST':
-                subject_key = ndb.Key(Subject, int(flask.request.form.get("subject")))
+        if flask.request.method == 'POST':
+            subject_key = ndb.Key(Subject, int(flask.request.form.get("subject")))
 
-                try:
-                    request = Request()
-                    user_key = ndb.Key(User, user.user_id())
-                    request.user_key = user_key
-                    request.subject_key = subject_key
-                    date = datetime.datetime.today()
-                    request.date = date
+            try:
+                request = Request()
+                user_key = ndb.Key(User, user.user_id())
+                request.user_key = user_key
+                request.subject_key = subject_key
+                date = datetime.datetime.today()
+                request.date = date
 
-                    systems = flask.request.form.getlist("systems")
+                systems = flask.request.form.getlist("systems")
 
-                    print(systems[0])
-                    if len(systems) > 1:
-                        request.system = System.BOTH
-                    elif int(systems[0]) == 1:
-                        request.system = System.LINUX
-                        print(System.LINUX)
-                    else:
-                        print(System.WINDOWS)
-                        request.system = System.WINDOWS
+                print(systems[0])
+                if len(systems) > 1:
+                    request.system = System.BOTH
+                elif int(systems[0]) == 1:
+                    request.system = System.LINUX
+                    print(System.LINUX)
+                else:
+                    print(System.WINDOWS)
+                    request.system = System.WINDOWS
 
-                    request.put()
+                request.put()
+                time.sleep(1)
+
+                currentRequest = Request.query(Request.user_key == user_key, Request.date == date,
+                                               Request.subject_key == subject_key).get()
+
+                softwares = flask.request.form.getlist("softwares")
+                #Add all software to the Request
+                for software in softwares:
+                    requestSoftwares = Request_Software()
+                    requestSoftwares.request_key = currentRequest.key
+                    requestSoftwares.software_key = ndb.Key(Software, int(software))
+                    requestSoftwares.put()
                     time.sleep(1)
 
-                    currentRequest = Request.query(Request.user_key == user_key, Request.date == date,
-                                                   Request.subject_key == subject_key).get()
+                flash(_('Request added correctly'), 'success')
+                return redirect("/requests")
+            except Exception as e:
+                print(e.message)
+        else:
+            try:
+                u = User.query(User.user_key == user.user_id()).get()
+                subjects = Subject.query().order(Subject.name)
+                softwares = Software.query().order(Software.name)
+                return render_template("addRequest.html", user=u, current_user=user, softwares=softwares,
+                                       subjects=subjects, user_logout=users.create_logout_url("/"))
 
-                    softwares = flask.request.form.getlist("softwares")
-                    #Add all software to the Request
-                    for software in softwares:
-                        requestSoftwares = Request_Software()
-                        requestSoftwares.request_key = currentRequest.key
-                        requestSoftwares.software_key = ndb.Key(Software, int(software))
-                        requestSoftwares.put()
-                        time.sleep(1)
-
-                    flash(_('Request added correctly'), 'success')
-                    return redirect("/requests")
-                except Exception as e:
-                    print(e.message)
-            else:
-                try:
-                    u = User.query(User.user_key == user.user_id()).get()
-                    subjects = Subject.query().order(Subject.name)
-                    softwares = Software.query().order(Software.name)
-                    return render_template("addRequest.html", user=u, current_user=user, softwares=softwares,
-                                           subjects=subjects, user_logout=users.create_logout_url("/"))
-
-                except Exception as e:
-                    print(e.message)
-         else:
-            flash(_('You dont have permission for this action'), 'error')
-            return redirect("/")
+            except Exception as e:
+                print(e.message)
     else:
         return redirect("/")
 
