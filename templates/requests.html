@@ -5,10 +5,7 @@
     <h3 class="center">{{ _('Requests') }}</h3>
     <div class="fixed-action-btn requests" >
         <a class="btn-floating btn-large tooltipped green too modal-trigger" data-position="left"
-           href="/addRequest" data-tooltip='{{ _('Add Request') }}'
-        {% if not is_admin %}
-            disabled
-        {% endif %} >
+           href="/addRequest" data-tooltip='{{ _('Add Request') }}'>
         <i class="large material-icons">add</i>
         </a>
     </div>
