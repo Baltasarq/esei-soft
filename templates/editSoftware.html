@@ -6,17 +6,19 @@
         <i class="material-icons left">arrow_back</i>
         {{ _('Software')}}
     </a>
-    <form class="col s12" action="/addSoftware" onsubmit="return checkNotes() " method="POST">
-        <h4 class="center">{{ _('Add Software') }}</h4>
+    <form class="col s12" action="/editSoftware?key={{ app.key.id() }}" onsubmit="return checkNotes() " method="POST">
+        <h4 class="center">{{ _('Edit Software') }}</h4>
         <div class="row">
             <div class="input-field col s6">
-                <input id="name" name="name" type="text" maxlength="50" class="validate" required placeholder="{{ _('Name') }}" >
+                <input id="name" name="name" type="text" maxlength="50" class="validate"
+                       required placeholder="{{ _('Name') }}"
+                       value="{{ app.name }}" >
                 <label for="name">* {{ _('Name') }}</label>
             </div>
             <div class="input-field col s6">
                 <select name="root" required>
-                    <option value="True">{{ _('Yes') }}</option>
-                    <option value="False" selected>{{ _('No') }}</option>
+                    <option value="True" {% if app.needs_root %} selected {% endif %}>{{ _('Yes') }}</option>
+                    <option value="False" {% if not app.needs_root %} selected {% endif %}>{{ _('No') }}</option>
                 </select>
                 <label>* {{ _('Needs root privileges?') }}</label>
             </div>
@@ -24,14 +26,14 @@
         <div class="row">
             <div class="input-field col s6">
                 <input id="url" name="url" type="text" min="1" max="4" class="validate" required
-                       placeholder={{ _('URL')
-                }} >
+                       placeholder="{{ _('URL') }}"
+                       value="{{ app.url }}" >
                 <label for="url">* {{ _('URL') }}</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <textarea id="notes" name="notes" class="materialize-textarea" oninput="checkNote() "></textarea>
+                <textarea id="notes" name="notes" class="materialize-textarea" oninput="checkNote() ">{% if app.installation_notes %}{{ app.installation_notes }}{% endif %}</textarea>
                 <label for="notes">{{ _('Installation Notes') }}</label>
             </div>
         </div>

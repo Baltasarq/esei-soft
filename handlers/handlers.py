@@ -56,7 +56,7 @@ def addSubject():
     if user:
         if flask.request.method == 'POST':
             try:
-                name = flask.request.form.get("name").strip()
+                name = flask.request.form.get("name").strip().capitalize()
                 abbreviation = flask.request.form.get("abbreviation").strip().upper()
                 year = int(flask.request.form.get("year"))
                 quarter = int(flask.request.form.get("quarter"))
@@ -95,7 +95,7 @@ def editSubject():
         user = User.get_current_user()
         if user:
             if flask.request.method == 'POST':
-                name = flask.request.form.get("name").strip()
+                name = flask.request.form.get("name").strip().capitalize()
                 abbreviation = flask.request.form.get("abbreviation")
                 year = int(flask.request.form.get("year"))
                 quarter = int(flask.request.form.get("quarter"))
@@ -204,12 +204,12 @@ def addSoftware():
         user = User.get_current_user()
         if user:
             if flask.request.method == 'POST':
-                name = flask.request.form.get("name").strip()
+                name = flask.request.form.get("name").strip().capitalize()
                 url = flask.request.form.get("url").strip()
                 root = str(flask.request.form.get("root")).strip().lower() == "true"
                 notes = flask.request.form.get("notes").encode("utf-8")
 
-                if not url.lower().startswith("http"):
+                if url and not url.lower().startswith("http"):
                     url = "http://" + url
 
                 try:
@@ -218,7 +218,7 @@ def addSoftware():
                     if softwares.count() == 0:
                         software = Software(name=name,
                                             url=url,
-                                            instalation_notes=notes,
+                                            installation_notes=notes,
                                             needs_root=root)
                         software.put()
                         time.sleep(1)
@@ -234,6 +234,64 @@ def addSoftware():
                     print(e.message)
             else:
                 return render_template("addSoftware.html", current_user=user, user_logout=users.create_logout_url("/"))
+        else:
+            return redirect("/")
+    except Exception as e:
+        print(e.message)
+
+
+@app.route('/editSoftware', methods=['GET', 'POST'])
+def editSoftware():
+    try:
+        user = User.get_current_user()
+        if user:
+            try:
+                key = int(request.args.get("key"))
+            except Exception as e:
+                print(e)
+                flash("Key??", 'error')
+                return redirect('/softwares')
+
+            software_key = ndb.Key(Software, key)
+
+            if not software_key:
+                flash("Software key??", 'error')
+                return redirect('/softwares')
+
+            software = software_key.get()
+
+            if not software:
+                flash("Software??", 'error')
+                return redirect('/softwares')
+
+            if not software:
+                flash(_('Software added correctly'), 'success')
+                return redirect('/softwares')
+
+            if flask.request.method == 'POST':
+                name = flask.request.form.get("name").strip()
+                url = flask.request.form.get("url").strip()
+                needs_root = str(flask.request.form.get("root")).strip().lower() == "true"
+                notes = flask.request.form.get("notes").encode("utf-8")
+
+                if url and not url.lower().startswith("http"):
+                    url = "http://" + url
+
+                try:
+                    software.name = name
+                    software.url = url
+                    software.needs_root = needs_root
+                    software.installation_notes = notes
+                    software.put()
+
+                    time.sleep(1)
+                    flash(_('Software added correctly'), 'success')
+
+                    return redirect('/softwares')
+                except Exception as e:
+                    print(e.message)
+            else:
+                return render_template("editSoftware.html", current_user=user, app=software, user_logout=users.create_logout_url("/"))
         else:
             return redirect("/")
     except Exception as e:
@@ -356,7 +414,7 @@ def exportCSV():
                         + request_owner.name.encode("utf-8") + ","\
                         + subject.abbreviation.encode("utf-8") + ","\
                         + subject.name.encode("utf-8") + "," + str(subject.year) + "," + str(subject.quarter) + ","\
-                        + software.name.encode("utf-8") + "," + str(software.needs_root) + "," + software.instalation_notes.encode("utf-8")\
+                        + software.name.encode("utf-8") + "," + str(software.needs_root) + "," + software.installation_notes.encode("utf-8")\
                         + "\n"
                 csv_content += content_to_append
 

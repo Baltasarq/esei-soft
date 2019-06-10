@@ -28,7 +28,7 @@
                 <tr>
                     <td class="name center"> {{ software.name }}</td>
                     <td class="root center">
-                        {% if software.needs_root == 1 %}
+                        {% if software.needs_root %}
                             {{ _('Yes') }}
                         {% else %}
                             {{ _('No') }}
@@ -44,6 +44,10 @@
                         <a href="/viewSoftware?key={{software.key.id()}}" class="waves-effect tooltipped waves-light
                         btn-small blue" data-position="left" data-tooltip='{{ _('View') }}'>
                             <i class="material-icons ">remove_red_eye</i>
+                        </a>
+                        <a href="/editSoftware?key={{software.key.id()}}" class="waves-effect tooltipped waves-light
+                        btn-small yellow" data-position="center" data-tooltip='{{ _('Edit') }}'>
+                            <i class="material-icons ">edit</i>
                         </a>
                         <!-- Modal Trigger -->
                         <a class="waves-effect waves-light tooltipped btn-small red modal-trigger"

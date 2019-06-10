@@ -33,9 +33,9 @@
         </table>
     </div>
     <div class="col s12">
-        <h5 class="center"> {{ _('Instalation Notes') }}</h5>
-        {% if software.instalation_notes != "" %}
-            <p style="background-color: rgba(180,170,0,0.22)">{{ software.instalation_notes }}</p>
+        <h5 class="center"> {{ _('Installation Notes') }}</h5>
+        {% if software.installation_notes != "" %}
+            <p style="background-color: rgba(180,170,0,0.22)">{{ software.installation_notes }}</p>
         {% else%}
         <p>{{ _('There are no installation notes') }}</p>
         {% endif %}

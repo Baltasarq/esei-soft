@@ -2,30 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="65f2b376-1b26-4725-9461-81d91f4597c3" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/esei-soft.datastore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/TFG.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/esei-soft.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Google_App_Engine_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Google_App_Engine_SDK.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/editSoftware.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/app.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eseiforms.datastore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/handlers/handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/handlers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/index.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/messages.pot" beforeDir="false" afterPath="$PROJECT_DIR$/messages.pot" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/ndbModels.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/ndbModels.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/fonts/eseiforms.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/fonts/eseiforms.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/addRequest.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/addRequest.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/addSoftware.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/addSoftware.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/addSubject.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/addSubject.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/skeleton.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/skeleton.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/subjects.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/subjects.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/viewRequest.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/viewRequest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/softwares.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/softwares.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/viewSoftware.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/viewSoftware.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/viewSubject.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/viewSubject.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/translations/en/LC_MESSAGES/messages.po" beforeDir="false" afterPath="$PROJECT_DIR$/translations/en/LC_MESSAGES/messages.po" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.po" beforeDir="false" afterPath="$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.po" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.po" beforeDir="false" afterPath="$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.po" afterDir="false" />
@@ -64,8 +50,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/ndbModels.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="558">
-              <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="74" />
+            <state relative-caret-position="320">
+              <caret line="60" column="69" selection-start-line="60" selection-start-column="69" selection-end-line="60" selection-end-column="69" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
               </folding>
@@ -73,23 +59,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/login.html">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/handlers/handlers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="34" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
+            <state relative-caret-position="669">
+              <caret line="279" column="20" lean-forward="true" selection-start-line="279" selection-start-column="20" selection-end-line="279" selection-end-column="20" />
+              <folding>
+                <element signature="e#1#39#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/handlers/handlers.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/editSoftware.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5406">
-              <caret line="328" column="43" selection-start-line="328" selection-start-column="43" selection-end-line="328" selection-end-column="43" />
-              <folding>
-                <element signature="e#1#39#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="136">
+              <caret line="8" column="65" selection-start-line="8" selection-start-column="65" selection-end-line="8" selection-end-column="65" />
             </state>
           </provider>
         </entry>
@@ -106,19 +92,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>serán</find>
-      <find>needs</find>
-      <find>You needs Software</find>
-      <find>addRe</find>
-      <find>Ope</find>
-      <find>Oper</find>
-      <find>Nombre</find>
-      <find>Nome</find>
-      <find>Name</find>
-      <find>addSoftware</find>
-      <find>Name is too</find>
-      <find>Name is</find>
-      <find>name is to</find>
       <find>.user_key</find>
       <find>User.user_key</find>
       <find>gae_usr</find>
@@ -135,6 +108,20 @@
       <find>csv</find>
       <find>operative</find>
       <find>There arent intalation notes</find>
+      <find>adds</find>
+      <find>exists</find>
+      <find>editsoft</find>
+      <find>Softw</find>
+      <find>add software</find>
+      <find>Add soft</find>
+      <find>add</find>
+      <find>Add software</find>
+      <find>add so</find>
+      <find>get[</find>
+      <find>editsubk</find>
+      <find>editsoftw</find>
+      <find>instalation</find>
+      <find>Key??</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/templates</dir>
@@ -162,30 +149,30 @@
         <option value="$PROJECT_DIR$/static/css/materialize.min.css" />
         <option value="$PROJECT_DIR$/templates/softwares" />
         <option value="$PROJECT_DIR$/static/css/style.css" />
-        <option value="$PROJECT_DIR$/templates/editSoftware.html" />
         <option value="$PROJECT_DIR$/templates/auxCode" />
         <option value="$PROJECT_DIR$/templates/requests.html" />
         <option value="$PROJECT_DIR$/templates/editSubject.html" />
         <option value="$PROJECT_DIR$/static/css/materialize.css" />
         <option value="$PROJECT_DIR$/models/requestComplete.py" />
-        <option value="$PROJECT_DIR$/templates/softwares.html" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/templates/skeleton.html" />
         <option value="$PROJECT_DIR$/templates/subjects.html" />
         <option value="$PROJECT_DIR$/templates/viewSubject.html" />
-        <option value="$PROJECT_DIR$/templates/addSoftware.html" />
-        <option value="$PROJECT_DIR$/models/ndbModels.py" />
         <option value="$PROJECT_DIR$/templates/addSubject.html" />
-        <option value="$PROJECT_DIR$/handlers/handlers.py" />
         <option value="$PROJECT_DIR$/templates/viewRequest.html" />
+        <option value="$PROJECT_DIR$/app.yaml" />
+        <option value="$PROJECT_DIR$/templates/login.html" />
+        <option value="$PROJECT_DIR$/templates/softwares.html" />
+        <option value="$PROJECT_DIR$/models/ndbModels.py" />
         <option value="$PROJECT_DIR$/templates/addRequest.html" />
+        <option value="$PROJECT_DIR$/templates/viewSoftware.html" />
+        <option value="$PROJECT_DIR$/messages.pot" />
+        <option value="$PROJECT_DIR$/templates/addSoftware.html" />
         <option value="$PROJECT_DIR$/translations/en/LC_MESSAGES/messages.po" />
         <option value="$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.po" />
         <option value="$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.po" />
-        <option value="$PROJECT_DIR$/templates/viewSoftware.html" />
-        <option value="$PROJECT_DIR$/app.yaml" />
-        <option value="$PROJECT_DIR$/messages.pot" />
-        <option value="$PROJECT_DIR$/templates/login.html" />
+        <option value="$PROJECT_DIR$/handlers/handlers.py" />
+        <option value="$PROJECT_DIR$/templates/editSoftware.html" />
       </list>
     </option>
   </component>
@@ -194,7 +181,9 @@
     <option name="width" value="1336" />
     <option name="height" value="1076" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -222,6 +211,24 @@
               <item name="esei-soft" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="esei-soft" type="b2602c69:ProjectViewProjectNode" />
+              <item name="esei-soft" type="462c0819:PsiDirectoryNode" />
+              <item name="translations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="esei-soft" type="b2602c69:ProjectViewProjectNode" />
+              <item name="esei-soft" type="462c0819:PsiDirectoryNode" />
+              <item name="translations" type="462c0819:PsiDirectoryNode" />
+              <item name="gl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="esei-soft" type="b2602c69:ProjectViewProjectNode" />
+              <item name="esei-soft" type="462c0819:PsiDirectoryNode" />
+              <item name="translations" type="462c0819:PsiDirectoryNode" />
+              <item name="gl" type="462c0819:PsiDirectoryNode" />
+              <item name="LC_MESSAGES" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -233,19 +240,20 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/templates" />
+      <recent name="$PROJECT_DIR$/lib" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/static/fonts" />
       <recent name="$PROJECT_DIR$/static" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/lib" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -290,12 +298,12 @@
       <updated>1523351887505</updated>
       <workItem from="1559895256141" duration="11705000" />
       <workItem from="1560150922956" duration="7886000" />
-      <workItem from="1560166416028" duration="205000" />
+      <workItem from="1560166416028" duration="6318000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19796000" />
+    <option name="totallyTimeSpent" value="25909000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="580" y="0" width="1336" height="1076" extended-state="0" />
@@ -317,7 +325,7 @@
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32838982" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32838982" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5019157" side_tool="true" weight="0.41361257" />
-      <window_info active="true" anchor="bottom" id="App Config Tool" order="13" visible="true" weight="0.32944915" />
+      <window_info anchor="bottom" id="App Config Tool" order="13" weight="0.32944915" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -415,7 +423,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/addSoftwaretoSubject.html" />
     <entry file="file://$PROJECT_DIR$/templates/index.html" />
-    <entry file="file://$PROJECT_DIR$/templates/editSoftware.html" />
     <entry file="file://$PROJECT_DIR$/requirements.txt" />
     <entry file="file://$PROJECT_DIR$/templates/auxCode" />
     <entry file="file://$PROJECT_DIR$/templates/requests.html">
@@ -443,13 +450,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="28" column="46" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/softwares.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="945">
-          <caret line="63" column="111" selection-start-line="63" selection-start-column="111" selection-end-line="63" selection-end-column="111" />
         </state>
       </provider>
     </entry>
@@ -497,20 +497,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/subjects.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-95">
-          <caret line="39" column="46" selection-start-line="39" selection-start-column="42" selection-end-line="39" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/addSoftware.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="44" lean-forward="true" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/bin/google-cloud-sdk/platform/google_appengine/lib/grpcio-1.20.0/grpc/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -518,13 +504,6 @@
           <folding>
             <element signature="e#608#618#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Dropbox/Prys/gae/esei-soft/handlers/handlers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>
@@ -563,52 +542,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/translations/en/LC_MESSAGES/messages.po">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="356" lean-forward="true" selection-start-line="356" selection-end-line="356" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.po">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="362" column="42" selection-start-line="362" selection-start-column="42" selection-end-line="362" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.po">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="369" column="25" selection-start-line="369" selection-start-column="25" selection-end-line="369" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/translations/en/LC_MESSAGES/messages.mo">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="30" column="1001" selection-start-line="30" selection-start-column="1001" selection-end-line="30" selection-end-column="1001" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/viewSoftware.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="21" lean-forward="true" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/addRequest.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="167" column="54" selection-start-line="167" selection-start-column="54" selection-end-line="167" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/viewRequest.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="203">
           <caret line="20" column="38" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="7" lean-forward="true" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -619,37 +563,113 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/handlers/handlers.py">
+    <entry file="file://$PROJECT_DIR$/static/fonts/eseiforms.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/subjects.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5406">
-          <caret line="328" column="43" selection-start-line="328" selection-start-column="43" selection-end-line="328" selection-end-column="43" />
-          <folding>
-            <element signature="e#1#39#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="357">
+          <caret line="41" column="60" selection-start-line="41" selection-start-column="56" selection-end-line="41" selection-end-column="60" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/messages.pot">
+    <entry file="file://$USER_HOME$/Dropbox/Prys/gae/esei-soft/handlers/handlers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="213" column="9" lean-forward="true" selection-start-line="213" selection-start-column="9" selection-end-line="213" selection-end-column="9" />
+        <state relative-caret-position="228">
+          <caret line="242" column="9" selection-start-line="242" selection-start-column="1" selection-end-line="242" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/ndbModels.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="74" />
+        <state relative-caret-position="320">
+          <caret line="60" column="69" selection-start-line="60" selection-start-column="69" selection-end-line="60" selection-end-column="69" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/login.html">
+    <entry file="file://$PROJECT_DIR$/translations/en/LC_MESSAGES/messages.mo">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="34" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
+        <state relative-caret-position="291">
+          <caret line="30" column="485" selection-start-line="30" selection-start-column="485" selection-end-line="30" selection-end-column="485" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/viewSoftware.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="37" column="81" selection-start-line="37" selection-start-column="81" selection-end-line="37" selection-end-column="81" />
+          <folding>
+            <element signature="n#style#0;n#p#0;n#div#2;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/messages.pot">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="163" column="14" selection-start-line="163" selection-start-column="14" selection-end-line="163" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.po">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="177" column="13" selection-start-line="177" selection-start-column="13" selection-end-line="177" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.po">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="171" column="14" selection-start-line="171" selection-start-column="14" selection-end-line="171" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/translations/en/LC_MESSAGES/messages.po">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="164" column="14" selection-start-line="164" selection-start-column="14" selection-end-line="164" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/addSoftware.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1054">
+          <caret line="62" column="8" selection-start-line="62" selection-start-column="8" selection-end-line="62" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/addRequest.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="99" column="60" selection-start-line="99" selection-start-column="60" selection-end-line="99" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handlers/handlers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="669">
+          <caret line="279" column="20" lean-forward="true" selection-start-line="279" selection-start-column="20" selection-end-line="279" selection-end-column="20" />
+          <folding>
+            <element signature="e#1#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/softwares.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="50" column="28" lean-forward="true" selection-start-line="50" selection-start-column="28" selection-end-line="50" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/editSoftware.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="65" selection-start-line="8" selection-start-column="65" selection-end-line="8" selection-end-column="65" />
         </state>
       </provider>
     </entry>

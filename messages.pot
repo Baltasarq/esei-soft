@@ -97,6 +97,9 @@ msgstr ""
 msgid "Add Software"
 msgstr ""
 
+msgid "Edit Software"
+msgstr ""
+
 #: templates/addRequest.html:48 templates/addRequest.html:92
 #: templates/addSoftware.html:41 templates/addSubject.html:33
 #: templates/editSubject.html:45
@@ -142,7 +145,7 @@ msgid "URL"
 msgstr ""
 
 #: templates/addRequest.html:84
-msgid "Instalation notes"
+msgid "Installation notes"
 msgstr ""
 
 #: templates/addRequest.html:89
@@ -154,11 +157,11 @@ msgid "Select one software at least"
 msgstr ""
 
 #: templates/addSoftware.html:36 templates/viewSoftware.html:36
-msgid "Instalation Notes"
+msgid "Installation Notes"
 msgstr ""
 
 #: templates/addSoftware.html:79
-msgid "Instalation Notes are too long"
+msgid "Installation Notes are too long"
 msgstr ""
 
 #: templates/addSubject.html:7 templates/editSubject.html:7

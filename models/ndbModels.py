@@ -58,7 +58,7 @@ class Subject(ndb.Model):
 class Software(ndb.Model):
     name = ndb.StringProperty(required=True, indexed=True)
     url = ndb.StringProperty(required=True)
-    instalation_notes = ndb.StringProperty(required=True)
+    installation_notes = ndb.StringProperty(required=True, default="")
     needs_root = ndb.BooleanProperty(required=True, indexed=True)
 
 

@@ -104,6 +104,9 @@ msgstr "Precisas ter algunha Asignatura creada para facer unha Peticion"
 msgid "Add Software"
 msgstr "Engadir Software"
 
+msgid "Edit Software"
+msgstr "Editar Software"
+
 #: templates/addRequest.html:48 templates/addRequest.html:92
 #: templates/addSoftware.html:41 templates/addSubject.html:33
 #: templates/editSubject.html:45
@@ -151,7 +154,7 @@ msgid "URL"
 msgstr ""
 
 #: templates/addRequest.html:84
-msgid "Instalation notes"
+msgid "Installation notes"
 msgstr "Notas de Instalación"
 
 #: templates/addRequest.html:89
@@ -168,11 +171,11 @@ msgid "Operating System"
 msgstr "Sistema Operativo"
 
 #: templates/addSoftware.html:36 templates/viewSoftware.html:36
-msgid "Instalation Notes"
+msgid "Installation Notes"
 msgstr "Notas de Instalación"
 
 #: templates/addSoftware.html:79
-msgid "Instalation Notes are too long"
+msgid "Installation Notes are too long"
 msgstr "As Notas de Instalación son moi cortas"
 
 #: templates/addSubject.html:7 templates/editSubject.html:7
