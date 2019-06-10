@@ -32,7 +32,7 @@
                 <ul class="right hide-on-med-and-down">
                     {% if user_logout %}
                     <li>
-                        {{ current_user.nickname().partition("@")[0] }}
+                        {{ current_user.name }}</a>
                     </li>
                     <li>
                         <a href="{{user_logout}}" class="btn-floating btn-small tooltipped waves-effect waves-light red"
@@ -45,7 +45,7 @@
                 {% if user_logout %}
                 <ul id="nav-mobile" class="sidenav">
                      <li>
-                       <a>{{ _('User')}}: {{ current_user.nickname().partition("@")[0] }}</a>
+                       <a>{{ _('User')}}: {{ current_user.name }}</a>
                     </li>
                     <li><a href="/">{{ _('Index') }}</a></li>
                     <li><a href="/subjects">{{ _('Subjects') }}</a></li>

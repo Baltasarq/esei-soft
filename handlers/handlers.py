@@ -8,44 +8,31 @@ import flask
 import datetime
 from google.appengine.ext import ndb
 from main import app
-from models.ndbModels import Request, Software, Subject, User, Request_Software, System
+from models.ndbModels import Request, Software, Subject, User, RequestSoftware, System
 from models.requestComplete import RequestComplete
 
 @app.route('/')
 @app.route('/index')
 def login():
-    user = users.get_current_user()
+    user = User.get_current_user()
     if user:
         try:
-            usersDb = User.query(User.user_key == user.user_id())
-            if usersDb.count() == 0:
-                # Store new User
-                username = user.nickname()
-                new_user = User(user_key=user.user_id(), name=user.nickname())
-                if users.is_current_user_admin():
-                    new_user.is_admin = 1
-                else:
-                    new_user.is_admin = 0
-
-                new_user.put()
-                time.sleep(1)
-            return render_template("login.html", current_user=user, user_logout=users.create_logout_url("/"),
-                                   is_admin=users.is_current_user_admin())
+            return render_template("login.html", current_user=user, user_logout=users.create_logout_url("/"))
         except Exception as e:
             print(e.message)
+            print(e.args)
     else:
         return render_template("login.html", user_login=users.create_login_url("/"))
 
 
 @app.route('/subjects')
 def showSubjects():
-    user = users.get_current_user()
+    user = User.get_current_user()
     if user:
         try:
-            u = User.query(User.user_key == user.user_id()).get()
             subjects = Subject.query().order(Subject.name)
-            return render_template("subjects.html", current_user=user, user=u, user_logout=users.create_logout_url("/"),
-                                   subjects=subjects, is_admin=users.is_current_user_admin())
+            return render_template("subjects.html", current_user=user, user_logout=users.create_logout_url("/"),
+                                   subjects=subjects)
         except Exception as e:
             print(e.message)
     else:
@@ -54,26 +41,46 @@ def showSubjects():
 
 @app.route('/addSubject', methods=['GET', 'POST'])
 def addSubject():
-    user = users.get_current_user()
+    def chk_abbreviation(abbreviation):
+        toret = False
+        
+        for ch in abbreviation:
+            if not ch.isalpha():
+                break
+        else:
+            toret = True
+            
+        return toret
+            
+    user = User.get_current_user()
     if user:
         if flask.request.method == 'POST':
             try:
                 name = flask.request.form.get("name").strip()
+                abbreviation = flask.request.form.get("abbreviation").strip().upper()
                 year = int(flask.request.form.get("year"))
                 quarter = int(flask.request.form.get("quarter"))
 
-                subject = Subject.query(Subject.name == name, Subject.year == year, Subject.quarter == quarter)
-                if subject.count() == 0:
-
-                        subject = Subject(name=name, year=year, quarter=quarter, user_key=ndb.Key(User, user.user_id()))
-                        subject.put()
-                        time.sleep(1)
-                        flash(_('Subject added correctly'), 'success')
-                        return redirect("/subjects")
-                else:
-                    flash(_(_('Subject already exists ')), 'error')
+                if not chk_abbreviation(abbreviation):
+                    flash(_(_('Abbreviation invalid: only letters are allowed')), 'error')
                     return render_template("addSubject.html", current_user=user, user_logout=users.create_logout_url("/"),
-                                           name=name, year=year, quarter=quarter)
+                                        name=name, year=year, quarter=quarter)
+                else:
+                    subject = Subject.query(Subject.abbreviation == abbreviation)
+                    if subject.count() == 0:
+                            subject = Subject(name=name,
+                                            abbreviation=abbreviation,
+                                            year=year,
+                                            quarter=quarter,
+                                            user_key=ndb.Key(User, user.user_id))
+                            subject.put()
+                            time.sleep(1)
+                            flash(_('Subject added correctly'), 'success')
+                            return redirect("/subjects")
+                    else:
+                        flash(_(_('Subject already exists ')) + ": " + abbreviation, 'error')
+                        return render_template("addSubject.html", current_user=user, user_logout=users.create_logout_url("/"),
+                                            name=name, year=year, quarter=quarter)
             except Exception as e:
                 print(e.message)
         else:
@@ -85,22 +92,26 @@ def addSubject():
 @app.route('/editSubject', methods=['GET', 'POST'])
 def editSubject():
     try:
-        user = users.get_current_user()
+        user = User.get_current_user()
         if user:
             if flask.request.method == 'POST':
                 name = flask.request.form.get("name").strip()
+                abbreviation = flask.request.form.get("abbreviation")
                 year = int(flask.request.form.get("year"))
                 quarter = int(flask.request.form.get("quarter"))
 
+                if abbreviation:
+                    abbreviation = abbreviation.strip().upper()
+
                 if name != "":
-                    subjects = Subject.query(Subject.name == name, Subject.year == year, Subject.quarter == quarter)
+                    subjects = Subject.query(Subject.abbreviation == abbreviation)
                     if subjects.count() == 0:
                         sKey = int(request.args.get("key"))
-                        subjectKey = ndb.Key(Subject, sKey)
-                        subject = Subject.query(Subject.key == subjectKey).get()
-                        subject.name=name
-                        subject.year=year
-                        subject.quarter=quarter
+                        subject_key = ndb.Key(Subject, sKey)
+                        subject = Subject.query(Subject.key == subject_key).get()
+                        subject.name = name
+                        subject.year = year
+                        subject.quarter = quarter
 
                         subject.put()
                         time.sleep(1)
@@ -108,19 +119,19 @@ def editSubject():
                         return redirect("/subjects")
 
                     else:
-                        flash(_(_('Subject already exists ')), 'error')
+                        flash(_(_('Subject already exists ')) + ": " + abbreviation, 'error')
                 else:
                     flash(_(_('Subject name cant be blank ')), 'error')
                 sKey = int(request.args.get("key"))
-                subjectKey = ndb.Key(Subject, sKey)
-                subject = Subject.query(Subject.key == subjectKey).get()
+                subject_key = ndb.Key(Subject, sKey)
+                subject = Subject.query(Subject.key == subject_key).get()
                 return render_template("editSubject.html", current_user=user, user_logout=users.create_logout_url("/"),
                                        subject=subject)
             else:
                 try:
                     sKey = int(request.args.get("key"))
-                    subjectKey = ndb.Key(Subject, sKey)
-                    subject = Subject.query(Subject.key == subjectKey).get()
+                    subject_key = ndb.Key(Subject, sKey)
+                    subject = Subject.query(Subject.key == subject_key).get()
                     return render_template("editSubject.html", current_user=user, subject=subject, user_logout=users.create_logout_url("/"))
                 except Exception as e:
                     print(e.message)
@@ -132,25 +143,29 @@ def editSubject():
 
 @app.route('/viewSubject')
 def viewSubject():
-    user = users.get_current_user()
+    user = User.get_current_user()
     if user:
         try:
             sKey = int(request.args.get("key"))
             subjectKey = ndb.Key(Subject, sKey)
             subject = Subject.query(Subject.key == subjectKey).get()
-            u = User.query(User.user_key == subject.user_key.id()).get()
+            u = User.query(User.user_id == subject.user_key.id()).get()
             sofwares = list()
 
             requests = Request.query(Request.subject_key == subjectKey)
 
             for r in requests:
-                softwareRequests = Request_Software.query(Request_Software.request_key == r.key)
+                softwareRequests = RequestSoftware.query(RequestSoftware.request_key == r.key)
                 for softwareRequest in softwareRequests:
                     softToAdd = Software.query(Software.key == softwareRequest.software_key).get()
                     if softToAdd not in sofwares:
                         sofwares.append(softToAdd)
 
-            return render_template("viewSubject.html", current_user=user, user=u, softwares=sofwares, subject=subject,
+            return render_template("viewSubject.html",
+                                   current_user=user,
+                                   user=u,
+                                   softwares=sofwares,
+                                   subject=subject,
                                    user_logout=users.create_logout_url("/"))
         except Exception as e:
             print(e.message)
@@ -160,7 +175,7 @@ def viewSubject():
 
 @app.route('/deleteSubject')
 def deleteSubject():
-    user = users.get_current_user()
+    user = User.get_current_user()
     if user:
         try:
             sKey = int(request.args.get("key"))
@@ -168,7 +183,7 @@ def deleteSubject():
             subject = Subject.query(Subject.key == subjectKey).get()
             requests = Request.query(Request.subject_key == subjectKey)
             for r in requests:
-                sofsRequests = Request_Software.query(Request_Software.request_key == r.key)
+                sofsRequests = RequestSoftware.query(RequestSoftware.request_key == r.key)
                 for s in sofsRequests:
                     s.key.delete()
                 r.key.delete()
@@ -186,18 +201,25 @@ def deleteSubject():
 @app.route('/addSoftware', methods=['GET', 'POST'])
 def addSoftware():
     try:
-        user = users.get_current_user()
+        user = User.get_current_user()
         if user:
             if flask.request.method == 'POST':
                 name = flask.request.form.get("name").strip()
                 url = flask.request.form.get("url").strip()
-                root = int(flask.request.form.get("root"))
+                root = str(flask.request.form.get("root")).strip().lower() == "true"
                 notes = flask.request.form.get("notes").encode("utf-8")
+
+                if not url.lower().startswith("http"):
+                    url = "http://" + url
 
                 try:
                     softwares = Software.query(Software.name == name)
+
                     if softwares.count() == 0:
-                        software = Software(name=name, url=url, instalation_notes=notes, needs_root=root)
+                        software = Software(name=name,
+                                            url=url,
+                                            instalation_notes=notes,
+                                            needs_root=root)
                         software.put()
                         time.sleep(1)
                         flash(_('Software added correctly'), 'success')
@@ -220,7 +242,7 @@ def addSoftware():
 
 @app.route('/softwares')
 def showSoftwares():
-    user = users.get_current_user()
+    user = User.get_current_user()
     if user:
         try:
             softwares = Software.query().order(Software.name)
@@ -235,7 +257,7 @@ def showSoftwares():
 @app.route('/viewSoftware')
 def viewSoftware():
     try:
-        user = users.get_current_user()
+        user = User.get_current_user()
         if user:
             sKey = int(request.args.get("key"))
             softwareKey = ndb.Key(Software, sKey)
@@ -249,7 +271,7 @@ def viewSoftware():
 
 @app.route('/deleteSoftware')
 def deleteSoftware():
-    user = users.get_current_user()
+    user = User.get_current_user()
     if user:
         try:
             sKey = int(request.args.get("key"))
@@ -259,13 +281,13 @@ def deleteSoftware():
             requestsDeleted = list()
             requestsInDB = list()
 
-            requestSoftware = Request_Software.query(Request_Software.software_key == softwareKey)
+            requestSoftware = RequestSoftware.query(RequestSoftware.software_key == softwareKey)
             for rs in requestSoftware:
                 requestsDeleted.append(rs)
                 rs.key.delete()
                 time.sleep(1)
 
-            aux = Request_Software.query()
+            aux = RequestSoftware.query()
 
             for r in aux:
                 requestsInDB.append(r.request_key)
@@ -288,56 +310,62 @@ def deleteSoftware():
 
 @app.route('/exportCSV')
 def exportCSV():
-    user = users.get_current_user()
+    user = User.get_current_user()
     if user:
         try:
-            dateTime = datetime.datetime.today()
-            date = str(dateTime).split(' ')[0]
-            fileName = date.split('-')[2] + date.split('-')[1] + date.split('-')[0]
+            date_and_time = datetime.datetime.today()
+            date = str(date_and_time).split(' ')[0]
+            file_name = date.split('-')[2] + date.split('-')[1] + date.split('-')[0]
 
-            requestToShow = []
-            requests = Request.query()
-            for request in requests:
-                u = User.query(User.user_key == request.user_key.id()).get()
+            requests_to_generate = []
+            requests = Request.query().order(Request.subject_key)
+            for found_request in requests:
+                request_owner = User.query(User.user_id == found_request.user_key.id()).get()
 
-                s = Subject.query(Subject.key == request.subject_key).get()
-                requestSofts = Request_Software.query(Request_Software.request_key == request.key)
-                softwares = list()
+                subject = Subject.query(Subject.key == found_request.subject_key).get()
+                requested_software = RequestSoftware.query(RequestSoftware.request_key == found_request.key)
+                apps = list()
 
-                for soft in requestSofts:
-                    softwares.append(Software.query(Software.key == soft.software_key).get())
+                for app in requested_software:
+                    apps.append(Software.query(Software.key == app.software_key).get())
 
-                requestToShow.append(RequestComplete(request.key, u, s, softwares, request.system, request.date))
+                requests_to_generate.append(
+                    RequestComplete(found_request.key, request_owner, subject, apps, found_request.system, found_request.date))
 
-            csv_content = "Request_date, Operative System, " \
-                          "User_name, " \
-                          "Subject_name, Subject_course, Subject_quarter, " \
-                          "Software_name\n"
+            # All requests accounted for, generate CSV
+            csv_content = "Request date, Operating System, " \
+                          "User name, " \
+                          "Abbrev, Subject name, Subject course, Subject quarter, " \
+                          "Software name, needs root, notes\n"
 
-            for rc in requestToShow:
-                u = rc.getUser()
-                sub = rc.getSubject()
-                softs = rc.getSoftware()
-                if rc.getSystem() == System.LINUX:
+            for complete_request in requests_to_generate:
+                request_owner = complete_request.getUser()
+                subject = complete_request.getSubject()
+                softs = complete_request.getSoftware()
+
+                if complete_request.getSystem() == System.LINUX:
                     system = 'Linux'
-                elif rc.getSystem() == System.WINDOWS:
+                elif complete_request.getSystem() == System.WINDOWS:
                     system = 'Windows'
                 else:
-                    system = 'Linux and Windows'
+                    system = 'Linux & Windows'
 
-                for s in softs:
-                    contentToAppend = str.split(str(rc.getDate()), ".")[0] + "," + system + "," \
-                        + u.name.encode("utf-8") + ","\
-                        + sub.name.encode("utf-8") + "," + str(sub.year) + "," + str(sub.quarter) + ","\
-                        + s.name.encode("utf-8") + "\n"
-                csv_content += contentToAppend
+                content_to_append = ""
+                for software in softs:
+                    content_to_append += str.split(str(complete_request.getDate()), ".")[0] + "," + system + "," \
+                        + request_owner.name.encode("utf-8") + ","\
+                        + subject.abbreviation.encode("utf-8") + ","\
+                        + subject.name.encode("utf-8") + "," + str(subject.year) + "," + str(subject.quarter) + ","\
+                        + software.name.encode("utf-8") + "," + str(software.needs_root) + "," + software.instalation_notes.encode("utf-8")\
+                        + "\n"
+                csv_content += content_to_append
 
             generator = (cell for row in csv_content
                          for cell in row)
 
             return Response(generator,
                             mimetype="text/csv",
-                            headers={"Content-Disposition": "attachment;filename=" + fileName + ".csv"})
+                            headers={"Content-Disposition": "attachment;filename=" + file_name + ".csv"})
 
         except Exception as e:
             print(e)
@@ -346,7 +374,7 @@ def exportCSV():
 
 @app.route('/exportXML')
 def exportXML():
-    user = users.get_current_user()
+    user = User.get_current_user()
     if user:
         try:
             dateTime = datetime.datetime.today()
@@ -356,10 +384,10 @@ def exportXML():
             requestToShow = []
             requests = Request.query()
             for request in requests:
-                u = User.query(User.user_key == request.user_key.id()).get()
+                u = User.query(User.user_id == request.user_key.id()).get()
 
                 s = Subject.query(Subject.key == request.subject_key).get()
-                requestSofts = Request_Software.query(Request_Software.request_key == request.key)
+                requestSofts = RequestSoftware.query(RequestSoftware.request_key == request.key)
                 softwares = list()
 
                 for soft in requestSofts:
@@ -384,7 +412,7 @@ def exportXML():
                     "<request>" \
                     "<date>" + str.split(str(rc.getDate()), ".")[0] + "</date>"\
                     "<system>" + system + "</system>"\
-                    "<user><key>" + str(u.user_key) + "</key><name>" + u.name.encode("utf-8") + "</name></user>"\
+                    "<user><key>" + str(u.user_id) + "</key><name>" + u.name.encode("utf-8") + "</name></user>"\
                     "<subject>" \
                         "<key>" + str(sub.key.id()) + "</key>" \
                         "<name>" + sub.name.encode("utf-8") + "</name>" \
@@ -422,17 +450,17 @@ def exportXML():
 
 @app.route('/requests', methods=["POST", "GET"])
 def showRequests():
-    user = users.get_current_user()
+    user = User.get_current_user()
     if user:
         try:
             requestToShow = []
             requests = Request.query()
 
             for request in requests:
-                u = User.query(User.user_key == request.user_key.id()).get()
+                u = User.query(User.user_id == request.user_key.id()).get()
 
                 s = Subject.query(Subject.key == request.subject_key).get()
-                requestSofts = Request_Software.query(Request_Software.request_key == request.key)
+                requestSofts = RequestSoftware.query(RequestSoftware.request_key == request.key)
                 softwares = list()
 
                 for soft in requestSofts:
@@ -440,8 +468,8 @@ def showRequests():
 
                 requestToShow.append(RequestComplete(request.key, u, s, softwares, request.system, request.date, ))
 
-            u = User.query(User.user_key == user.user_id()).get()
-            return render_template("requests.html", current_user=user, user=u, requests=requestToShow,
+            return render_template("requests.html", current_user=user,
+                                   requests=requestToShow,
                                    user_logout=users.create_logout_url("/"), is_admin=users.is_current_user_admin())
         except Exception as e:
             print(e.message)
@@ -451,14 +479,14 @@ def showRequests():
 
 @app.route('/addRequest', methods=['GET', 'POST'])
 def addRequest():
-    user = users.get_current_user()
+    user = User.get_current_user()
     if user:
         if flask.request.method == 'POST':
             subject_key = ndb.Key(Subject, int(flask.request.form.get("subject")))
 
             try:
                 request = Request()
-                user_key = ndb.Key(User, user.user_id())
+                user_key = ndb.Key(User, user.user_id)
                 request.user_key = user_key
                 request.subject_key = subject_key
                 date = datetime.datetime.today()
@@ -485,7 +513,7 @@ def addRequest():
                 softwares = flask.request.form.getlist("softwares")
                 #Add all software to the Request
                 for software in softwares:
-                    requestSoftwares = Request_Software()
+                    requestSoftwares = RequestSoftware()
                     requestSoftwares.request_key = currentRequest.key
                     requestSoftwares.software_key = ndb.Key(Software, int(software))
                     requestSoftwares.put()
@@ -497,10 +525,9 @@ def addRequest():
                 print(e.message)
         else:
             try:
-                u = User.query(User.user_key == user.user_id()).get()
                 subjects = Subject.query().order(Subject.name)
                 softwares = Software.query().order(Software.name)
-                return render_template("addRequest.html", user=u, current_user=user, softwares=softwares,
+                return render_template("addRequest.html", current_user=user, softwares=softwares,
                                        subjects=subjects, user_logout=users.create_logout_url("/"))
 
             except Exception as e:
@@ -511,16 +538,16 @@ def addRequest():
 
 @app.route('/viewRequest', methods=["POST", "GET"])
 def viewRequest():
-    user = users.get_current_user()
+    user = User.get_current_user()
     if user:
         try:
             rKey = int(request.args.get("key"))
             req = Request.query(Request.key == ndb.Key(Request, rKey)).get()
 
-            u = User.query(User.user_key == req.user_key.id()).get()
+            u = User.query(User.user_id == req.user_key.id()).get()
             s = Subject.query(Subject.key == req.subject_key).get()
 
-            requestSofts = Request_Software.query(Request_Software.request_key == req.key)
+            requestSofts = RequestSoftware.query(RequestSoftware.request_key == req.key)
             softwares = list()
 
             for soft in requestSofts:
@@ -537,14 +564,14 @@ def viewRequest():
 
 @app.route('/deleteRequest')
 def deleteRequest():
-    user = users.get_current_user()
+    user = User.get_current_user()
     if user:
         try:
             rKey = int(request.args.get("key"))
             req = Request.query(Request.key == ndb.Key(Request, rKey)).get()
             req.key.delete()
             time.sleep(1)
-            sofsRequests = Request_Software.query(Request_Software.request_key == ndb.Key(Request,rKey))
+            sofsRequests = RequestSoftware.query(RequestSoftware.request_key == ndb.Key(Request, rKey))
             for s in sofsRequests:
                 print(s.key)
                 s.key.delete()

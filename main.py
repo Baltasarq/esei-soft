@@ -23,5 +23,6 @@ class Config(object):
 def get_locale():
     return request.accept_languages.best_match(Config.LANGUAGES)
 
+
 import handlers.handlers
 

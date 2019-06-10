@@ -16,6 +16,13 @@
         </div>
         <div class="row">
             <div class="input-field col s6">
+                    <input id="abbreviation" name="abbreviation" type="text" maxlength="20" class="validate" required placeholder={{ _('Abbreviation')
+                    }} >
+                    <label for="abbreviation">* {{ _('Abbreviation') }}</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
                 <input id="year" name="year" type="number" min="1" max="4" class="validate" required placeholder={{ _('Course')
                 }} >
                 <label for="year">* {{ _('Course') }}</label>
@@ -47,18 +54,44 @@
 </script>
 
 <script>
-    function checkName() {
-
+    function checkName()
+    {
         var name = document.getElementById('name').value;
 
         if (name.length < 4) {
             M.toast({html: "{{ _('Name is too sort') }}", classes: 'red' })
             return false;
         }
+
+        return true;
+    }
+
+    function checkAbbreviation()
+    {
+        const allowedChars = "abcdefghijklmnopqrstuvwxyz";
+        let toret = true;
+        let abbreviation = document
+                            .getElementById('abbreviation')
+                                .value.toLowerCase();
+
+        if (abbreviation.length < 2) {
+            M.toast({html: "{{ _('Abbreviation is too sort') }}", classes: 'red' })
+            toret = false;
+        } else {
+            for(let i = 0; i < abbreviation.length; ++i) {
+                if ( allowedChars.indexOf( abbreviation[ i ] ) < 0 ) {
+                    toret = false;
+                    M.toast({html: "{{ _('Abbreviation invalid: only letters are allowed') }}", classes: 'red' })
+                    break;
+                }
+            }
+        }
+
+        return toret;
     }
 
     function checkAll() {
-        return checkName()
+        return checkName() && checkAbbreviation();
     }
 </script>
 {% endblock%}

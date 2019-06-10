@@ -1,7 +1,8 @@
 # Translations template for PROJECT.
 # Copyright (C) 2018 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
+# Iván Guardado Porto <igporto@esei.uvigo.es>, 2018.
+# Baltasar García <baltasarq@gmail.com> 2019-.
 #
 #, fuzzy
 msgid ""
@@ -193,7 +194,7 @@ msgid "Edit Subject"
 msgstr ""
 
 #: templates/login.html:5
-msgid "Welcome to ESEIForms"
+msgid "Welcome to esei-soft"
 msgstr ""
 
 #: templates/login.html:6

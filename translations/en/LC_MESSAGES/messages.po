@@ -1,7 +1,7 @@
-# English translations for PROJECT.
-# Copyright (C) 2018 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
+# English translations for esei-soft.
+# This file is distributed under the same license as the esei-soft project.
+# Iván Guardado Porto <igporto@esei.uvigo.es> 2018.
+# Baltasar García <baltasarq@gmail.com> 2019-.
 #
 msgid ""
 msgstr ""
@@ -38,6 +38,9 @@ msgstr ""
 
 #: handlers/handlers.py:74 handlers/handlers.py:111
 msgid "Subject already exists "
+msgstr ""
+
+msgid "Abbreviation invalid: only letters are allowed"
 msgstr ""
 
 #: handlers/handlers.py:107
@@ -111,6 +114,8 @@ msgstr ""
 #: templates/viewRequest.html:35 templates/viewSoftware.html:18
 #: templates/viewSubject.html:18 templates/viewSubject.html:41
 msgid "Name"
+msgstr ""
+msgid "Abbreviation"
 msgstr ""
 
 #: templates/addRequest.html:67 templates/addSoftware.html:19
@@ -187,13 +192,15 @@ msgstr ""
 #: templates/addSubject.html:55
 msgid "Name is too sort"
 msgstr ""
+msgid "Abbreviation is too sort"
+msgstr ""
 
 #: templates/editSubject.html:10
 msgid "Edit Subject"
 msgstr ""
 
 #: templates/login.html:5
-msgid "Welcome to ESEIForms"
+msgid "Welcome to esei-soft"
 msgstr ""
 
 #: templates/login.html:6
@@ -345,7 +352,7 @@ msgid "View Software"
 msgstr ""
 
 #: templates/viewSoftware.html:40
-msgid "There arent intalation notes"
+msgid "There are no installation notes"
 msgstr ""
 
 #: templates/viewSubject.html:12

@@ -22,6 +22,7 @@
         </div>
         <table  class="highlight">
             <thead>
+            <th class="name center"> {{ _('Abbreviation') }}</th>
             <th class="name center"> {{ _('Name') }}</th>
             <th class="name center"> {{ _('Course') }}</th>
             <th class="name center"> {{ _('Quarter') }}</th>
@@ -30,12 +31,13 @@
             <tbody class="list">
             {% for subject in subjects %}
                 <tr>
+                    <td class="name center"> {{ subject.abbreviation }}</td>
                     <td class="name center"> {{ subject.name }}</td>
                     <td class="year center"> {{ subject.year }}</td>
                     <td class="quarter center"> {{ subject.quarter }}</td>
                     <td class="name center">
                         <a href="/editSubject?key={{subject.key.id()}}" data-position="top" class="waves-effect tooltipped waves-light btn-small yellow "
-                        {% if not is_admin and current_user.user_id() != subject.user_key.id() %}
+                        {% if not current_user %}
                             disabled
                         {% endif %} data-tooltip='{{ _('Edit') }}'>
                             <i class="material-icons">edit</i>
@@ -47,7 +49,7 @@
                         <!-- Modal Trigger -->
 
                         <a class="waves-effect waves-light btn-small tooltipped red modal-trigger" data-position="top" href="#delete{{subject.key.id()}}"
-                        {% if current_user.user_id() != subject.user_key.id() and not is_admin %}
+                        {% if current_user.user_id != subject.user_key.id() and not current_user.is_admin %}
                             disabled
                         {% endif %} data-tooltip='{{ _('Delete') }}' >
                             <i class="material-icons ">delete</i>

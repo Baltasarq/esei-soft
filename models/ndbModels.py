@@ -11,56 +11,64 @@ class System(messages.Enum):
 
 
 class User(ndb.Model):
-    user_key = ndb.StringProperty(required=True)
-    name = ndb.StringProperty(required=True)
-    is_admin = ndb.IntegerProperty(required=True)
+    user_id = ndb.StringProperty(required=True, indexed=True)
+    name = ndb.StringProperty(required=True, indexed=True)
+    is_admin = ndb.BooleanProperty(required=True, default=False)
+
+    def __unicode__(self):
+        return self.user_id + ' ' + self.name + " admin: " + str(self.is_admin)
+
+    @staticmethod
+    def get_current_user():
+        toret = None
+        gae_user = users.get_current_user()
+
+        if (users.is_current_user_admin()
+         or (gae_user and gae_user.email().lower().endswith("@esei.uvigo.es"))):
+            try:
+                located_user = User.query(User.user_id == gae_user.user_id()).fetch(1)
+
+                if located_user:
+                    toret = located_user[0]
+                else:
+                    print("Creating new user...")
+                    toret = User()
+
+                    toret.user_id = gae_user.user_id()
+                    toret.name = gae_user.nickname().split('@')[0]
+                    toret.is_admin = users.is_current_user_admin()
+                    toret.gae_user = gae_user
+
+                    print("User created: " + unicode(toret))
+                    toret.put()
+            except Exception as e:
+                print(e)
+
+        return toret
 
 
 class Subject(ndb.Model):
-    name = ndb.StringProperty(required=True)
-    year = ndb.IntegerProperty(required=True)
-    quarter = ndb.IntegerProperty(required=True)
+    name = ndb.StringProperty(required=True, indexed=True)
+    abbreviation = ndb.StringProperty(required=True, indexed=True)
+    year = ndb.IntegerProperty(required=True, indexed=True)
+    quarter = ndb.IntegerProperty(required=True, indexed=True)
     user_key = ndb.KeyProperty(kind=User)
 
 
 class Software(ndb.Model):
-    name = ndb.StringProperty(required=True)
-    abbreviation = ndb.StringProperty(required=True)
+    name = ndb.StringProperty(required=True, indexed=True)
     url = ndb.StringProperty(required=True)
     instalation_notes = ndb.StringProperty(required=True)
-    needs_root = ndb.IntegerProperty(required=True)
+    needs_root = ndb.BooleanProperty(required=True, indexed=True)
 
 
 class Request(ndb.Model):
-    date = ndb.DateTimeProperty(required=True)
+    date = ndb.DateTimeProperty(auto_now_add=True, required=True, indexed=True)
     user_key = ndb.KeyProperty(kind=User)
     subject_key = ndb.KeyProperty(kind=Subject)
     system = msgprop.EnumProperty(System, required=True)
 
 
-class Request_Software(ndb.Model):
+class RequestSoftware(ndb.Model):
     request_key = ndb.KeyProperty(kind=Request)
     software_key = ndb.KeyProperty(kind=Software)
-
-
-class Usr:
-    def __init__(gae_usr, is_admin):
-        self._gae_usr = gae_usr
-        self._is_admin = is_admin
-        
-    @property
-    def gae_usr(self):
-        return self._gae_usr
-    
-    @property
-    def is_admin(self):
-        return self._is_admin
-        
-    @staticmethod
-    def get_current_user():
-        toret = Usr(users.get_current_user(), users.is_current_user_admin())
-        
-        if not toret.gae_usr.email().lower().endswith("@esei.uvigo.es"):
-            toret = None
-
-        return toret

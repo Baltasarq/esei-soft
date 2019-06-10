@@ -1,7 +1,7 @@
-# Galician translations for PROJECT.
-# Copyright (C) 2018 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
+# Galician translations for esei-soft.
+# This file is distributed under the same license as the esei-soft project.
+# Iván Guardado Porto <igporto@esei.uvigo.es> 2018.
+# Baltasar García <baltasarq@gmail.com> 2019-.
 #
 msgid ""
 msgstr ""
@@ -39,6 +39,9 @@ msgstr "Asignatura engadida correctamente"
 #: handlers/handlers.py:74 handlers/handlers.py:111
 msgid "Subject already exists "
 msgstr "A Asignatura xa existe"
+
+msgid "Abbreviation invalid: only letters are allowed"
+msgstr "A abreviatura é incorrecta: só se permiten letras"
 
 #: handlers/handlers.py:107
 msgid "Subject edited correctly"
@@ -117,6 +120,8 @@ msgstr "Enviar"
 #: templates/viewSubject.html:18 templates/viewSubject.html:41
 msgid "Name"
 msgstr "Nome"
+msgid "Abbreviation"
+msgstr "Abreviatura"
 
 #: templates/addRequest.html:67 templates/addSoftware.html:19
 #: templates/requests.html:89 templates/softwares.html:32
@@ -196,15 +201,18 @@ msgstr "Cuadrimestre"
 
 #: templates/addSubject.html:55
 msgid "Name is too sort"
-msgstr "O Nome é moi corto"
+msgstr "O Nome é moi curto"
+
+msgid "Abbreviation is too sort"
+msgstr "A abreviatura é moi curta"
 
 #: templates/editSubject.html:10
 msgid "Edit Subject"
 msgstr "Editar Asignatura"
 
 #: templates/login.html:5
-msgid "Welcome to ESEIForms"
-msgstr "Benvido a ESEIForms"
+msgid "Welcome to esei-soft"
+msgstr "Benvido a esei-soft"
 
 #: templates/login.html:6
 msgid "A new software to manage software needs"
@@ -322,7 +330,7 @@ msgid "Are you sure to delete"
 msgstr "Esta seguro de borrar"
 
 #: templates/addRequest.html:163
-msgid "Select one operative system at least"
+msgid "Select one operating system at least"
 msgstr "Selecione un Sistema Operativo polo menos"
 
 #: templates/softwares.html:65
@@ -352,15 +360,15 @@ msgstr "Creada por"
 #: templates/viewRequest.html:37 templates/viewSoftware.html:19
 #: templates/viewSubject.html:43
 msgid "Needs Root Permisions"
-msgstr "Necesita permisos de SuperUsuario"
+msgstr "Necesita permisos de administrador"
 
 #: templates/viewSoftware.html:12
 msgid "View Software"
 msgstr "Ver Software"
 
 #: templates/viewSoftware.html:40
-msgid "There arent intalation notes"
-msgstr "Non hai Notas de Instalacion"
+msgid "There are no installation notes"
+msgstr "Non hai notas de instalación"
 
 #: templates/viewSubject.html:12
 msgid "View Subject"
