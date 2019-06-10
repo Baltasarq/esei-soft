@@ -26,12 +26,12 @@
                 <td>{{ request.getUser().name }}</td>
                 <td>
                     {% if request.getSystem()|string() == "LINUX" %}
-                        <img src="../static/fonts/linux.ico" width="40px" height="40px" class="tooltipped" data-tooltip="LINUX" />
+                        <img src="../static/res/linux.ico" width="40px" height="40px" class="tooltipped" data-tooltip="LINUX" />
                     {% elif request.getSystem()|string() == "WINDOWS" %}
-                        <img src="../static/fonts/windows.png" width="40px" height="40px" class="tooltipped" data-tooltip="WINDOWS"/>
+                        <img src="../static/res/windows.png" width="40px" height="40px" class="tooltipped" data-tooltip="WINDOWS"/>
                     {% else %}
-                        <img src="../static/fonts/linux.ico" width="40px" height="40px" class="tooltipped" data-tooltip="LINUX"/>
-                        <img src="../static/fonts/windows.png" width="40px" height="40px" class="tooltipped" data-tooltip="WINDOWS"/>
+                        <img src="../static/res/linux.ico" width="40px" height="40px" class="tooltipped" data-tooltip="LINUX"/>
+                        <img src="../static/res/windows.png" width="40px" height="40px" class="tooltipped" data-tooltip="WINDOWS"/>
                     {% endif %}
                 </td>
             </tr>

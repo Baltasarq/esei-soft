@@ -2,19 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="65f2b376-1b26-4725-9461-81d91f4597c3" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/editSoftware.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handlers/handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/handlers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messages.pot" beforeDir="false" afterPath="$PROJECT_DIR$/messages.pot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ndbModels.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/ndbModels.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/fonts/eseiforms.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/fonts/eseiforms.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/addRequest.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/addRequest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/addSoftware.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/addSoftware.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/fonts/eseiforms.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/res/eseiforms.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/fonts/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/static/res/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/fonts/linux.ico" beforeDir="false" afterPath="$PROJECT_DIR$/static/res/linux.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/fonts/windows.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/res/windows.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/skeleton.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/skeleton.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/softwares.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/softwares.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/viewSoftware.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/viewSoftware.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/translations/en/LC_MESSAGES/messages.po" beforeDir="false" afterPath="$PROJECT_DIR$/translations/en/LC_MESSAGES/messages.po" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.po" beforeDir="false" afterPath="$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.po" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.po" beforeDir="false" afterPath="$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.po" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/topMenu.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/topMenu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/viewRequest.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/viewRequest.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,8 +46,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/ndbModels.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="60" column="69" selection-start-line="60" selection-start-column="69" selection-end-line="60" selection-end-column="69" />
+            <state relative-caret-position="255">
+              <caret line="54" column="30" selection-start-line="54" selection-start-column="19" selection-end-line="54" selection-end-column="30" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
               </folding>
@@ -59,23 +55,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/handlers/handlers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="669">
-              <caret line="279" column="20" lean-forward="true" selection-start-line="279" selection-start-column="20" selection-end-line="279" selection-end-column="20" />
+            <state relative-caret-position="340">
+              <caret line="655" column="33" selection-start-line="655" selection-start-column="33" selection-end-line="655" selection-end-column="33" />
               <folding>
                 <element signature="e#1#39#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/editSoftware.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="65" selection-start-line="8" selection-start-column="65" selection-end-line="8" selection-end-column="65" />
             </state>
           </provider>
         </entry>
@@ -92,12 +79,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>.user_key</find>
-      <find>User.user_key</find>
-      <find>gae_usr</find>
-      <find>To access</find>
-      <find>current_user</find>
-      <find>is_admin</find>
       <find>u</find>
       <find>user</find>
       <find>users.get_current_user()</find>
@@ -122,6 +103,12 @@
       <find>editsoftw</find>
       <find>instalation</find>
       <find>Key??</find>
+      <find>capitalize</find>
+      <find>editsofte</find>
+      <find>viewsubj</find>
+      <find>User.query</find>
+      <find>addrequest</find>
+      <find>ndb.key</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/templates</dir>
@@ -162,7 +149,6 @@
         <option value="$PROJECT_DIR$/templates/viewRequest.html" />
         <option value="$PROJECT_DIR$/app.yaml" />
         <option value="$PROJECT_DIR$/templates/login.html" />
-        <option value="$PROJECT_DIR$/templates/softwares.html" />
         <option value="$PROJECT_DIR$/models/ndbModels.py" />
         <option value="$PROJECT_DIR$/templates/addRequest.html" />
         <option value="$PROJECT_DIR$/templates/viewSoftware.html" />
@@ -171,8 +157,9 @@
         <option value="$PROJECT_DIR$/translations/en/LC_MESSAGES/messages.po" />
         <option value="$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.po" />
         <option value="$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.po" />
-        <option value="$PROJECT_DIR$/handlers/handlers.py" />
         <option value="$PROJECT_DIR$/templates/editSoftware.html" />
+        <option value="$PROJECT_DIR$/templates/softwares.html" />
+        <option value="$PROJECT_DIR$/handlers/handlers.py" />
       </list>
     </option>
   </component>
@@ -205,6 +192,11 @@
               <item name="esei-soft" type="b2602c69:ProjectViewProjectNode" />
               <item name="esei-soft" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="esei-soft" type="b2602c69:ProjectViewProjectNode" />
+              <item name="esei-soft" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="esei-soft" type="b2602c69:ProjectViewProjectNode" />
@@ -298,23 +290,23 @@
       <updated>1523351887505</updated>
       <workItem from="1559895256141" duration="11705000" />
       <workItem from="1560150922956" duration="7886000" />
-      <workItem from="1560166416028" duration="6318000" />
+      <workItem from="1560166416028" duration="11464000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25909000" />
+    <option name="totallyTimeSpent" value="31055000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="580" y="0" width="1336" height="1076" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25585023" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25585023" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32415253" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49808428" visible="true" weight="0.2457627" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49808428" visible="true" weight="0.2457627" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3993644" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -563,7 +555,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/fonts/eseiforms.png">
+    <entry file="file://$PROJECT_DIR$/static/res/eseiforms.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/subjects.html">
@@ -577,16 +569,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
           <caret line="242" column="9" selection-start-line="242" selection-start-column="1" selection-end-line="242" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/ndbModels.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="60" column="69" selection-start-line="60" selection-start-column="69" selection-end-line="60" selection-end-column="69" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -649,27 +631,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/handlers/handlers.py">
+    <entry file="file://$PROJECT_DIR$/templates/editSoftware.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="669">
-          <caret line="279" column="20" lean-forward="true" selection-start-line="279" selection-start-column="20" selection-end-line="279" selection-end-column="20" />
-          <folding>
-            <element signature="e#1#39#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="408">
+          <caret line="24" column="14" lean-forward="true" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/softwares.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="50" column="28" lean-forward="true" selection-start-line="50" selection-start-column="28" selection-end-line="50" selection-end-column="28" />
+        <state relative-caret-position="458">
+          <caret line="38" column="54" selection-start-line="38" selection-start-column="54" selection-end-line="38" selection-end-column="54" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/editSoftware.html">
+    <entry file="file://$PROJECT_DIR$/models/ndbModels.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="65" selection-start-line="8" selection-start-column="65" selection-end-line="8" selection-end-column="65" />
+        <state relative-caret-position="255">
+          <caret line="54" column="30" selection-start-line="54" selection-start-column="19" selection-end-line="54" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handlers/handlers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="655" column="33" selection-start-line="655" selection-start-column="33" selection-end-line="655" selection-end-column="33" />
+          <folding>
+            <element signature="e#1#39#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

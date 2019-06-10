@@ -36,8 +36,10 @@
                     </td>
                     <td class="center url">
                         <a class="tooltipped too modal-trigger" data-position="bottom"
-                           data-tooltip='{{ software.url }}'>
-                        {{ software.name }}
+                           data-tooltip='{{ software.url }}'
+                           target="_blank"
+                           href="{{ software.url }}">
+                        {{ software.url[:20] }}
                         </a>
                     </td>
                     <td class="center">

@@ -57,13 +57,13 @@ class Subject(ndb.Model):
 
 class Software(ndb.Model):
     name = ndb.StringProperty(required=True, indexed=True)
-    url = ndb.StringProperty(required=True)
+    url = ndb.StringProperty(required=True, default="")
     installation_notes = ndb.StringProperty(required=True, default="")
     needs_root = ndb.BooleanProperty(required=True, indexed=True)
 
 
 class Request(ndb.Model):
-    date = ndb.DateTimeProperty(auto_now_add=True, required=True, indexed=True)
+    date = ndb.DateTimeProperty(auto_now_add=True, indexed=True)
     user_key = ndb.KeyProperty(kind=User)
     subject_key = ndb.KeyProperty(kind=Subject)
     system = msgprop.EnumProperty(System, required=True)
