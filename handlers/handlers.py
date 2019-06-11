@@ -74,6 +74,7 @@ def correct_capitalization(s):
     toret = ""
 
     if s:
+        always_upper = {"tic", "i", "ii", "iii", "iv", "v", "vs", "vs."}
         articles = {"el", "la", "las", "lo", "los", "un", "unos", "una", "unas",
                     "a", "an", "the", "these", "those", "that"}
         preps = {"de", "del", "para", "con", "y", "o"
@@ -83,7 +84,9 @@ def correct_capitalization(s):
         capitalized_words = []
 
         for word in words:
-            if (not word in articles
+            if word in always_upper:
+                word = word.upper()
+            elif (not word in articles
             and not word in preps):
                 word = word.capitalize()
 

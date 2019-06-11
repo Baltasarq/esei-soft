@@ -4,7 +4,7 @@
 
 class AppInfo:
     Title = "esei-soft".decode("utf-8")
-    Author = "Ignacio Guardado | Baltasar García".decode("utf-8")
+    Author = "Iván Guardado | Baltasar García".decode("utf-8")
     Year = "2018/19"
     Web = "http://github.com/baltasarq/esei-soft/".decode("utf-8")
 
