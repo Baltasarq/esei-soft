@@ -2,28 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="65f2b376-1b26-4725-9461-81d91f4597c3" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/models/appinfo.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/res/github.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/request_desc.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/software_desc.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/subject_desc.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handlers/handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/handlers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messages.pot" beforeDir="false" afterPath="$PROJECT_DIR$/messages.pot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ndbModels.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/ndb_models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/requestComplete.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/request_complete.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/requests.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/requests.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/skeleton.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/skeleton.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/softwares.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/softwares.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/subjects.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/subjects.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/viewRequest.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/viewRequest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/viewSoftware.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/viewSoftware.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/viewSubject.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/viewSubject.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/translations/en/LC_MESSAGES/messages.po" beforeDir="false" afterPath="$PROJECT_DIR$/translations/en/LC_MESSAGES/messages.po" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.po" beforeDir="false" afterPath="$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.po" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.po" beforeDir="false" afterPath="$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.po" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -71,8 +50,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/handlers/handlers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="821" selection-start-line="821" selection-end-line="821" />
+            <state relative-caret-position="204">
+              <caret line="78" column="53" selection-start-line="78" selection-start-column="53" selection-end-line="78" selection-end-column="53" />
               <folding>
                 <element signature="e#66#77#0" expanded="true" />
               </folding>
@@ -334,12 +313,12 @@
       <updated>1523351887505</updated>
       <workItem from="1559895256141" duration="11705000" />
       <workItem from="1560150922956" duration="7886000" />
-      <workItem from="1560166416028" duration="26249000" />
+      <workItem from="1560166416028" duration="26614000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45840000" />
+    <option name="totallyTimeSpent" value="46205000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="580" y="0" width="1336" height="1076" extended-state="0" />
@@ -359,9 +338,9 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32838982" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.32838982" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32838982" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5019157" side_tool="true" weight="0.41361257" />
-      <window_info anchor="bottom" id="App Config Tool" order="13" weight="0.32944915" />
+      <window_info active="true" anchor="bottom" id="App Config Tool" order="13" visible="true" weight="0.32944915" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -720,8 +699,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/handlers/handlers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="821" selection-start-line="821" selection-end-line="821" />
+        <state relative-caret-position="204">
+          <caret line="78" column="53" selection-start-line="78" selection-start-column="53" selection-end-line="78" selection-end-column="53" />
           <folding>
             <element signature="e#66#77#0" expanded="true" />
           </folding>

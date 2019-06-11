@@ -76,8 +76,8 @@ def correct_capitalization(s):
     if s:
         articles = {"el", "la", "las", "lo", "los", "un", "unos", "una", "unas",
                     "a", "an", "the", "these", "those", "that"}
-        preps = {"de", "del", "para", "con",
-                 "of", "for", "with"}
+        preps = {"de", "del", "para", "con", "y", "o"
+                 "of", "for", "with", "and", "or"}
 
         words = s.strip().lower().split()
         capitalized_words = []
