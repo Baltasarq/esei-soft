@@ -197,7 +197,7 @@ msgid "Edit Subject"
 msgstr ""
 
 #: templates/login.html:5
-msgid "Welcome to esei-soft"
+msgid "Welcome to"
 msgstr ""
 
 #: templates/login.html:6
@@ -213,7 +213,7 @@ msgid "Log In"
 msgstr ""
 
 #: templates/login.html:23
-msgid "Welcome "
+msgid "Welcome"
 msgstr ""
 
 #: templates/login.html:27

@@ -1,11 +1,12 @@
 class RequestComplete:
 
-    def __init__(self, key,  user, subject, software, so, date):
+    def __init__(self, key,  user, subject, softwares, pairs_keys, so, date):
         self.key = key
         self.user = user
         self.date = date
         self.subject = subject
-        self.software = software
+        self.softwares= softwares
+        self.pairs_keys = pairs_keys
         self.system = so
 
     def getKey(self):
@@ -20,8 +21,11 @@ class RequestComplete:
     def getSubject(self):
         return self.subject
 
-    def getSoftware(self):
-        return self.software
+    def getSoftwares(self):
+        return self.softwares
+
+    def getPairsKeys(self):
+        return self.pairs_keys
 
     def getSystem(self):
         return self.system
@@ -29,4 +33,4 @@ class RequestComplete:
     def __str__(self):
         return "Request: " + str(self.getKey()) + ", date: " + str(self.getDate()) + "\n" \
         + "Subject: " + str(self.getSubject()) + "\n" \
-        + "Software: " + str(self.getSoftware())
+        + "Softwares: " + str(self.getSoftwares())

@@ -31,10 +31,7 @@
             <tbody class="list">
             {% for subject in subjects %}
                 <tr>
-                    <td class="name center"> {{ subject.abbreviation }}</td>
-                    <td class="name center"> {{ subject.name }}</td>
-                    <td class="year center"> {{ subject.year }}</td>
-                    <td class="quarter center"> {{ subject.quarter }}</td>
+                    {% include "subject_desc.html" %}
                     <td class="name center">
                         <a href="/editSubject?key={{subject.key.id()}}" data-position="top" class="waves-effect tooltipped waves-light btn-small yellow "
                         {% if not current_user %}

@@ -214,8 +214,8 @@ msgid "Edit Subject"
 msgstr "Editar Asignatura"
 
 #: templates/login.html:5
-msgid "Welcome to esei-soft"
-msgstr "Benvido a esei-soft"
+msgid "Welcome to"
+msgstr "Benvido a"
 
 #: templates/login.html:6
 msgid "A new software to manage software needs"

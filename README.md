@@ -5,7 +5,7 @@ This is a web app that is just designed to collect software requirements for sub
 This is a Google App Engine project. The most comfortable way to modify it is to install **IntelliJ PyCharm**.
 
 # Run
-Go visit [EseiForms](http://eseiforms2018.appspot.com/)
+Go visit [esei-soft](http://esei-soft.appspot.com/)
 
 *Copyright (c) 2018 Iván Guardado Porto*
 

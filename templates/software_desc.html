@@ -1,0 +1,23 @@
+<td class="name center">
+    {{ software.name }}
+</td>
+<td class="root center">
+    {% if software.needs_root %}
+        {{ _('Yes') }}
+    {% else %}
+        {{ _('No') }}
+    {% endif %}
+</td>
+<td class="url center">
+    <a class="tooltipped too modal-trigger"
+       data-position="bottom"
+       data-tooltip='{{ software.url }}'
+       target="_blank" href="{{ software.url }}">
+
+        {% if software.url | length > 30 %}
+            {{ software.url[:30] }}...
+        {% else %}
+            {{ software.url }}
+        {% endif %}
+    </a>
+</td>

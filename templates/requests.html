@@ -49,9 +49,8 @@
         </thead>
         {% for request in requests %}
         <tr>
-            <td class="subject"> {{ request.getSubject().name }}</td>
-            <td class="user"> {{ request.getUser().name}}</td>
-            <td class="date"> {{ request.date }}</td>
+            {% include "request_desc.html" %}
+
             <td>
                 <a href="/viewRequest?key={{request.key.id()}}" class="waves-effect tooltipped waves-light btn-small
                  blue" data-position="left" data-tooltip='{{ _('View') }}'>
@@ -59,7 +58,7 @@
                 </a>
                 <!-- Modal Trigger -->
                 <a class="waves-effect waves-light tooltipped btn-small red modal-trigger" href="#delete{{request.key.id()}}"
-                {% if not is_admin  %}
+                {% if not is_admin and not is_current_user_the_owner %}
                     disabled
                 {% endif %} data-position="right" data-tooltip='{{ _('Delete') }}'>
                     <i class="material-icons ">delete</i>

@@ -4,7 +4,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
         <title>
             {% if title %} {{ title }}
-            {% else %} ESEIFORMS {% endif %}
+            {% else %} {{ AppInfo.Title }} {% endif %}
         </title>
 
         <!-- DataTable
@@ -79,13 +79,15 @@
         <script src="../static/js/init.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
     </body>
-    <footer class="page-footer footer-fixed orange no-pad-bot">
+    <footer class="page-footer orange footer-fixed">
         {% block footer %}
 
         {% endblock %}
         <div class="container center">
-            <i class="material-icons tiny">copyright</i>
-            ESEIFORMS2018
+            <a target="_blank" href="{{ AppInfo.Web }}">
+                <img height="32px" width="32px" src="/static/res/github.png">
+            </a>
+            {{ AppInfo.CompleteCopyrightMessage }}
         </div>
     </footer>
 {% block notifications %}

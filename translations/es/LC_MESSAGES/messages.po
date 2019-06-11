@@ -208,8 +208,8 @@ msgid "Edit Subject"
 msgstr "Editar Asignatura"
 
 #: templates/login.html:5
-msgid "Welcome to esei-soft"
-msgstr "Bienvenido a esei-soft"
+msgid "Welcome to"
+msgstr "Bienvenido a"
 
 #: templates/login.html:6
 msgid "A new software to manage software needs"
@@ -224,7 +224,7 @@ msgid "Log In"
 msgstr "Iniciar Sesión"
 
 #: templates/login.html:23
-msgid "Welcome "
+msgid "Welcome"
 msgstr "Benvenido"
 
 #: templates/login.html:27

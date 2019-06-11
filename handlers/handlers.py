@@ -1,15 +1,29 @@
+# (c) 2019 esei-soft Baltasar MIT License <baltasarq@gmail.com>
 
-from google.appengine.api import users
 
 import time
+import datetime
+
 from flask import render_template, flash, redirect, request, Response
 from flask_babel import _
 import flask
-import datetime
 from google.appengine.ext import ndb
+from google.appengine.api import users
+
 from main import app
-from models.ndbModels import Request, Software, Subject, User, RequestSoftware, System
-from models.requestComplete import RequestComplete
+from models.ndb_models import Request, Software, Subject, User, RequestSoftware, System
+from models.request_complete import RequestComplete
+from models.appinfo import AppInfo
+
+
+def create_anonymous_user():
+    """Creates an anonymous user, in case it is not found for a request."""
+    return User(name="anonymous", is_admin=False, user_id="0")
+
+
+def create_anonynous_subject():
+    """Creates an anonymous subject, in case it is not found for a request."""
+    return Subject(name="undefined", abbreviation="n/a", year=1992, quarter=1)
 
 
 def retrieve_obj(str_key, cls):
@@ -86,12 +100,15 @@ def login():
     user = User.get_current_user()
     if user:
         try:
-            return render_template("login.html", current_user=user, user_logout=users.create_logout_url("/"))
+            return render_template("login.html",
+                                   AppInfo=AppInfo,
+                                   current_user=user,
+                                   user_logout=users.create_logout_url("/"))
         except Exception as e:
             print(e.message)
             print(e.args)
     else:
-        return render_template("login.html", user_login=users.create_login_url("/"))
+        return render_template("login.html", AppInfo=AppInfo, user_login=users.create_login_url("/"))
 
 
 @app.route('/subjects')
@@ -100,7 +117,10 @@ def showSubjects():
     if user:
         try:
             subjects = Subject.query().order(Subject.abbreviation)
-            return render_template("subjects.html", current_user=user, user_logout=users.create_logout_url("/"),
+            return render_template("subjects.html",
+                                   AppInfo=AppInfo,
+                                   current_user=user,
+                                   user_logout=users.create_logout_url("/"),
                                    subjects=subjects)
         except Exception as e:
             print(e.message)
@@ -132,8 +152,11 @@ def addSubject():
 
                 if not chk_abbreviation(abbreviation):
                     flash(_(_('Abbreviation invalid: only letters are allowed')), 'error')
-                    return render_template("addSubject.html", current_user=user, user_logout=users.create_logout_url("/"),
-                                        name=name, year=year, quarter=quarter)
+                    return render_template("addSubject.html",
+                                           AppInfo=AppInfo,
+                                           current_user=user,
+                                           user_logout=users.create_logout_url("/"),
+                                           name=name, year=year, quarter=quarter)
                 else:
                     subject = Subject.query(Subject.abbreviation == abbreviation)
                     if subject.count() == 0:
@@ -148,12 +171,18 @@ def addSubject():
                             return redirect("/subjects")
                     else:
                         flash(_(_('Subject already exists ')) + ": " + abbreviation, 'error')
-                        return render_template("addSubject.html", current_user=user, user_logout=users.create_logout_url("/"),
-                                            name=name, year=year, quarter=quarter)
+                        return render_template("addSubject.html",
+                                               AppInfo=AppInfo,
+                                               current_user=user,
+                                               user_logout=users.create_logout_url("/"),
+                                               name=name, year=year, quarter=quarter)
             except Exception as e:
                 print(e.message)
         else:
-            return render_template("addSubject.html", current_user=user, user_logout=users.create_logout_url("/"))
+            return render_template("addSubject.html",
+                                   AppInfo=AppInfo,
+                                   current_user=user,
+                                   user_logout=users.create_logout_url("/"))
     else:
         return redirect("/")
 
@@ -197,8 +226,11 @@ def editSubject():
                 else:
                     flash(_(_('Subject name cant be blank ')), 'error')
 
-            return render_template("editSubject.html", current_user=user, user_logout=users.create_logout_url("/"),
-                                    subject=subject)
+            return render_template("editSubject.html",
+                                   AppInfo=AppInfo,
+                                   current_user=user,
+                                   user_logout=users.create_logout_url("/"),
+                                   subject=subject)
         else:
             return redirect("/")
     except Exception as e:
@@ -213,22 +245,26 @@ def viewSubject():
             str_key = request.args.get("key")
             subject = retrieve_obj(str_key, Subject)
             
-            if not subject:
-                subject_owner = ndb.Key(User, subject.user_key.id())
+            if subject:
+                subject_owner = ndb.Key(User, subject.user_key.id()).get()
                 apps = []
 
-                requests = Request.query(Request.subject_key == subject_key)
+                if not subject_owner:
+                    subject_owner = create_anonymous_user()
+
+                requests = Request.query(Request.subject_key == subject.key)
 
                 for req in requests:
                     for software_in_request in RequestSoftware.query(RequestSoftware.request_key == req.key):
                         apps.append(software_in_request.software_key.get())
 
                 return render_template("viewSubject.html",
-                                    current_user=user,
-                                    user=subject_owner,
-                                    softwares=list(apps),
-                                    subject=subject,
-                                    user_logout=users.create_logout_url("/"))
+                                        AppInfo=AppInfo,
+                                        current_user=user,
+                                        subject_owner=subject_owner,
+                                        softwares=list(apps),
+                                        subject=subject,
+                                        user_logout=users.create_logout_url("/"))
             else:
                 flash("Subject.key == " + str(str_key) + "??", 'error')
         except Exception as e:
@@ -253,7 +289,7 @@ def deleteSubject():
                     for s in sofsRequests:
                         s.key.delete()
                     r.key.delete()
-                    time.sleep(0.5)
+
                 subject.key.delete()
                 time.sleep(1)
                 flash(_('Subject deleted correctly'), 'success')
@@ -302,7 +338,10 @@ def addSoftware():
                 except Exception as e:
                     print(e.message)
             else:
-                return render_template("addSoftware.html", current_user=user, user_logout=users.create_logout_url("/"))
+                return render_template("addSoftware.html",
+                                       AppInfo=AppInfo,
+                                       current_user=user,
+                                       user_logout=users.create_logout_url("/"))
         else:
             return redirect("/")
     except Exception as e:
@@ -344,7 +383,11 @@ def editSoftware():
                 except Exception as e:
                     print(e.message)
             else:
-                return render_template("editSoftware.html", current_user=user, app=software, user_logout=users.create_logout_url("/"))
+                return render_template("editSoftware.html",
+                                       AppInfo=AppInfo,
+                                       current_user=user,
+                                       app=software,
+                                       user_logout=users.create_logout_url("/"))
         else:
             return redirect("/")
     except Exception as e:
@@ -357,7 +400,10 @@ def showSoftwares():
     if user:
         try:
             softwares = Software.query().order(Software.name)
-            return render_template("softwares.html", current_user=user, user_logout=users.create_logout_url("/"),
+            return render_template("softwares.html",
+                                   AppInfo=AppInfo,
+                                   current_user=user,
+                                   user_logout=users.create_logout_url("/"),
                                    softwares=softwares)
         except Exception as e:
             print(e.message)
@@ -377,7 +423,11 @@ def viewSoftware():
                 flash("Software.key == " + str(str_key) + "??", 'error')
                 return redirect("/softwares")
                 
-            return render_template("viewSoftware.html", current_user=user, software=software, user_logout=users.create_logout_url("/"))
+            return render_template("viewSoftware.html",
+                                   AppInfo=AppInfo,
+                                   current_user=user,
+                                   software=software,
+                                   user_logout=users.create_logout_url("/"))
         else:
             return redirect("/")
     except Exception as e:
@@ -390,7 +440,7 @@ def deleteSoftware():
     if user:
         try:
             str_key = request.args.get("key")
-            software = retrieve_obj(str_obj, Software)
+            software = retrieve_obj(str_key, Software)
             
             if not software:
                 flash("Software.key == " + str(str_key) + "??", 'error')
@@ -455,7 +505,7 @@ def exportCSV():
             for complete_request in requests_to_generate:
                 request_owner = complete_request.getUser()
                 subject = complete_request.getSubject()
-                softs = complete_request.getSoftware()
+                softs = complete_request.getSoftwares()
 
                 if complete_request.getSystem() == System.LINUX:
                     system = 'Linux'
@@ -516,7 +566,7 @@ def exportXML():
             for rc in requestToShow:
                 u = rc.getUser()
                 sub = rc.getSubject()
-                softs = rc.getSoftware()
+                softs = rc.getSoftwares()
                 if rc.getSystem() == System.LINUX:
                     system = 'Linux'
                 elif rc.getSystem() == System.WINDOWS:
@@ -569,24 +619,42 @@ def showRequests():
     user = User.get_current_user()
     if user:
         try:
-            requestToShow = []
+            requests_to_show = []
             requests = Request.query()
+            is_current_user_the_owner = False
 
             for request in requests:
-                u = User.query(User.user_id == request.user_key.id()).get()
+                req_owner = request.user_key.get()
 
-                s = Subject.query(Subject.key == request.subject_key).get()
-                requestSofts = RequestSoftware.query(RequestSoftware.request_key == request.key)
+                if not req_owner:
+                    req_owner = create_anonymous_user()
+                else:
+                    is_current_user_the_owner = (user.key.id() == req_owner.key.id())
+
+                req_subject = request.subject_key.get()
+                req_softs = RequestSoftware.query(RequestSoftware.request_key == request.key)
                 softwares = list()
 
-                for soft in requestSofts:
+                for soft in req_softs:
                     softwares.append(Software.query(Software.key == soft.software_key).get())
 
-                requestToShow.append(RequestComplete(request.key, u, s, softwares, request.system, request.date, ))
+                requests_to_show.append(
+                    RequestComplete(
+                        request.key,
+                        req_owner,
+                        req_subject,
+                        softwares,
+                        [],
+                        request.system,
+                        request.date))
 
-            return render_template("requests.html", current_user=user,
-                                   requests=requestToShow,
-                                   user_logout=users.create_logout_url("/"), is_admin=users.is_current_user_admin())
+            return render_template("requests.html",
+                                   AppInfo=AppInfo,
+                                   current_user=user,
+                                   requests=requests_to_show,
+                                   user_logout=users.create_logout_url("/"),
+                                   is_admin=user.is_admin,
+                                   is_current_user_the_owner=is_current_user_the_owner)
         except Exception as e:
             print(e.message)
     else:
@@ -628,6 +696,7 @@ def addRequest():
                     request_software.request_key = request.key
                     request_software.software_key = ndb.Key(Software, int(software))
                     request_software.put()
+                    time.sleep(1)
 
                 flash(_('Request added correctly'), 'success')
                 return redirect("/requests")
@@ -637,8 +706,12 @@ def addRequest():
             try:
                 subjects = Subject.query().order(Subject.name)
                 softwares = Software.query().order(Software.name)
-                return render_template("addRequest.html", current_user=user, softwares=softwares,
-                                       subjects=subjects, user_logout=users.create_logout_url("/"))
+                return render_template("addRequest.html",
+                                       AppInfo=AppInfo,
+                                       current_user=user,
+                                       softwares=softwares,
+                                       subjects=subjects,
+                                       user_logout=users.create_logout_url("/"))
 
             except Exception as e:
                 print(e.message)
@@ -659,22 +732,40 @@ def viewRequest():
                 return redirect("/requests")
 
             req_owner = req.user_key.get()
-            req_software = req.subject_key.get()
+            req_subject = req.subject_key.get()
+
+            if not req_owner:
+                req_owner = create_anonymous_user()
+
+            if not req_subject:
+                req_subject = create_anonynous_subject()
 
             pairs_req_soft = RequestSoftware.query(RequestSoftware.request_key == req.key)
             softwares = []
+            pairs_keys = []
 
-            for soft in pairs_req_soft:
-                softwares.append(soft.software_key.get())
+            for pair_req_soft in pairs_req_soft:
+                softwares.append(pair_req_soft.software_key.get())
+                pairs_keys.append(pair_req_soft.key)
 
-            requestToShow = RequestComplete(req.key, req_owner, req_software, softwares, req.system, req.date, )
+            request_to_show = RequestComplete(req.key,
+                                              req_owner,
+                                              req_subject,
+                                              softwares,
+                                              pairs_keys,
+                                              req.system,
+                                              req.date)
 
-            return render_template("viewRequest.html", current_user=user, request=requestToShow,
+            return render_template("viewRequest.html",
+                                   AppInfo=AppInfo,
+                                   current_user=user,
+                                   request=request_to_show,
                                    user_logout=users.create_logout_url("/"))
         except Exception as e:
             print(e.message)
     else:
         return redirect("/")
+
 
 @app.route('/deleteRequest')
 def deleteRequest():
@@ -702,5 +793,40 @@ def deleteRequest():
             return redirect('/requests')
         except Exception as e:
             print(e.message)
+    else:
+        return redirect("/")
+
+
+@app.route('/deleteRequestPair')
+def deleteRequestPair():
+    user = User.get_current_user()
+
+    if user:
+        try:
+            str_key = request.args.get("key")
+            req_pair = retrieve_obj(str_key, RequestSoftware)
+
+            if not req_pair:
+                flash("RequestSoftware.id == " + str(str_key) + "??", 'error')
+                return redirect("/requests")
+
+            # Find the request
+            req = req_pair.request_key.get()
+            req_owner = req.user_key.get()
+            is_current_user_the_owner = False
+
+            if req_owner:
+                is_current_user_the_owner = (req_owner.key.id() == user.key.id())
+
+            if user.is_admin or is_current_user_the_owner:
+                req_pair.key.delete()
+                time.sleep(1)
+                flash(_('request deleted correctly'), 'success')
+            else:
+                flash("You're not allowed!!", 'error')
+        except Exception as e:
+            print("/deleteRequestPair: unable to delete pair: " + e.message)
+
+        return redirect("/viewRequest?key=" + str(req.key.id()))
     else:
         return redirect("/")

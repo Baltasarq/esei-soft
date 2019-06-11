@@ -2,7 +2,7 @@
 
 {% block content %}
 <div>
-    <h1>{{ _('Welcome to esei-soft') }} </h1>
+    <h1>{{ _('Welcome to') }} {{ AppInfo.Title }}</h1>
     <p>{{ _('A new software to manage software needs') }}</p>
 
     {% if not current_user %}
@@ -20,7 +20,7 @@
 
     <p style="color: #9f191f">
         <br>
-        {{ _('Welcome ') +" "+ current_user.name + '!!!' }}
+        {{ _('Welcome') + ", " + current_user.name + "." }}
     </p>
     <p>
         <br>

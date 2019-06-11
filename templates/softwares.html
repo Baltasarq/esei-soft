@@ -26,22 +26,7 @@
             <tbody class="list">
             {% for software in softwares %}
                 <tr>
-                    <td class="name center"> {{ software.name }}</td>
-                    <td class="root center">
-                        {% if software.needs_root %}
-                            {{ _('Yes') }}
-                        {% else %}
-                            {{ _('No') }}
-                        {% endif%}
-                    </td>
-                    <td class="center url">
-                        <a class="tooltipped too modal-trigger" data-position="bottom"
-                           data-tooltip='{{ software.url }}'
-                           target="_blank"
-                           href="{{ software.url }}">
-                        {{ software.url[:20] }}
-                        </a>
-                    </td>
+                    {% include "software_desc.html" %}
                     <td class="center">
                         <a href="/viewSoftware?key={{software.key.id()}}" class="waves-effect tooltipped waves-light
                         btn-small blue" data-position="left" data-tooltip='{{ _('View') }}'>

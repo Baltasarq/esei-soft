@@ -22,11 +22,8 @@
                 <td><b>{{ _('Created by') }}</b></td>
             </tr>
             <tr class="centered">
-                <td>{{ subject.abbreviation }}</td>
-                <td>{{ subject.name }}</td>
-                <td>{{ subject.year }}</td>
-                <td>{{ subject.quarter }}</td>
-                <td>{{ user.name }}</td>
+                {% include "subject_desc.html" %}
+                <td class="name center">{{ subject_owner.name }}</td>
             </tr>
         </table>
     </div>
@@ -41,24 +38,18 @@
         <table class="centered">
             <tr class="centered">
                 <td><b>{{ _('Name') }}</b></td>
-                <td><b>{{ _('URL') }}</b></td>
                 <td><b>{{ _('Needs Root Permisions') }}</b></td>
+                <td><b>{{ _('URL') }}</b></td>
             </tr>
-            {% for soft in softwares %}
-            <tr class="centered">
-                <td><b>{{ soft.name }}</b></td>
-                <td>{{ soft.url }}</td>
-                {% if soft.needs_root == 1 %}
-                    <td>{{ _('Yes') }}</td>
-                {% else %}
-                    <td>{{ _('No') }}</td>
-                {% endif %}
-                <td>
-                    <a href="/viewSoftware?key={{soft.key.id()}}" class="waves-effect waves-light btn-small blue">
-                    <i class="material-icons ">remove_red_eye</i>
-                </a>
+            {% for software in softwares %}
+             <tr class="centered">
+                 {% include "software_desc.html" %}
+                 <td>
+                    <a href="/viewSoftware?key={{software.key.id()}}" class="waves-effect waves-light btn-small blue">
+                        <i class="material-icons ">remove_red_eye</i>
+                    </a>
                 </td>
-            </tr>
+             </tr>
             {% endfor %}
         </table>
         {% else %}
