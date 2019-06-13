@@ -57,20 +57,15 @@
 
                 <td>
                 <a class="waves-effect waves-light tooltipped btn-small red modal-trigger" href="/deleteRequestPair?key={{ request.getPairsKeys()[loop.index - 1].id() }}"
-                    data-position="right" data-tooltip="{{ _('Delete') }}">
+                    data-position="right" data-tooltip="{{ _('Delete') }}"
+                    {% if not current_user.is_admin and request.getUser().key != current_user.key %}
+                        disabled
+                    {% endif %}
+                >
                     <i class="material-icons ">delete</i>
                 </a>
                 </td>
             </tr>
-
-            <!--
-            {% if software.installation_notes %}
-            <tr class="centered">
-                <td colspan="3">
-                    <i>{{ software.installation_notes }}</i>
-                </td>
-            </tr>
-            {% endif %} -->
             {% endfor %}
         </table>
         {% else %}

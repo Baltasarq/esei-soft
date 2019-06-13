@@ -46,7 +46,7 @@
                         <!-- Modal Trigger -->
 
                         <a class="waves-effect waves-light btn-small tooltipped red modal-trigger" data-position="top" href="#delete{{subject.key.id()}}"
-                        {% if current_user.user_id != subject.user_key.id() and not current_user.is_admin %}
+                        {% if current_user.key != subject.user_key and not current_user.is_admin %}
                             disabled
                         {% endif %} data-tooltip='{{ _('Delete') }}' >
                             <i class="material-icons ">delete</i>
@@ -70,7 +70,11 @@
                         {{ _('No') }}
                     </a>
                     <a href="/deleteSubject?key={{subject.key.id()}}"
-                       class="modal-action modal-close waves-effect waves-green btn-flat">
+                       class="modal-action modal-close waves-effect waves-green btn-flat"
+                      {% if not current_user.is_admin and subject.user_key != current_user.key %}
+                            disabled
+                      {% endif %}
+                    >
                         {{ _('Yes') }}
                     </a>
                 </div>

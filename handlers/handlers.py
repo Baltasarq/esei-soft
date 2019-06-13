@@ -592,15 +592,12 @@ def showRequests():
         try:
             requests_to_show = []
             requests = Request.query()
-            is_current_user_the_owner = False
 
             for request in requests:
                 req_owner = request.user_key.get()
 
                 if not req_owner:
                     req_owner = create_anonymous_user()
-                else:
-                    is_current_user_the_owner = (user.key.id() == req_owner.key.id())
 
                 req_subject = request.subject_key.get()
                 req_softs = RequestSoftware.query(RequestSoftware.request_key == request.key)
@@ -623,9 +620,7 @@ def showRequests():
                                    AppInfo=AppInfo,
                                    current_user=user,
                                    requests=requests_to_show,
-                                   user_logout=users.create_logout_url("/"),
-                                   is_admin=user.is_admin,
-                                   is_current_user_the_owner=is_current_user_the_owner)
+                                   user_logout=users.create_logout_url("/"))
         except Exception as e:
             print(e.message)
     else:

@@ -74,6 +74,9 @@ class RequestSoftware(ndb.Model):
     software_key = ndb.KeyProperty(kind=Software)
 
 
+from flask import flash
+
+
 def retrieve_obj(cls, str_key):
     """Retrieves an object from the data store, given its key.
 

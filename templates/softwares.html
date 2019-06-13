@@ -38,7 +38,11 @@
                         </a>
                         <!-- Modal Trigger -->
                         <a class="waves-effect waves-light tooltipped btn-small red modal-trigger"
-                           href="#delete{{software.key.id()}}" data-position="right" data-tooltip='{{ _('Delete') }}'>
+                           href="#delete{{software.key.id()}}" data-position="right" data-tooltip='{{ _('Delete') }}'
+                           {% if not current_user.is_admin %}
+                                disabled
+                           {% endif %}
+                        >
                             <i class="material-icons ">delete</i>
                         </a>
 

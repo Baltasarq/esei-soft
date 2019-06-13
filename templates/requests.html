@@ -20,7 +20,7 @@
      <div class="col s2">
         <button class="sort btn-small" data-sort="subject">{{ _('subject')}}</button>
     </div>
-    {% if is_admin %}
+    {% if current_user.is_admin %}
         <div class="col s1">
             <a class='dropdown-button btn-small' href='#' data-target='dropdown1'>
                 <i class="material-icons">file_download</i>
@@ -52,9 +52,10 @@
                 </a>
                 <!-- Modal Trigger -->
                 <a class="waves-effect waves-light tooltipped btn-small red modal-trigger" href="#delete{{request.key.id()}}"
-                {% if not is_admin and not is_current_user_the_owner %}
-                    disabled
-                {% endif %} data-position="right" data-tooltip='{{ _('Delete') }}'>
+                        {% if not(current_user.is_admin) and request.getUser().key != current_user.key %}
+                            disabled
+                        {% endif %}
+                        data-position="right" data-tooltip='{{ _('Delete') }}'>
                     <i class="material-icons ">delete</i>
                 </a>
             </td>
