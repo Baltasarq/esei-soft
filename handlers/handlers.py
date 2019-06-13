@@ -250,6 +250,11 @@ def deleteSubject():
             str_key = request.args.get("key")
             subject = retrieve_obj(Subject, str_key)
             
+            if (not user.is_admin
+            and subject.user_key != user.key):
+                flash("You're not allowed", 'error')
+                return redirect("/subjects")
+            
             if subject:
                 requests = Request.query(Request.subject_key == subject.key)
                 
@@ -409,6 +414,10 @@ def viewSoftware():
 def deleteSoftware():
     user = User.get_current_user()
     if user:
+        if not user.is_admin:
+            flash("You're not allowed", 'error')
+            return redirect("/softwares")
+        
         try:
             str_key = request.args.get("key")
             software = retrieve_obj(Software, str_key)
@@ -747,6 +756,11 @@ def deleteRequest():
             req = retrieve_obj(Request, str_key)
 
             if req:
+                if (not user.is_admin
+                and req.user_key != user.key):
+                    flash("You're not allowed", 'error')
+                    return redirect("/subjects")
+                
                 # Delete all related request - software pairs
                 soft_reqs = RequestSoftware.query(RequestSoftware.request_key == req.key)
 
