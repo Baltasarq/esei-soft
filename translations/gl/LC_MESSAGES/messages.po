@@ -313,11 +313,11 @@ msgid "Log Out"
 msgstr "Desconectarse"
 
 #: templates/softwares.html:17
-msgid "needs_root"
+msgid "needs root"
 msgstr "Precisa SuperUsuario"
 
 #: templates/softwares.html:22
-msgid "Needs_Root"
+msgid "Needs Root"
 msgstr "Precisa SuperUsuario"
 
 #: templates/softwares.html:24 templates/subjects.html:28
@@ -383,7 +383,7 @@ msgstr "Ver Asignatura"
 #~ msgid " Add Request"
 #~ msgstr ""
 
-#~ msgid "Needs_root"
+#~ msgid "Needs root"
 #~ msgstr "Necesita permisos de SuperUsuario"
 
 #~ msgid " Add Subject"

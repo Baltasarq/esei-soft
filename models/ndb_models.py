@@ -72,3 +72,41 @@ class Request(ndb.Model):
 class RequestSoftware(ndb.Model):
     request_key = ndb.KeyProperty(kind=Request)
     software_key = ndb.KeyProperty(kind=Software)
+
+
+def retrieve_obj(cls, str_key):
+    """Retrieves an object from the data store, given its key.
+
+        :param str_key: The string that holds the key.
+        :param cls: The class for the key (one of the ndb models).
+        :return: The retrieved object, honoring the given key.
+    """
+
+    def build_msg():
+        return "*** ERROR: retrieve_obj(" + cls.__name__ + ", \"" + str_key + "\")";
+
+    toret = None
+
+    if str_key:
+        str_key = str_key.strip()
+        int_key = 0
+
+        try:
+            int_key = int(str_key)
+        except Exception as e:
+            print(build_msg() + ": key to int: " + str(e))
+            flash("Int key??", 'error')
+
+        key = ndb.Key(cls, int_key)
+
+        if not key:
+            print(build_msg() + ": key building")
+            flash("Object key??", 'error')
+        else:
+            toret = key.get()
+
+            if not toret:
+                print(build_msg() + ": obj retrieval failed")
+                flash("Object??", 'error')
+
+    return toret

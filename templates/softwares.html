@@ -14,12 +14,12 @@
             <button class="sort btn-small" data-sort="name">{{ _('Name')}}</button>
         </div>
         <div class="col s3">
-            <button class="sort btn-small" data-sort="root">{{ _('needs_root')}}</button>
+            <button class="sort btn-small" data-sort="root">{{ _('needs root')}}</button>
         </div>
         <table  class="highlight">
             <thead >
             <th class="center"> {{ _('Name') }}</th>
-            <th class="center"> {{ _('Needs_Root') }}</th>
+            <th class="center"> {{ _('Needs Root') }}</th>
             <th class="center"> {{ _('URL') }}</th>
             <th class="center"> {{ _('Options') }}</th>
             </thead>
@@ -71,14 +71,13 @@
         <p> {{ _('Nothing to show') }}</p>
         {% endif %}
     </div>
-    <div class="fixed-action-btn">
+
+    <div style="text-align:right">
         <a class="btn-floating btn-large tooltipped green too modal-trigger" data-position="left"
-           href="/addSoftware" data-tooltip='{{ _('Add Software') }}'>
-        <i class="large material-icons">add</i>
+                   href="/addSoftware" data-tooltip='{{ _('Add Software') }}'>
+            <i class="large material-icons">add</i>
         </a>
     </div>
-
-
 {% endblock %}
 
 {% block notifications %}

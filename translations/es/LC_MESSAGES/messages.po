@@ -312,11 +312,11 @@ msgid "Log Out"
 msgstr "Desconectarse "
 
 #: templates/softwares.html:17
-msgid "needs_root"
+msgid "needs root"
 msgstr "Necesita SuperUsuario"
 
 #: templates/softwares.html:22
-msgid "Needs_Root"
+msgid "Needs Root"
 msgstr "Necesita SuperUsuario"
 
 #: templates/softwares.html:24 templates/subjects.html:28
@@ -382,7 +382,7 @@ msgstr "Ver Asigantura"
 #~ msgid " Add Request"
 #~ msgstr ""
 
-#~ msgid "Needs_root"
+#~ msgid "Needs root"
 #~ msgstr ""
 
 #~ msgid " Add Subject"
@@ -400,7 +400,7 @@ msgstr "Ver Asigantura"
 #~ msgid "Sort by name"
 #~ msgstr ""
 
-#~ msgid "Sort by needs_root"
+#~ msgid "Sort by needs root"
 #~ msgstr ""
 
 #~ msgid "Sort by year"

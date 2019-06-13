@@ -11,57 +11,19 @@ from google.appengine.ext import ndb
 from google.appengine.api import users
 
 from main import app
-from models.ndb_models import Request, Software, Subject, User, RequestSoftware, System
+from models.ndb_models import retrieve_obj, Request, Software, Subject, User, RequestSoftware, System
 from models.request_complete import RequestComplete
 from models.appinfo import AppInfo
 
 
 def create_anonymous_user():
     """Creates an anonymous user, in case it is not found for a request."""
-    return User(name="anonymous", is_admin=False, user_id="0")
+    return User(name="no usr", is_admin=False, user_id="0")
 
 
 def create_anonynous_subject():
     """Creates an anonymous subject, in case it is not found for a request."""
     return Subject(name="undefined", abbreviation="n/a", year=1992, quarter=1)
-
-
-def retrieve_obj(str_key, cls):
-    """Retrieves an object from the data store, given its key.
-    
-        :param str_key: The string that holds the key.
-        :param cls: The class for the key.
-        :return: The retrived object, honoring the given key.
-    """
-    
-    def build_msg():
-        return "retrieve_obj(" + cls.__name__ + ", \"" + str_key + "\")";
-    
-    toret = None
-    
-    if str_key:
-        str_key = str_key.strip()
-        int_key = 0
-        
-        try:
-            int_key = int(str_key)
-        except Exception as e:
-            print(build_msg() + ": key to int: " + str(e))
-            flash("Int key??", 'error')
-
-        key = ndb.Key(cls, int_key)
-
-        if not key:
-            print(build_msg() + ": key building")
-            flash("Object key??", 'error')
-        else:
-            toret = key.get()
-            
-            if not toret:
-                print(build_msg() + ": obj retrieval failed")
-                flash("Object??", 'error')
-    
-    return toret
 
 
 def correct_capitalization(s):
@@ -74,11 +36,12 @@ def correct_capitalization(s):
     toret = ""
 
     if s:
-        always_upper = {"tic", "i", "ii", "iii", "iv", "v", "vs", "vs."}
+        always_upper = {"tic", "i", "ii", "iii", "iv", "v", "vs", "vs.", "2d", "3d",
+                        "swi", "gnu", "c++", "c/c++", "c#"}
         articles = {"el", "la", "las", "lo", "los", "un", "unos", "una", "unas",
                     "a", "an", "the", "these", "those", "that"}
-        preps = {"de", "del", "para", "con", "y", "o"
-                 "of", "for", "with", "and", "or"}
+        preps = {"en", "de", "del", "para", "con", "y", "e", "o",
+                 "in", "of", "for", "with", "and", "or"}
 
         words = s.strip().lower().split()
         capitalized_words = []
@@ -87,7 +50,7 @@ def correct_capitalization(s):
             if word in always_upper:
                 word = word.upper()
             elif (not word in articles
-            and not word in preps):
+              and not word in preps):
                 word = word.capitalize()
 
             capitalized_words.append(word)
@@ -134,6 +97,8 @@ def showSubjects():
 @app.route('/addSubject', methods=['GET', 'POST'])
 def addSubject():
     def chk_abbreviation(abbreviation):
+        """Checks whether the abbreviation is composed only by letters."""
+
         toret = False
         
         for ch in abbreviation:
@@ -167,7 +132,7 @@ def addSubject():
                                             abbreviation=abbreviation,
                                             year=year,
                                             quarter=quarter,
-                                            user_key=ndb.Key(User, user.user_id))
+                                            user_key=user.key)
                             subject.put()
                             time.sleep(1)
                             flash(_('Subject added correctly'), 'success')
@@ -197,7 +162,7 @@ def editSubject():
         
         if user:
             str_key = request.args.get("key")
-            subject = retrieve_obj(str_key, Subject)
+            subject = retrieve_obj(Subject, str_key)
             
             if not subject:
                 flash("Subject.id == " + str(str_key) + "??", 'error')
@@ -218,6 +183,7 @@ def editSubject():
                         subject.name = name
                         subject.year = year
                         subject.quarter = quarter
+                        subject.user_key = user.key
 
                         subject.put()
                         time.sleep(1)
@@ -246,10 +212,10 @@ def viewSubject():
     if user:
         try:
             str_key = request.args.get("key")
-            subject = retrieve_obj(str_key, Subject)
+            subject = retrieve_obj(Subject, str_key)
             
             if subject:
-                subject_owner = ndb.Key(User, subject.user_key.id()).get()
+                subject_owner = subject.user_key.get()
                 apps = []
 
                 if not subject_owner:
@@ -282,16 +248,18 @@ def deleteSubject():
     if user:
         try:
             str_key = request.args.get("key")
-            subject = retrieve_obj(str_key, Subject)
+            subject = retrieve_obj(Subject, str_key)
             
             if subject:
                 requests = Request.query(Request.subject_key == subject.key)
                 
-                for r in requests:
-                    sofsRequests = RequestSoftware.query(RequestSoftware.request_key == r.key)
-                    for s in sofsRequests:
-                        s.key.delete()
-                    r.key.delete()
+                for req in requests:
+                    pairs = RequestSoftware.query(RequestSoftware.request_key == req.key)
+
+                    for pair_req_soft in pairs:
+                        pair_req_soft.key.delete()
+
+                    req.key.delete()
 
                 subject.key.delete()
                 time.sleep(1)
@@ -357,7 +325,7 @@ def editSoftware():
         user = User.get_current_user()
         if user:
             str_key = request.args.get("key")
-            software = retrieve_obj(str_key, Software)
+            software = retrieve_obj(Software, str_key)
             
             if not software:
                 flash("Software.key == " + str(str_key) + "??", 'error')
@@ -420,7 +388,7 @@ def viewSoftware():
         user = User.get_current_user()
         if user:
             str_key = request.args.get("key")
-            software = retrieve_obj(str_key, Software)
+            software = retrieve_obj(Software, str_key)
             
             if not software:
                 flash("Software.key == " + str(str_key) + "??", 'error')
@@ -443,7 +411,7 @@ def deleteSoftware():
     if user:
         try:
             str_key = request.args.get("key")
-            software = retrieve_obj(str_key, Software)
+            software = retrieve_obj(Software, str_key)
             
             if not software:
                 flash("Software.key == " + str(str_key) + "??", 'error')
@@ -667,15 +635,20 @@ def showRequests():
 @app.route('/addRequest', methods=['GET', 'POST'])
 def addRequest():
     user = User.get_current_user()
+
     if user:
         if flask.request.method == 'POST':
-            subject_key = ndb.Key(Subject, int(flask.request.form.get("subject")))
+            str_key = flask.request.form.get("subject")
+            subject = retrieve_obj(Subject, str_key)
+
+            if not subject:
+                flash("Subject.key == " + str(str_key) + "??", 'error')
+                return redirect("/requests")
 
             try:
                 request = Request()
-                user_key = ndb.Key(User, user.user_id)
-                request.user_key = user_key
-                request.subject_key = subject_key
+                request.user_key = user.key
+                request.subject_key = subject.key
 
                 systems = flask.request.form.getlist("systems")
 
@@ -691,10 +664,10 @@ def addRequest():
 
                 request.put()
 
-                softwares = flask.request.form.getlist("softwares")
+                all_software = flask.request.form.getlist("softwares")
 
                 # Add all softwares to the request
-                for software in softwares:
+                for software in all_software:
                     request_software = RequestSoftware()
                     request_software.request_key = request.key
                     request_software.software_key = ndb.Key(Software, int(software))
@@ -728,7 +701,7 @@ def viewRequest():
     if user:
         try:
             str_key = request.args.get("key")
-            req = retrieve_obj(str_key, Request)
+            req = retrieve_obj(Request, str_key)
 
             if not req:
                 flash("Request.key == " + str(str_key) + "??", 'error')
@@ -776,7 +749,7 @@ def deleteRequest():
     if user:
         try:
             str_key = request.args.get("key")
-            req = retrieve_obj(str_key, Request)
+            req = retrieve_obj(Request, str_key)
 
             if req:
                 # Delete all related request - software pairs
@@ -807,7 +780,7 @@ def deleteRequestPair():
     if user:
         try:
             str_key = request.args.get("key")
-            req_pair = retrieve_obj(str_key, RequestSoftware)
+            req_pair = retrieve_obj(RequestSoftware, str_key)
 
             if not req_pair:
                 flash("RequestSoftware.id == " + str(str_key) + "??", 'error')

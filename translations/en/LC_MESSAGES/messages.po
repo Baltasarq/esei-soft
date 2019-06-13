@@ -299,11 +299,11 @@ msgid "Log Out"
 msgstr ""
 
 #: templates/softwares.html:17
-msgid "needs_root"
+msgid "needs root"
 msgstr ""
 
 #: templates/softwares.html:22
-msgid "Needs_Root"
+msgid "Needs Root"
 msgstr ""
 
 #: templates/softwares.html:24 templates/subjects.html:28
@@ -365,7 +365,7 @@ msgstr ""
 #~ msgid " Add Request"
 #~ msgstr ""
 
-#~ msgid "Needs_root"
+#~ msgid "Needs root"
 #~ msgstr ""
 
 #~ msgid " Add Subject"

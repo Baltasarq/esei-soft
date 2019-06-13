@@ -296,11 +296,11 @@ msgid "Log Out"
 msgstr ""
 
 #: templates/softwares.html:17
-msgid "needs_root"
+msgid "needs root"
 msgstr ""
 
 #: templates/softwares.html:22
-msgid "Needs_Root"
+msgid "Needs Root"
 msgstr ""
 
 #: templates/softwares.html:24 templates/subjects.html:28
@@ -349,10 +349,12 @@ msgid "View Software"
 msgstr ""
 
 #: templates/viewSoftware.html:40
-msgid "There arent intalation notes"
+msgid "There are no installation notes"
 msgstr ""
 
 #: templates/viewSubject.html:12
 msgid "View Subject"
 msgstr ""
 
+msgid "Operating System"
+msgstr ""

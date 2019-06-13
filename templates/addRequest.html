@@ -48,9 +48,9 @@
                 </label>
             </div>
         </div>
-        <div class="fixed-action-btn">
+        <div style="text-align:right">
             <a class="btn-floating btn-large tooltipped green too modal-trigger" data-position="left"
-               href="#addSoftware" data-tooltip='{{ _('Add Software') }}'>
+               href="#addSoftware" data-tooltip="{{ _('Add Software') }}">
             <i class="large material-icons">add</i>
             </a>
         </div>
@@ -89,7 +89,7 @@
                     <div class="row">
                         <div class="input-field col s6">
                             <input id="url" name="url" type="text" min="1" max="4" class="validate" required
-                                   placeholder={{ _('URL')
+                                   placeholder={{ _('URL') }}
                             }} >
                             <label for="url">* {{ _('URL') }}</label>
                         </div>
@@ -129,11 +129,6 @@
 <script>
     $(document).ready(function () {
         $('select').formSelect();
-    });
-</script>
-<script>
-    $(document).ready(function () {
-        $('.fixed-action-btn').floatingActionButton();
     });
 </script>
 <script>

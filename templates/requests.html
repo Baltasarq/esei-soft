@@ -3,12 +3,6 @@
 {% block content %}
 <div>
     <h3 class="center">{{ _('Requests') }}</h3>
-    <div class="fixed-action-btn requests" >
-        <a class="btn-floating btn-large tooltipped green too modal-trigger" data-position="left"
-           href="/addRequest" data-tooltip='{{ _('Add Request') }}'>
-        <i class="large material-icons">add</i>
-        </a>
-    </div>
     {% if requests.__len__() > 0 %}
     <div class="col s4">
         <input class="fuzzy-search" placeholder={{ _('Search') }} />
@@ -91,7 +85,12 @@
     <p> {{ _('Nothing to show') }}</p>
     {% endif %}
 </div>
-
+<div style="text-align:right">
+    <a class="btn-floating btn-large tooltipped green too modal-trigger" data-position="left"
+       href="/addRequest" data-tooltip='{{ _('Add Request') }}'>
+    <i class="large material-icons">add</i>
+    </a>
+</div>
 {% endblock %}
 
 {% block notifications %}

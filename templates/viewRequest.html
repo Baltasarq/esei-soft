@@ -45,21 +45,32 @@
                 <td><b>{{ _('Name') }}</b></td>
                 <td><b>{{ _('Needs Root Permisions') }}</b></td>
                 <td><b>{{ _('URL') }}</b></td>
+                <td><b>{{ _('Installation Notes') }}</b></td>
             </tr>
             {% for software in request.getSoftwares() %}
             <tr class="centered">
                 {% include "software_desc.html" %}
 
                 <td>
-                    <a href="/viewSoftware?key={{software.key.id()}}" class="waves-effect waves-light btn-small blue">
-                    <i class="material-icons ">remove_red_eye</i>
-                </a>
+                    <i>{{ software.installation_notes }}</i>
+                </td>
+
+                <td>
                 <a class="waves-effect waves-light tooltipped btn-small red modal-trigger" href="/deleteRequestPair?key={{ request.getPairsKeys()[loop.index - 1].id() }}"
-                    data-position="right" data-tooltip='{{ _('Delete') }}'>
+                    data-position="right" data-tooltip="{{ _('Delete') }}">
                     <i class="material-icons ">delete</i>
                 </a>
                 </td>
             </tr>
+
+            <!--
+            {% if software.installation_notes %}
+            <tr class="centered">
+                <td colspan="3">
+                    <i>{{ software.installation_notes }}</i>
+                </td>
+            </tr>
+            {% endif %} -->
             {% endfor %}
         </table>
         {% else %}

@@ -103,4 +103,4 @@ venv.bak/
 .mypy_cache/
 
 # IntelliJ PyCharm
-.idea/workspace.xml
+workspace.xml
