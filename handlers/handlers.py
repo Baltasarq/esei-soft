@@ -74,6 +74,7 @@ def login():
             print(e.message)
             print(e.args)
     else:
+        flash("@esei.uvigo.es!!", "info")
         return render_template("login.html", AppInfo=AppInfo, user_login=users.create_login_url("/"))
 
 
@@ -464,17 +465,29 @@ def exportCSV():
             requests_to_generate = []
             requests = Request.query().order(Request.subject_key)
             for found_request in requests:
-                request_owner = User.query(User.user_id == found_request.user_key.id()).get()
+                request_owner = found_request.user_key.get()
+                subject = found_request.subject_key.get()
 
-                subject = Subject.query(Subject.key == found_request.subject_key).get()
+                if not request_owner:
+                    request_owner = create_anonymous_user()
+
+                if not subject:
+                    subject = create_anonynous_subject()
+
+                # Collect software
                 requested_software = RequestSoftware.query(RequestSoftware.request_key == found_request.key)
                 apps = list()
 
                 for app in requested_software:
-                    apps.append(Software.query(Software.key == app.software_key).get())
+                    apps.append(app.software_key.get())
 
                 requests_to_generate.append(
-                    RequestComplete(found_request.key, request_owner, subject, apps, found_request.system, found_request.date))
+                    RequestComplete(found_request.key,
+                                    request_owner,
+                                    subject,
+                                    apps, [],
+                                    found_request.system,
+                                    found_request.date))
 
             # All requests accounted for, generate CSV
             csv_content = "Request date, Operating System, " \
@@ -495,12 +508,16 @@ def exportCSV():
                     system = 'Linux & Windows'
 
                 content_to_append = ""
+                print("Collecting all softwares")
                 for software in softs:
+                    print("Collecting")
+                    print "Collecting: " + str(software)
                     content_to_append += str.split(str(complete_request.getDate()), ".")[0] + "," + system + "," \
-                        + request_owner.name.encode("utf-8") + ","\
-                        + subject.abbreviation.encode("utf-8") + ","\
-                        + subject.name.encode("utf-8") + "," + str(subject.year) + "," + str(subject.quarter) + ","\
-                        + software.name.encode("utf-8") + "," + str(software.needs_root) + "," + software.installation_notes.encode("utf-8")\
+                        + request_owner.name.encode("utf-8") + "," \
+                        + subject.abbreviation.encode("utf-8") + "," \
+                        + subject.name.encode("utf-8") + "," + str(subject.year) + "," + str(subject.quarter) + "," \
+                        + software.name.encode("utf-8") + "," + str(software.needs_root)\
+                        + "," + software.installation_notes.encode("utf-8")\
                         + "\n"
                     
                 if content_to_append:
@@ -530,21 +547,36 @@ def exportXML():
             requestToShow = []
             requests = Request.query()
             for request in requests:
-                u = User.query(User.user_id == request.user_key.id()).get()
+                # Get related data
+                req_owner = request.user_key.get()
+                req_subject = request.subject_key.get()
 
-                s = Subject.query(Subject.key == request.subject_key).get()
+                if not req_owner:
+                    req_owner = create_anonymous_user()
+
+                if not req_subject:
+                    req_subject = create_anonynous_subject()
+
+                # Get all requests
                 requestSofts = RequestSoftware.query(RequestSoftware.request_key == request.key)
                 softwares = list()
 
                 for soft in requestSofts:
-                    softwares.append(Software.query(Software.key == soft.software_key).get())
+                    softwares.append(soft.software_key.get())
 
-                requestToShow.append(RequestComplete(request.key, u, s, softwares, request.system, request.date))
+                requestToShow.append(
+                    RequestComplete(
+                        request.key,
+                        req_owner,
+                        req_subject,
+                        softwares, [],
+                        request.system,
+                        request.date))
 
             xml_content = "<requests>"
 
             for rc in requestToShow:
-                u = rc.getUser()
+                req_owner = rc.getUser()
                 sub = rc.getSubject()
                 softs = rc.getSoftwares()
                 if rc.getSystem() == System.LINUX:
@@ -558,19 +590,19 @@ def exportXML():
                     "<request>" \
                     "<date>" + str.split(str(rc.getDate()), ".")[0] + "</date>"\
                     "<system>" + system + "</system>"\
-                    "<user><key>" + str(u.user_id) + "</key><name>" + u.name.encode("utf-8") + "</name></user>"\
+                    "<user><key>" + str(req_owner.user_id) + "</key><name>" + req_owner.name.encode("utf-8") + "</name></user>"\
                     "<subject>" \
                         "<key>" + str(sub.key.id()) + "</key>" \
                         "<name>" + sub.name.encode("utf-8") + "</name>" \
                         "<course>" + str(sub.year) + "</course>" \
                         "<quarter>" + str(sub.quarter) + "</quarter></subject>"\
                         "<softwares>"
-                for s in softs:
+                for req_subject in softs:
                     contentToAppend += "<software>" \
-                                       "<key>" + str(s.key.id()) + "</key>" \
-                                       "<name>" + s.name.encode("utf-8") + "</name>" \
+                                       "<key>" + str(req_subject.key.id()) + "</key>" \
+                                       "<name>" + req_subject.name.encode("utf-8") + "</name>" \
                                        "<needs_root>"
-                    if s.needs_root == 0:
+                    if req_subject.needs_root == 0:
                         contentToAppend += "No"
                     else:
                         contentToAppend += "Yes"
@@ -613,7 +645,7 @@ def showRequests():
                 softwares = list()
 
                 for soft in req_softs:
-                    softwares.append(Software.query(Software.key == soft.software_key).get())
+                    softwares.append(soft.software_key.get())
 
                 requests_to_show.append(
                     RequestComplete(
