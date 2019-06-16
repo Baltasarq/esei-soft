@@ -553,7 +553,8 @@ def exportCSV():
                     content_to_append += str.split(str(complete_request.getDate()), ".")[0] + "," + system + "," \
                         + request_owner.name.encode("utf-8") + "," \
                         + subject.abbreviation.encode("utf-8") + "," \
-                        + subject.name.encode("utf-8") + "," + str(subject.year) + "," + str(subject.quarter) + "," \
+                        + ((subject.curriculum + ": " + subject.name) if subject.curriculum else subject.name).encode("utf-8") \
+                        + "," + str(subject.year) + "," + str(subject.quarter) + "," \
                         + software.name.encode("utf-8") + "," + str(software.needs_root)\
                         + "," + software.installation_notes.encode("utf-8")\
                         + "\n"
@@ -631,7 +632,7 @@ def exportXML():
                     "<user><key>" + str(req_owner.user_id) + "</key><name>" + req_owner.name.encode("utf-8") + "</name></user>"\
                     "<subject>" \
                         "<key>" + str(sub.key.id()) + "</key>" \
-                        "<name>" + sub.name.encode("utf-8") + "</name>" \
+                        "<name>" + ((sub.curriculum + ": " + sub.name) if sub.curriculum else sub.name).encode("utf-8") + "</name>" \
                         "<course>" + str(sub.year) + "</course>" \
                         "<quarter>" + str(sub.quarter) + "</quarter></subject>"\
                         "<softwares>"

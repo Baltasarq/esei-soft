@@ -32,6 +32,7 @@
             {% for subject in subjects %}
                 <tr>
                     {% include "subject_desc.html" %}
+
                     <td class="name center">
                         <a href="/editSubject?key={{subject.key.id()}}" data-position="top" class="waves-effect tooltipped waves-light btn-small yellow "
                         {% if not current_user %}

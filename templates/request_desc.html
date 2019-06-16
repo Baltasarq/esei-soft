@@ -1,3 +1,4 @@
-<td class="subject"> {{ request.getSubject().name }}</td>
+{% set subject = request.getSubject() %}
+<td class="subject"> {% if subject.curriculum %}{{ subject.curriculum }}: {% endif %} {{ subject.name }}</td>
 <td class="user"> {{ request.getUser().name }}</td>
 <td class="date"> {{ request.date | datetimeformat }}</td>
