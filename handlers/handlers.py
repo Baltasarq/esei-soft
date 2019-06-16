@@ -886,19 +886,3 @@ def deleteRequestPair():
     else:
         return redirect("/")
 
-
-@app.route('/adminTask')
-def adminTask():
-    user = User.get_current_user()
-
-    print("User")
-    if user and user.is_admin:
-        for subject in Subject.query():
-            subject.curriculum = "GEI"
-            subject.put()
-
-        flash("Done!", 'success')
-        return redirect("/")
-    else:
-        flash("you're not allowed", 'error')
-        return redirect("/")
