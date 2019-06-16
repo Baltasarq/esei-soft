@@ -10,28 +10,39 @@
         <h4>{{ _('Add Subject') }}</h4>
         <div class="row">
             <div class="input-field col s6">
-                <input autofocus id="name" name="name" type="text" maxlength="50" class="validate" onblur="return checkName()" placeholder={{ _('Name') }} >
+                    <input id="curriculum" name="curriculum"
+                           list="curricula_list" type="text"
+                           maxlength="20" class="validate" required autofocus placeholder="Curriculum" >
+                    <datalist id="curricula_list">
+                        {% for curriculum in curricula_list %}
+                            <option value="{{ curriculum }}">
+                        {% endfor %}
+                    </datalist>
+                    <label for="curriculum">* Curriculum</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="name" name="name" type="text" maxlength="50" class="validate" onblur="return checkName()" placeholder="{{ _('Name') }}" >
                 <label for="name">* {{ _('Name') }}</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s6">
-                    <input id="abbreviation" name="abbreviation" type="text" maxlength="20" class="validate" required placeholder={{ _('Abbreviation')
-                    }} >
+                    <input id="abbreviation" name="abbreviation" type="text" maxlength="20" class="validate" required placeholder="{{ _('Abbreviation') }}" >
                     <label for="abbreviation">* {{ _('Abbreviation') }}</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s6">
-                <input id="year" name="year" type="number" min="1" max="4" class="validate" required placeholder={{ _('Course')
-                }} >
+                <input id="year" name="year" type="number" min="1" max="4" class="validate" required placeholder="{{ _('Course') }}" >
                 <label for="year">* {{ _('Course') }}</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s6">
                 <input id="quarter" name="quarter" type="number" min="1" max="2" class="validate" required
-                       placeholder={{ _('Quarter') }}>
+                       placeholder="{{ _('Quarter') }}">
                 <label for="quarter">* {{ _('Quarter') }}</label>
             </div>
         </div>
@@ -66,13 +77,12 @@
         return true;
     }
 
-    function checkAbbreviation()
+    function checkAbbreviation(s)
     {
         const allowedChars = "abcdefghijklmnopqrstuvwxyz";
         let toret = true;
-        let abbreviation = document
-                            .getElementById('abbreviation')
-                                .value.toLowerCase();
+
+        abbreviation = s.toLowerCase();
 
         if (abbreviation.length < 2) {
             M.toast({html: "{{ _('Abbreviation is too sort') }}", classes: 'red' })
@@ -91,7 +101,10 @@
     }
 
     function checkAll() {
-        return checkName() && checkAbbreviation();
+        const abbreviation = document.getElementById('abbreviation').value;
+        const curriculum = document.getElementById('curriculum').value;
+
+        return checkName() && checkAbbreviation(abbreviation) && checkAbbreviation(curriculum);
     }
 </script>
 {% endblock%}

@@ -50,6 +50,7 @@ class User(ndb.Model):
 class Subject(ndb.Model):
     name = ndb.StringProperty(required=True, indexed=True)
     abbreviation = ndb.StringProperty(required=True, indexed=True)
+    curriculum = ndb.StringProperty(required=True, indexed=True, default="")
     year = ndb.IntegerProperty(required=True, indexed=True)
     quarter = ndb.IntegerProperty(required=True, indexed=True)
     user_key = ndb.KeyProperty(kind=User)

@@ -12,9 +12,23 @@
             <div class="input-field col s6">
                 <input
                         {% if subject %}
+                        value='{{ subject.curriculum }}'
+                        {% endif%}
+                        autofocus id="curriculum" list="curricula_list" name="curriculum" type="text" class="validate" placeholder="Curriculum" >
+                 <datalist id="curricula_list">
+                        {% for curriculum in curricula_list %}
+                            <option value="{{ curriculum }}">
+                        {% endfor %}
+                <label for="name">Curriculum</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input
+                        {% if subject %}
                         value='{{ subject.name }}'
                         {% endif%}
-                        autofocus id="name" name="name" type="text" class="validate" placeholder={{ _('Name') }} >
+                        id="name" name="name" type="text" class="validate" placeholder="{{ _('Name') }}" >
                 <label for="name">{{ _('Name') }}</label>
             </div>
         </div>

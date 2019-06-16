@@ -60,6 +60,20 @@ def correct_capitalization(s):
     return toret
 
 
+def chk_abbreviation(abbreviation):
+    """Checks whether the abbreviation is composed only by letters."""
+
+    toret = False
+
+    for ch in abbreviation:
+        if not ch.isalpha():
+            break
+    else:
+        toret = True
+
+    return toret
+
+
 @app.route('/')
 @app.route('/index')
 def login():
@@ -97,39 +111,41 @@ def showSubjects():
 
 @app.route('/addSubject', methods=['GET', 'POST'])
 def addSubject():
-    def chk_abbreviation(abbreviation):
-        """Checks whether the abbreviation is composed only by letters."""
-
-        toret = False
-        
-        for ch in abbreviation:
-            if not ch.isalpha():
-                break
-        else:
-            toret = True
-            
-        return toret
-            
     user = User.get_current_user()
     if user:
+        # Find all curricula
+        curricula_list = set()
+
+        for subject_for_curriculum in Subject.query():
+            curricula_list.add(subject_for_curriculum.curriculum)
+
+        curricula_list = list(curricula_list)
+
+        # Do it GET, or POST
         if flask.request.method == 'POST':
             try:
                 name = correct_capitalization(flask.request.form.get("name"))
+                curriculum = flask.request.form.get("curriculum").strip().upper()
                 abbreviation = flask.request.form.get("abbreviation").strip().upper()
                 year = int(flask.request.form.get("year"))
                 quarter = int(flask.request.form.get("quarter"))
 
-                if not chk_abbreviation(abbreviation):
-                    flash(_(_('Abbreviation invalid: only letters are allowed')), 'error')
+                if not chk_abbreviation(abbreviation) or not chk_abbreviation(curriculum):
+                    flash(_(_('Abbreviation or curriculum invalid: only letters are allowed')), 'error')
                     return render_template("addSubject.html",
                                            AppInfo=AppInfo,
                                            current_user=user,
                                            user_logout=users.create_logout_url("/"),
-                                           name=name, year=year, quarter=quarter)
+                                           curriculum=curriculum,
+                                           curricula_list=curricula_list,
+                                           name=name,
+                                           year=year,
+                                           quarter=quarter)
                 else:
                     subject = Subject.query(Subject.abbreviation == abbreviation)
                     if subject.count() == 0:
                             subject = Subject(name=name,
+                                            curriculum=curriculum,
                                             abbreviation=abbreviation,
                                             year=year,
                                             quarter=quarter,
@@ -143,15 +159,20 @@ def addSubject():
                         return render_template("addSubject.html",
                                                AppInfo=AppInfo,
                                                current_user=user,
+                                               curricula_list=curricula_list,
                                                user_logout=users.create_logout_url("/"),
                                                name=name, year=year, quarter=quarter)
             except Exception as e:
                 print(e.message)
         else:
-            return render_template("addSubject.html",
+            try:
+                return render_template("addSubject.html",
+                                   curricula_list=curricula_list,
                                    AppInfo=AppInfo,
                                    current_user=user,
                                    user_logout=users.create_logout_url("/"))
+            except Exception as e:
+                print(e)
     else:
         return redirect("/")
 
@@ -162,43 +183,60 @@ def editSubject():
         user = User.get_current_user()
         
         if user:
+            # Params
             str_key = request.args.get("key")
             subject = retrieve_obj(Subject, str_key)
             
             if not subject:
                 flash("Subject.id == " + str(str_key) + "??", 'error')
                 return redirect("/subjects")
-            
+
+            # Find all curricula
+            curricula_list = set()
+
+            for subject_for_curriculum in Subject.query():
+                curricula_list.add(subject_for_curriculum.curriculum)
+
+            curricula_list = list(curricula_list)
+
+            # Do it, GET or POST
             if flask.request.method == 'POST':
                 name = correct_capitalization(flask.request.form.get("name").strip())
-                abbreviation = flask.request.form.get("abbreviation")
+                curriculum = flask.request.form.get("curriculum").strip().upper()
                 year = int(flask.request.form.get("year"))
                 quarter = int(flask.request.form.get("quarter"))
 
-                if abbreviation:
-                    abbreviation = abbreviation.strip().upper()
+                if not chk_abbreviation(curriculum):
+                    flash(_(_('Abbreviation or curriculum invalid: only letters are allowed')), 'error')
+                    return render_template("editSubject.html",
+                                           AppInfo=AppInfo,
+                                           current_user=user,
+                                           subject=subject,
+                                           user_logout=users.create_logout_url("/"),
+                                           curriculum=curriculum,
+                                           curricula_list=curricula_list,
+                                           name=name,
+                                           year=year,
+                                           quarter=quarter)
 
-                if not name or not abbreviation:
-                    subjects = Subject.query(Subject.abbreviation == abbreviation)
-                    if subjects.count() == 0:
-                        subject.name = name
-                        subject.year = year
-                        subject.quarter = quarter
-                        subject.user_key = user.key
+                if name:
+                    subject.name = name
+                    subject.curriculum = curriculum
+                    subject.year = year
+                    subject.quarter = quarter
+                    subject.user_key = user.key
 
-                        subject.put()
-                        time.sleep(1)
-                        flash(_('Subject edited correctly'), 'success')                            
-                        return redirect("/subjects")
-
-                    else:
-                        flash(_(_('Subject already exists ')) + ": " + abbreviation, 'error')
+                    subject.put()
+                    time.sleep(1)
+                    flash(_('Subject edited correctly'), 'success')                            
+                    return redirect("/subjects")
                 else:
                     flash(_(_('Subject name cant be blank ')), 'error')
 
             return render_template("editSubject.html",
                                    AppInfo=AppInfo,
                                    current_user=user,
+                                   curricula_list=curricula_list,
                                    user_logout=users.create_logout_url("/"),
                                    subject=subject)
         else:
@@ -846,4 +884,21 @@ def deleteRequestPair():
 
         return redirect("/viewRequest?key=" + str(req.key.id()))
     else:
+        return redirect("/")
+
+
+@app.route('/adminTask')
+def adminTask():
+    user = User.get_current_user()
+
+    print("User")
+    if user and user.is_admin:
+        for subject in Subject.query():
+            subject.curriculum = "GEI"
+            subject.put()
+
+        flash("Done!", 'success')
+        return redirect("/")
+    else:
+        flash("you're not allowed", 'error')
         return redirect("/")
