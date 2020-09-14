@@ -671,7 +671,7 @@ def showRequests():
     if user:
         try:
             requests_to_show = []
-            requests = Request.query()
+            requests = Request.query().fetch()
 
             for request in requests:
                 req_owner = request.user_key.get()
@@ -680,18 +680,14 @@ def showRequests():
                     req_owner = create_anonymous_user()
 
                 req_subject = request.subject_key.get()
-                req_softs = RequestSoftware.query(RequestSoftware.request_key == request.key)
-                softwares = list()
-
-                for soft in req_softs:
-                    softwares.append(soft.software_key.get())
+                req_softs = RequestSoftware.query(RequestSoftware.request_key == request.key).fetch()
 
                 requests_to_show.append(
                     RequestComplete(
                         request.key,
                         req_owner,
                         req_subject,
-                        softwares,
+                        req_softs,
                         [],
                         request.system,
                         request.date))
