@@ -2,12 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="65f2b376-1b26-4725-9461-81d91f4597c3" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Google_App_Engine_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Google_App_Engine_SDK.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handlers/handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/handlers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/request_desc.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/request_desc.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/subjects.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/subjects.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/skeleton.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/skeleton.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/translations/en/LC_MESSAGES/messages.po" beforeDir="false" afterPath="$PROJECT_DIR$/translations/en/LC_MESSAGES/messages.po" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.po" beforeDir="false" afterPath="$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.po" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.po" beforeDir="false" afterPath="$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.po" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,52 +40,6 @@
     </expand>
     <select />
   </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/handlers/handlers.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="634" selection-start-line="634" selection-end-line="634" />
-              <folding>
-                <element signature="e#66#77#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/requests.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="42" column="16" lean-forward="true" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="16" />
-              <folding>
-                <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/subject_desc.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/request_desc.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -90,184 +48,21 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>addsubject</find>
-      <find>intalation</find>
-      <find>install</find>
-      <find>needs_root</find>
-      <find>add</find>
-      <find>fixed-action</find>
-      <find>ndb.key</find>
-      <find>Operative system</find>
-      <find>system</find>
-      <find>operating system</find>
-      <find>addrequest</find>
-      <find>showsof</find>
-      <find>viewso</find>
-      <find>addSoftware</find>
-      <find>modal</find>
-      <find>viewsif</find>
-      <find>addsoft</find>
-      <find>addsoftware</find>
-      <find>viewreque</find>
-      <find>viewre</find>
-      <find>is_admin</find>
-      <find>/requests</find>
-      <find>/softwares</find>
-      <find>/subjects</find>
-      <find>&lt;i class=&quot;material-icons &quot;&gt;delete&lt;/i&gt;</find>
-      <find>exportC</find>
-      <find>query</find>
-      <find>addsu</find>
-      <find>editsub</find>
-      <find>export</find>
-    </findStrings>
-    <dirStrings>
-      <dir>$PROJECT_DIR$/templates</dir>
-      <dir>$PROJECT_DIR$</dir>
-    </dirStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/templates/submitted_form.html" />
-        <option value="$PROJECT_DIR$/static/style.css" />
-        <option value="$PROJECT_DIR$/templates/form.html" />
-        <option value="$PROJECT_DIR$/templates/footer.html" />
-        <option value="$PROJECT_DIR$/templates/headers.html" />
-        <option value="$PROJECT_DIR$/templates/topMenu.html" />
-        <option value="$PROJECT_DIR$/templates/index.html" />
-        <option value="$PROJECT_DIR$/handlers/MainHandler.py" />
-        <option value="$PROJECT_DIR$/templates/__init__.py" />
-        <option value="$PROJECT_DIR$/handlers/handlerMain.py" />
-        <option value="$PROJECT_DIR$/babel.cfg" />
-        <option value="$PROJECT_DIR$/templates/addSoftwaretoSubject.html" />
-        <option value="$PROJECT_DIR$/static/css/materialize.min.css" />
-        <option value="$PROJECT_DIR$/templates/softwares" />
-        <option value="$PROJECT_DIR$/static/css/style.css" />
-        <option value="$PROJECT_DIR$/templates/auxCode" />
-        <option value="$PROJECT_DIR$/static/css/materialize.css" />
-        <option value="$PROJECT_DIR$/models/requestComplete.py" />
-        <option value="$PROJECT_DIR$/main.py" />
-        <option value="$PROJECT_DIR$/app.yaml" />
-        <option value="$PROJECT_DIR$/models/ndbModels.py" />
-        <option value="$PROJECT_DIR$/templates/software_desc.html" />
-        <option value="$PROJECT_DIR$/templates/viewSoftware.html" />
-        <option value="$PROJECT_DIR$/templates/subject_desc.html" />
-        <option value="$PROJECT_DIR$/templates/viewSubject.html" />
-        <option value="$PROJECT_DIR$/models/request_complete.py" />
-        <option value="$PROJECT_DIR$/models/appinfo.py" />
-        <option value="$PROJECT_DIR$/templates/addSoftware.html" />
-        <option value="$PROJECT_DIR$/templates/editSoftware.html" />
-        <option value="$PROJECT_DIR$/translations/en/LC_MESSAGES/messages.po" />
-        <option value="$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.po" />
-        <option value="$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.po" />
-        <option value="$PROJECT_DIR$/templates/skeleton.html" />
-        <option value="$PROJECT_DIR$/messages.pot" />
-        <option value="$PROJECT_DIR$/templates/addRequest.html" />
-        <option value="$PROJECT_DIR$/templates/softwares.html" />
-        <option value="$PROJECT_DIR$/templates/requests.html" />
-        <option value="$PROJECT_DIR$/templates/viewRequest.html" />
-        <option value="$PROJECT_DIR$/models/ndb_models.py" />
-        <option value="$PROJECT_DIR$/templates/editSubject.html" />
-        <option value="$PROJECT_DIR$/templates/addSubject.html" />
-        <option value="$PROJECT_DIR$/templates/login.html" />
-        <option value="$PROJECT_DIR$/templates/subjects.html" />
-        <option value="$PROJECT_DIR$/templates/request_desc.html" />
-        <option value="$PROJECT_DIR$/handlers/handlers.py" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="584" />
-    <option name="width" value="1336" />
-    <option name="height" value="1076" />
-  </component>
+  <component name="ProjectId" id="1hH7tqXbdENAR8Hsv5MBDzPb8eP" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="esei-soft" type="b2602c69:ProjectViewProjectNode" />
-              <item name="esei-soft" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="esei-soft" type="b2602c69:ProjectViewProjectNode" />
-              <item name="esei-soft" type="462c0819:PsiDirectoryNode" />
-              <item name="handlers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="esei-soft" type="b2602c69:ProjectViewProjectNode" />
-              <item name="esei-soft" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="esei-soft" type="b2602c69:ProjectViewProjectNode" />
-              <item name="esei-soft" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="esei-soft" type="b2602c69:ProjectViewProjectNode" />
-              <item name="esei-soft" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="esei-soft" type="b2602c69:ProjectViewProjectNode" />
-              <item name="esei-soft" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="esei-soft" type="b2602c69:ProjectViewProjectNode" />
-              <item name="esei-soft" type="462c0819:PsiDirectoryNode" />
-              <item name="translations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="esei-soft" type="b2602c69:ProjectViewProjectNode" />
-              <item name="esei-soft" type="462c0819:PsiDirectoryNode" />
-              <item name="translations" type="462c0819:PsiDirectoryNode" />
-              <item name="en" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="esei-soft" type="b2602c69:ProjectViewProjectNode" />
-              <item name="esei-soft" type="462c0819:PsiDirectoryNode" />
-              <item name="translations" type="462c0819:PsiDirectoryNode" />
-              <item name="en" type="462c0819:PsiDirectoryNode" />
-              <item name="LC_MESSAGES" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="esei-soft" type="b2602c69:ProjectViewProjectNode" />
-              <item name="esei-soft" type="462c0819:PsiDirectoryNode" />
-              <item name="translations" type="462c0819:PsiDirectoryNode" />
-              <item name="gl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="esei-soft" type="b2602c69:ProjectViewProjectNode" />
-              <item name="esei-soft" type="462c0819:PsiDirectoryNode" />
-              <item name="translations" type="462c0819:PsiDirectoryNode" />
-              <item name="gl" type="462c0819:PsiDirectoryNode" />
-              <item name="LC_MESSAGES" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/templates" />
@@ -286,18 +81,6 @@
       <recent name="$PROJECT_DIR$/static/fonts" />
       <recent name="$PROJECT_DIR$/static" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration name="esei-soft" type="Python.AppEngineServer" factoryName="App Engine server">
@@ -331,70 +114,38 @@
       <workItem from="1560150922956" duration="7886000" />
       <workItem from="1560166416028" duration="42659000" />
       <workItem from="1560497443697" duration="1736000" />
-      <workItem from="1560537121033" duration="7281000" />
+      <workItem from="1560537121033" duration="7983000" />
+      <workItem from="1562159265724" duration="28000" />
+      <workItem from="1599656382399" duration="1896000" />
+      <workItem from="1599726986409" duration="2074000" />
+      <workItem from="1600079874841" duration="873000" />
     </task>
     <servers />
-  </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71267000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="584" y="0" width="1336" height="1076" extended-state="0" />
-    <editor active="true" />
-    <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26365054" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32415253" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49808428" weight="0.2457627" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3993644" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32838982" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3273305" />
-      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5019157" side_tool="true" weight="0.41361257" />
-      <window_info anchor="bottom" id="App Config Tool" order="13" weight="0.32944915" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" weight="0.3299293" />
-      <window_info anchor="right" id="Database" order="4" weight="0.3299532" />
-    </layout>
-    <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17512013" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32528856" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49808428" weight="0.5522541" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3993994" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32984293" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32984293" />
-      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5019157" side_tool="true" weight="0.41361257" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" weight="0.3299293" />
-      <window_info anchor="right" id="Database" order="4" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="WindowStateProjectService">
+    <state width="1324" height="206" key="GridCell.Tab.0.bottom" timestamp="1600080764118">
+      <screen x="48" y="0" width="1872" height="1080" />
+    </state>
+    <state width="1324" height="206" key="GridCell.Tab.0.bottom/48.0.1872.1080@48.0.1872.1080" timestamp="1600080764118" />
+    <state width="1324" height="206" key="GridCell.Tab.0.center" timestamp="1600080764117">
+      <screen x="48" y="0" width="1872" height="1080" />
+    </state>
+    <state width="1324" height="206" key="GridCell.Tab.0.center/48.0.1872.1080@48.0.1872.1080" timestamp="1600080764117" />
+    <state width="1324" height="206" key="GridCell.Tab.0.left" timestamp="1600080764117">
+      <screen x="48" y="0" width="1872" height="1080" />
+    </state>
+    <state width="1324" height="206" key="GridCell.Tab.0.left/48.0.1872.1080@48.0.1872.1080" timestamp="1600080764117" />
+    <state width="1324" height="206" key="GridCell.Tab.0.right" timestamp="1600080764118">
+      <screen x="48" y="0" width="1872" height="1080" />
+    </state>
+    <state width="1324" height="206" key="GridCell.Tab.0.right/48.0.1872.1080@48.0.1872.1080" timestamp="1600080764118" />
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/esei_soft$esei_soft.coverage" NAME="esei-soft Coverage Results" MODIFIED="1600079923005" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/esei-soft$esei-soft.coverage" NAME="TFG Coverage Results" MODIFIED="1560155199113" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/esei_soft$esei_soft.coverage" NAME="esei-soft Coverage Results" MODIFIED="1560538579359" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
@@ -404,329 +155,5 @@
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/google_appengine/google/appengine/tools/devappserver2/wsgi_server.py" />
-    <entry file="file://$PROJECT_DIR$/templates/topMenu.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="26" column="8" selection-start-line="1" selection-start-column="2" selection-end-line="26" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/handlers/mainH.py" />
-    <entry file="file://$PROJECT_DIR$/lib/jinja2/loaders.py" />
-    <entry file="file://$PROJECT_DIR$/lib/flask/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="63" selection-start-line="63" selection-end-line="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/babel.cfg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/pycharm.jar!/resources/html5-schema/html5/common.rnc" />
-    <entry file="file://$PROJECT_DIR$/static/css/materialize.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/addSoftwaretoSubject.html" />
-    <entry file="file://$PROJECT_DIR$/templates/index.html" />
-    <entry file="file://$PROJECT_DIR$/requirements.txt" />
-    <entry file="file://$PROJECT_DIR$/templates/auxCode" />
-    <entry file="file://$PROJECT_DIR$/static/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="30" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/materialize.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51060">
-          <caret line="3404" column="12" selection-start-line="3404" selection-start-column="12" selection-end-line="3404" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.yaml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="19" lean-forward="true" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
-          <folding>
-            <element signature="e#1#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/appengine_config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Dropbox/Prys/gae/esei-soft/models/ndbModels.py" />
-    <entry file="file://$USER_HOME$/Dropbox/Prys/gae/esei-soft/lib/flask/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="1597" selection-start-line="1597" selection-end-line="1597" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.mo">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="35" column="740" selection-start-line="35" selection-start-column="740" selection-end-line="35" selection-end-column="740" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.mo">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="34" column="740" selection-start-line="34" selection-start-column="740" selection-end-line="34" selection-end-column="740" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="10" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/res/eseiforms.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/translations/en/LC_MESSAGES/messages.mo">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="30" column="485" selection-start-line="30" selection-start-column="485" selection-end-line="30" selection-end-column="485" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/viewSoftware.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="11" column="45" lean-forward="true" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
-          <folding>
-            <element signature="n#style#0;n#p#0;n#div#2;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/viewSubject.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="25" column="56" selection-start-line="25" selection-start-column="56" selection-end-line="25" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/bin/google-cloud-sdk/platform/google_appengine/lib/grpcio-1.20.0/grpc/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Dropbox/Prys/gae/esei-soft/handlers/handlers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="79" column="56" lean-forward="true" selection-start-line="79" selection-start-column="56" selection-end-line="79" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/appinfo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/request_complete.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/addSoftware.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="18" lean-forward="true" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/editSoftware.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="9" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.po">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="319" column="13" selection-start-line="319" selection-start-column="13" selection-end-line="319" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.po">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="315" column="8" lean-forward="true" selection-start-line="315" selection-start-column="8" selection-end-line="315" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/translations/en/LC_MESSAGES/messages.po">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="305" column="13" selection-start-line="305" selection-start-column="13" selection-end-line="305" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/skeleton.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="90" column="82" lean-forward="true" selection-start-line="90" selection-start-column="82" selection-end-line="90" selection-end-column="82" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#li#0;n#ul#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/messages.pot">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="299" column="9" lean-forward="true" selection-start-line="299" selection-start-column="9" selection-end-line="299" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/addRequest.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="96" column="37" lean-forward="true" selection-start-line="96" selection-start-column="37" selection-end-line="96" selection-end-column="37" />
-          <folding>
-            <element signature="n#style#0;n#div#3;n#form#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/software_desc.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/viewRequest.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
-          <caret line="64" column="57" selection-start-line="64" selection-start-column="57" selection-end-line="64" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/softwares.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="49" column="21" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/editSubject.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="10" column="25" lean-forward="true" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/ndb_models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-309">
-          <caret line="65" column="25" lean-forward="true" selection-start-line="65" selection-start-column="25" selection-end-line="65" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="31" column="16" lean-forward="true" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/addSubject.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="14" lean-forward="true" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/subjects.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="34" column="20" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/subject_desc.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/requests.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="42" column="16" lean-forward="true" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="16" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/request_desc.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/handlers/handlers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="634" selection-start-line="634" selection-end-line="634" />
-          <folding>
-            <element signature="e#66#77#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
   </component>
 </project>

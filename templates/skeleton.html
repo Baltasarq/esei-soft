@@ -35,6 +35,12 @@
                         {{ current_user.name }}</a>
                     </li>
                     <li>
+                        <a target="_blank" href="/static/manual/manual.html" class="btn-floating btn-small tooltipped waves-effect waves-light red"
+                         data-tooltip='{{ _('Help') }}'>
+                            <i class="material-icons">help</i>
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{user_logout}}" class="btn-floating btn-small tooltipped waves-effect waves-light red"
                          data-tooltip='{{ _('Log Out') }}'>
                             <i class="material-icons">power_settings_new</i>
@@ -51,6 +57,7 @@
                     <li><a href="/subjects">{{ _('Subjects') }}</a></li>
                     <li><a href="/softwares">{{ _('Software') }}</a></li>
                     <li><a href="/requests">{{ _('Requests') }}</a></li>
+                    <li><a target="_blank" href="/static/manual/manual.html">{{ _('Help') }}</a></li>
 
                     {% if user_logout %}
                     <li><a href="{{user_logout}}" class="red">{{ _('Log Out') }}</a>

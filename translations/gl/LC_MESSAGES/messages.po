@@ -246,6 +246,9 @@ msgstr ""
 msgid "Requests"
 msgstr "Peticións"
 
+msgid "Help"
+msgstr "Axuda"
+
 #: templates/requests.html:17 templates/softwares.html:8
 #: templates/subjects.html:8
 msgid "Search"

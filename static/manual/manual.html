@@ -1,0 +1,127 @@
+<html>
+    <head>
+        <title>ESEI-Soft</title>
+        <meta charset="utf-8"/>
+    </head>
+        
+    <body>
+        <h1>ESEI-Soft</h1>
+        <i>Aplicación web para la gestión de necesidades de software de la ESEI.</i>
+        
+        
+        <!-- Intro -->
+        <h2>Intro</h2>
+        <p align="center">
+            <img    src="esei_soft-intro.jpg"
+                    width="600px"
+                    alt="Intro"
+                    title="Intro" />
+        </p>
+        <p align="justify">
+            La aplicación mantiene constantemente la misma estructura en cuanto a las partes superior e inferior: desde el menú superior es posible cambiar entre las tres posibles entidades a manejar (<a href="#asg">asignaturas</a>, <a href="#soft">software</a>, <a href="#req">peticiones</a>), mientras que en la parte inferior, siempre que se es posible insertar algo, aparecerá un signo de sumar como un botón. En el caso de esta pantalla, permite acceder directamente a <a href="#add_req">realizar petición.</a>
+        </p>
+        <p align="justify">
+            En esta primera pantalla, el menú superior aparece duplicado debajo del mensaje de bienvenida.
+        </p>
+        
+        
+        <!-- Requests -->
+        <a name="req"><h2>Hojear peticiones</h2></a>
+        <p align="justify">
+            Para realizar una nueva petición, es posible pulsar en el '+' de la pantalla de introducción, o bien pulsar en el menú la opción <i>peticiones/requests</i>.
+        </p>
+        <p align="center">
+            <img    src="esei_soft-requests.jpg"
+                    width="600px"
+                    alt="Peticiones"
+                    title="Peticiones" />
+        </p>
+        <p align="justify">
+            En esta pantalla aparecen las peticiones realizadas, que pueden verse o eliminarse. De nuevo, el botón '+' permite <a href="#add_req">crear una nueva petición</a>.
+        </p>
+        
+        
+        <!-- Add request -->
+        <a name="add_req"><h2>Crear nueva petición</h2></a>
+        <p align="justify">
+            Pantalla de introducción de datos para una nueva petición. Una petición consiste en una enumeración de aplicaciones, y los sistemas operativos donde deben estar instalados, para una asignatura concreta.
+        </p>
+        <p align="center">
+            <img    src="esei_soft-add_request.jpg"
+                    width="600px"
+                    alt="Crear nueva petición"
+                    title="Crear nueva petición" />
+        </p>
+        <p align="justify">
+            En el desplegable de la parte superior se escoge la asignatura, y después se marcan las aplicaciones deseadas. 
+            Una vez marcadas las aplicaciones a instalar, y al menos un sistema operativo objetivo, solo será necesario pulsar en <i>enviar/send</i>.
+        </p>
+        <p>
+            Es posible que la asignatura no exista todavía: en este caso, se pulsa en la opción <a href="#asg">asignaturas</a> del menú superior, cancelando la nueva petición, que deberá ser repetida tras <a href="#add_asg">crearla</a>. También es posible que el software no exista todavía, con lo que será necesario pulsar en el '+' para <a href="#add_soft">crear una nueva aplicación</a>. En este caso, al terminar de registrar el nuevo software se vuelve a la petición, pero será necesario volver a escoger la asignatura y marcar las <i>apps</i> requeridas.
+        </p>
+        
+        
+        <!-- Subjects -->
+        <a name="asg"><h2>Hojear asignaturas</h2></a>
+        <p align="justify">
+        Las asignaturas forman parte de las materias dentro del plan de estudios de la <a target="_blank" href="http://esei.uvigo.es/">ESEI</a>.
+        </p>
+        <p align="center">
+            <img    src="esei_soft-subjects.jpg"
+                    width="600px"
+                    alt="Asignaturas"
+                    title="Asignaturas" />
+        </p>
+        <p align="justify">
+        Las opciones pueden variar según el nivel de acceso del usuario, pero en general las asignaturas pueden verse (examinar detalles), modificarlas e incluso borrarlas. Cuando se elimina una asignatura, las <a href="#req">peticiones</a> relacionadas con ella también se eliminan.
+        </p>
+        
+        
+        <!-- Add subject -->
+        <a name="add_asg"><h2>Nueva asignatura</h2></a>
+        <p align="justify">
+        Puede crearse una nueva asignatura en cualquier momento.
+        </p>
+        <p align="center">
+            <img    src="esei_soft-add_subject.jpg"
+                    width="300px"
+                    alt="Nueva asignatura"
+                    title="Nueva asignatura" />
+        </p>
+        <p align="justify">
+        Tras rellenar el currículum (en el momento de escribir este documento, GEI (grado), o MEI (máster), nombre de la asignatura, abreviatura, curso y período (cuatrimestre), la asignatura queda registrada y se pueden crear <a href="#add_req">peticiones</a> contra ella.
+        </p>
+        
+        
+        <!-- Software -->
+        <a name="#soft"><h2>Software</h2></a>
+        <p align="justify">
+        El software o aplicaciones son cualquier tipo de componente software (aplicaciones, librerías, frameworks...), que se necesite para impartir una asignatura, excluyendo los sistemas operativos y aquellas aplicaciones básicas (editor de textos básico, como el bloc de notas, calculadora...).
+        </p>
+        <p align="center">
+            <img    src="esei_soft-software.jpg"
+                    width="600px"
+                    alt="Software"
+                    title="Software" />
+        </p>
+        <p align="justify">
+        El software puede hojearse sin problema, si bien las posibilidades de modificarlo y eliminarlo dependerán del nivel de acceso del usuario. De nuevo, el botón '+' permite <a href="#add_soft">crear un nuevo software</a>.
+        </p>
+        
+        
+        <!-- Add software -->
+        <a name="#soft"><h2>Nuevo Software</h2></a>
+        <p align="justify">
+        
+        </p>
+        <p align="center">
+            <img    src="esei_soft-software.jpg"
+                    width="600px"
+                    alt="Nuevo software"
+                    title="Nuevo software" />
+        </p>
+        <p align="justify">
+        Tras rellenar los datos y pulsar en <i>send/enviar</i>, la aplicación queda registrada y se puede incluir en <a href="#add_req">peticiones</a>.
+        </p>
+    </body>
+</html>
