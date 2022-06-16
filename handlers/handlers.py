@@ -121,7 +121,7 @@ def addSubject():
 
         curricula_list = list(curricula_list)
 
-        # Do it GET, or POST
+        # Was it GET, or POST?
         if flask.request.method == 'POST':
             try:
                 name = correct_capitalization(flask.request.form.get("name"))
@@ -370,14 +370,14 @@ def editSoftware():
         if user:
             str_key = request.args.get("key")
             software = retrieve_obj(Software, str_key)
-            
+
             if not software:
                 flash("Software.key == " + str(str_key) + "??", 'error')
                 return redirect('/softwares')
 
             if flask.request.method == 'POST':
                 name = correct_capitalization(flask.request.form.get("name"))
-                url = flask.request.form.get("url").strip().lower()
+                url = flask.request.form.get("url").strip()
                 needs_root = str(flask.request.form.get("root")).strip().lower() == "true"
                 notes = flask.request.form.get("notes").encode("utf-8")
 
@@ -433,11 +433,11 @@ def viewSoftware():
         if user:
             str_key = request.args.get("key")
             software = retrieve_obj(Software, str_key)
-            
+
             if not software:
                 flash("Software.key == " + str(str_key) + "??", 'error')
                 return redirect("/softwares")
-                
+
             return render_template("viewSoftware.html",
                                    AppInfo=AppInfo,
                                    current_user=user,
@@ -456,11 +456,11 @@ def deleteSoftware():
         if not user.is_admin:
             flash("You're not allowed", 'error')
             return redirect("/softwares")
-        
+
         try:
             str_key = request.args.get("key")
             software = retrieve_obj(Software, str_key)
-            
+
             if not software:
                 flash("Software.key == " + str(str_key) + "??", 'error')
                 return redirect("/softwares")
@@ -548,8 +548,6 @@ def exportCSV():
                 content_to_append = ""
                 print("Collecting all softwares")
                 for software in softs:
-                    print("Collecting")
-                    print "Collecting: " + str(software)
                     content_to_append += str.split(str(complete_request.getDate()), ".")[0] + "," + system + "," \
                         + request_owner.name.encode("utf-8") + "," \
                         + subject.abbreviation.encode("utf-8") + "," \
@@ -558,7 +556,7 @@ def exportCSV():
                         + software.name.encode("utf-8") + "," + str(software.needs_root)\
                         + "," + software.installation_notes.encode("utf-8")\
                         + "\n"
-                    
+
                 if content_to_append:
                     csv_content += content_to_append
 
@@ -827,7 +825,7 @@ def deleteRequest():
                 and req.user_key != user.key):
                     flash("You're not allowed", 'error')
                     return redirect("/subjects")
-                
+
                 # Delete all related request - software pairs
                 soft_reqs = RequestSoftware.query(RequestSoftware.request_key == req.key)
 
