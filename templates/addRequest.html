@@ -10,8 +10,9 @@
             <div class="input-field col s12">
                 <select name="subject" required class="orderer">
                     {% for subject in subjects %}
-                        <option value="{{ subject.key.id()}}">{{ subject.name }}</option>
-
+                        <option value="{{ subject.key.id()}}">
+                            {{ subject.curriculum }}: {{ subject.name }}
+                        </option>
                     {% endfor %}
                 </select>
                 <label>* {{ _('Subject') }}</label>

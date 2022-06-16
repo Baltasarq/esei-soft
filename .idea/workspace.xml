@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="65f2b376-1b26-4725-9461-81d91f4597c3" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Google_App_Engine_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Google_App_Engine_SDK.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/handlers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/skeleton.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/skeleton.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/translations/en/LC_MESSAGES/messages.po" beforeDir="false" afterPath="$PROJECT_DIR$/translations/en/LC_MESSAGES/messages.po" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.po" beforeDir="false" afterPath="$PROJECT_DIR$/translations/es/LC_MESSAGES/messages.po" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.po" beforeDir="false" afterPath="$PROJECT_DIR$/translations/gl/LC_MESSAGES/messages.po" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/app.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,13 +44,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="JupyterTrust" id="16991d8c-e333-427c-b579-40baddb429a5" />
   <component name="ProjectId" id="1hH7tqXbdENAR8Hsv5MBDzPb8eP" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -100,6 +93,7 @@
       <method v="2" />
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -118,34 +112,41 @@
       <workItem from="1562159265724" duration="28000" />
       <workItem from="1599656382399" duration="1896000" />
       <workItem from="1599726986409" duration="2074000" />
-      <workItem from="1600079874841" duration="873000" />
+      <workItem from="1600079874841" duration="2441000" />
+      <workItem from="1603271378532" duration="35000" />
+      <workItem from="1603271439481" duration="367000" />
+      <workItem from="1603271850639" duration="351000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1324" height="206" key="GridCell.Tab.0.bottom" timestamp="1600080764118">
+    <state x="1568" y="277" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1603271399519">
+      <screen x="48" y="0" width="2512" height="1080" />
+    </state>
+    <state x="1568" y="277" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/48.0.2512.1080@48.0.2512.1080" timestamp="1603271399519" />
+    <state width="1324" height="206" key="GridCell.Tab.0.bottom" timestamp="1600084241808">
       <screen x="48" y="0" width="1872" height="1080" />
     </state>
-    <state width="1324" height="206" key="GridCell.Tab.0.bottom/48.0.1872.1080@48.0.1872.1080" timestamp="1600080764118" />
-    <state width="1324" height="206" key="GridCell.Tab.0.center" timestamp="1600080764117">
+    <state width="1324" height="206" key="GridCell.Tab.0.bottom/48.0.1872.1080@48.0.1872.1080" timestamp="1600084241808" />
+    <state width="1324" height="206" key="GridCell.Tab.0.center" timestamp="1600084241808">
       <screen x="48" y="0" width="1872" height="1080" />
     </state>
-    <state width="1324" height="206" key="GridCell.Tab.0.center/48.0.1872.1080@48.0.1872.1080" timestamp="1600080764117" />
-    <state width="1324" height="206" key="GridCell.Tab.0.left" timestamp="1600080764117">
+    <state width="1324" height="206" key="GridCell.Tab.0.center/48.0.1872.1080@48.0.1872.1080" timestamp="1600084241808" />
+    <state width="1324" height="206" key="GridCell.Tab.0.left" timestamp="1600084241808">
       <screen x="48" y="0" width="1872" height="1080" />
     </state>
-    <state width="1324" height="206" key="GridCell.Tab.0.left/48.0.1872.1080@48.0.1872.1080" timestamp="1600080764117" />
-    <state width="1324" height="206" key="GridCell.Tab.0.right" timestamp="1600080764118">
+    <state width="1324" height="206" key="GridCell.Tab.0.left/48.0.1872.1080@48.0.1872.1080" timestamp="1600084241808" />
+    <state width="1324" height="206" key="GridCell.Tab.0.right" timestamp="1600084241808">
       <screen x="48" y="0" width="1872" height="1080" />
     </state>
-    <state width="1324" height="206" key="GridCell.Tab.0.right/48.0.1872.1080@48.0.1872.1080" timestamp="1600080764118" />
+    <state width="1324" height="206" key="GridCell.Tab.0.right/48.0.1872.1080@48.0.1872.1080" timestamp="1600084241808" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/esei_soft$esei_soft.coverage" NAME="esei-soft Coverage Results" MODIFIED="1600079923005" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/esei-soft$esei-soft.coverage" NAME="TFG Coverage Results" MODIFIED="1560155199113" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/esei_soft$esei_soft.coverage" NAME="esei-soft Coverage Results" MODIFIED="1600079923005" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
